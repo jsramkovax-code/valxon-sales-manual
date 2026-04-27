@@ -8,6 +8,8 @@
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+html { scroll-behavior: smooth; }
+
 :root {
   --black: #0f0f0f;
   --white: #fafaf8;
@@ -23,6 +25,7 @@
   --red-light: #fdf0f0;
   --radius: 10px;
   --radius-sm: 6px;
+  --topnav-h: 56px;
 }
 
 body {
@@ -34,57 +37,55 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* LAYOUT */
-.wrapper { display: flex; min-height: 100vh; }
-
-/* SIDEBAR NAV */
-.sidebar {
-  width: 220px;
-  flex-shrink: 0;
-  background: var(--gray-50);
-  border-right: 1px solid var(--gray-200);
-  padding: 32px 0;
+/* TOP NAV */
+.topnav {
   position: fixed;
-  top: 0; left: 0; bottom: 0;
-  overflow-y: auto;
-}
-.sidebar-logo {
-  font-family: 'DM Serif Display', serif;
-  font-size: 20px;
-  padding: 0 20px 24px;
+  top: 0; left: 0; right: 0;
+  height: var(--topnav-h);
+  background: rgba(250,250,248,0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--gray-200);
-  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  padding: 0 40px;
+  gap: 32px;
+  z-index: 100;
 }
-.sidebar-logo span { color: var(--accent); }
-.sidebar-tag {
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--gray-400);
-  padding: 0 20px;
-  margin-bottom: 8px;
-  display: block;
+.topnav-logo {
+  font-family: 'DM Serif Display', serif;
+  font-size: 18px;
+  color: var(--black);
+  text-decoration: none;
+  flex-shrink: 0;
+  margin-right: 8px;
 }
-.sidebar-nav { list-style: none; }
-.sidebar-nav li a {
+.topnav-logo span { color: var(--accent); }
+.topnav-links {
+  display: flex;
+  gap: 2px;
+  list-style: none;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+}
+.topnav-links li a {
   display: block;
-  padding: 7px 20px;
+  padding: 6px 12px;
   font-size: 13px;
   color: var(--gray-600);
   text-decoration: none;
-  border-left: 2px solid transparent;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
   transition: all 0.12s;
 }
-.sidebar-nav li a:hover { color: var(--black); background: var(--gray-100); }
-.sidebar-nav li a.active { color: var(--accent); border-left-color: var(--accent); background: var(--accent-light); font-weight: 500; }
-.sidebar-section { margin-top: 20px; }
+.topnav-links li a:hover { color: var(--black); background: var(--gray-100); }
+.topnav-links li a.active { color: var(--accent); background: var(--accent-light); font-weight: 500; }
 
 /* MAIN */
-.main { margin-left: 220px; padding: 48px 56px; max-width: 900px; }
+.main { padding: calc(var(--topnav-h) + 56px) 0 80px; max-width: 820px; margin: 0 auto; padding-left: 40px; padding-right: 40px; }
 
 /* HEADER */
-.doc-header { margin-bottom: 48px; padding-bottom: 32px; border-bottom: 1px solid var(--gray-200); }
+.doc-header { margin-bottom: 64px; }
 .doc-badge {
   display: inline-block;
   font-size: 10px;
@@ -95,22 +96,19 @@ body {
   background: var(--accent-light);
   padding: 3px 10px;
   border-radius: 100px;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 .doc-title {
   font-family: 'DM Serif Display', serif;
-  font-size: 36px;
-  letter-spacing: -0.8px;
-  line-height: 1.1;
-  margin-bottom: 10px;
+  font-size: 48px;
+  letter-spacing: -1px;
+  line-height: 1.05;
+  margin-bottom: 16px;
 }
-.doc-subtitle { font-size: 15px; color: var(--gray-600); max-width: 500px; line-height: 1.6; margin-bottom: 20px; }
-.doc-meta { display: flex; gap: 24px; }
-.doc-meta-item { font-size: 12px; color: var(--gray-400); }
-.doc-meta-item strong { color: var(--gray-600); font-weight: 500; }
+.doc-subtitle { font-size: 16px; color: var(--gray-600); max-width: 480px; line-height: 1.65; }
 
 /* SECTION */
-.section { margin-bottom: 56px; scroll-margin-top: 32px; }
+.section { margin-bottom: 72px; scroll-margin-top: calc(var(--topnav-h) + 32px); }
 .section-label {
   font-size: 10px;
   font-weight: 500;
@@ -121,13 +119,13 @@ body {
 }
 .section-title {
   font-family: 'DM Serif Display', serif;
-  font-size: 26px;
+  font-size: 28px;
   letter-spacing: -0.5px;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
   line-height: 1.2;
 }
-.section-sub { font-size: 14px; color: var(--gray-600); margin-bottom: 24px; line-height: 1.6; max-width: 520px; }
-.divider { border: none; border-top: 1px solid var(--gray-200); margin: 48px 0; }
+.section-sub { font-size: 14px; color: var(--gray-600); margin-bottom: 28px; line-height: 1.65; max-width: 540px; }
+.divider { border: none; border-top: 1px solid var(--gray-200); margin: 64px 0; }
 
 /* CARDS */
 .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
@@ -135,17 +133,17 @@ body {
   background: var(--white);
   border: 1px solid var(--gray-200);
   border-radius: var(--radius);
-  padding: 20px;
+  padding: 22px;
 }
 .card-num { font-size: 11px; font-weight: 500; color: var(--gray-400); margin-bottom: 4px; }
-.card-title { font-size: 14px; font-weight: 500; margin-bottom: 6px; }
+.card-title { font-size: 14px; font-weight: 600; margin-bottom: 6px; }
 .card-body { font-size: 13px; color: var(--gray-600); line-height: 1.55; }
 
 /* PITCH BOX */
 .pitch-box {
   background: var(--black);
   border-radius: var(--radius);
-  padding: 28px 32px;
+  padding: 32px 36px;
   margin-bottom: 16px;
 }
 .pitch-box-label {
@@ -154,24 +152,24 @@ body {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: rgba(255,255,255,0.4);
-  margin-bottom: 14px;
+  margin-bottom: 16px;
 }
 .pitch-text {
-  font-size: 16px;
+  font-size: 17px;
   color: var(--white);
-  line-height: 1.75;
+  line-height: 1.8;
   font-style: italic;
 }
-.pitch-notes { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 16px; }
+.pitch-notes { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; }
 .pitch-note {
   background: rgba(255,255,255,0.06);
   border-radius: var(--radius-sm);
-  padding: 12px 14px;
+  padding: 14px 16px;
   font-size: 12px;
   color: rgba(255,255,255,0.55);
   line-height: 1.5;
 }
-.pitch-note strong { color: rgba(255,255,255,0.85); font-weight: 500; display: block; margin-bottom: 2px; }
+.pitch-note strong { color: rgba(255,255,255,0.85); font-weight: 500; display: block; margin-bottom: 3px; }
 
 /* CALLOUT */
 .callout {
@@ -194,22 +192,22 @@ body {
   background: var(--gray-50);
   border-left: 3px solid var(--accent);
   border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-  padding: 12px 16px;
+  padding: 14px 18px;
   margin-bottom: 10px;
 }
-.highlight-label { font-size: 10px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; }
-.highlight-text { font-size: 14px; color: var(--black); line-height: 1.6; font-style: italic; }
+.highlight-label { font-size: 10px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 5px; }
+.highlight-text { font-size: 14px; color: var(--black); line-height: 1.65; font-style: italic; }
 
 /* ICP */
 .icp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.icp-card { border-radius: var(--radius); padding: 20px; }
+.icp-card { border-radius: var(--radius); padding: 22px; }
 .icp-yes { background: var(--green-light); border: 1px solid rgba(42,107,74,0.2); }
 .icp-no { background: var(--red-light); border: 1px solid rgba(180,40,40,0.12); }
-.icp-label { font-size: 10px; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 12px; }
+.icp-label { font-size: 10px; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 14px; }
 .icp-yes .icp-label { color: var(--green); }
 .icp-no .icp-label { color: #b42828; }
 .icp-list { list-style: none; }
-.icp-list li { font-size: 13px; padding: 5px 0; border-bottom: 1px solid rgba(0,0,0,0.06); display: flex; gap: 8px; line-height: 1.4; }
+.icp-list li { font-size: 13px; padding: 6px 0; border-bottom: 1px solid rgba(0,0,0,0.06); display: flex; gap: 8px; line-height: 1.4; }
 .icp-list li:last-child { border-bottom: none; }
 .icp-yes .icp-list li::before { content: "→"; color: var(--green); font-weight: 500; flex-shrink: 0; }
 .icp-no .icp-list li::before { content: "×"; color: #b42828; font-weight: 500; flex-shrink: 0; }
@@ -219,8 +217,8 @@ body {
 .q-item {
   display: grid;
   grid-template-columns: 32px 1fr;
-  gap: 14px;
-  padding: 16px 0;
+  gap: 16px;
+  padding: 18px 0;
   border-bottom: 1px solid var(--gray-200);
   align-items: start;
 }
@@ -241,25 +239,25 @@ body {
   background: var(--accent-light);
   padding: 2px 8px;
   border-radius: 100px;
-  margin-bottom: 5px;
+  margin-bottom: 6px;
 }
-.q-text { font-size: 14px; color: var(--black); margin-bottom: 4px; font-style: italic; }
+.q-text { font-size: 14px; color: var(--black); margin-bottom: 5px; font-style: italic; }
 .q-why { font-size: 12px; color: var(--gray-400); }
 
 /* OBJECTIONS */
 .objection {
   border: 1px solid var(--gray-200);
   border-radius: var(--radius);
-  padding: 16px 20px;
+  padding: 18px 22px;
   margin-bottom: 10px;
   cursor: pointer;
   transition: border-color 0.12s;
 }
 .objection:hover { border-color: var(--gray-400); }
 .obj-q { font-size: 14px; font-weight: 500; color: var(--black); display: flex; justify-content: space-between; align-items: center; gap: 12px; }
-.obj-q::after { content: "+"; color: var(--gray-400); font-size: 18px; font-weight: 300; flex-shrink: 0; transition: transform 0.15s; }
+.obj-q::after { content: "+"; color: var(--gray-400); font-size: 20px; font-weight: 300; flex-shrink: 0; transition: transform 0.15s; }
 .objection.open .obj-q::after { transform: rotate(45deg); }
-.obj-a { font-size: 13px; color: var(--gray-600); line-height: 1.6; margin-top: 10px; display: none; border-top: 1px solid var(--gray-200); padding-top: 10px; }
+.obj-a { font-size: 13px; color: var(--gray-600); line-height: 1.65; margin-top: 12px; display: none; border-top: 1px solid var(--gray-200); padding-top: 12px; }
 .objection.open .obj-a { display: block; }
 
 /* DMU TABS */
@@ -267,7 +265,7 @@ body {
 .tab-btn {
   font-size: 12px;
   font-weight: 500;
-  padding: 6px 14px;
+  padding: 7px 16px;
   border-radius: var(--radius-sm);
   border: 1px solid var(--gray-200);
   background: var(--white);
@@ -280,84 +278,130 @@ body {
 .tab-btn.active { background: var(--black); color: var(--white); border-color: var(--black); }
 .tab-panel { display: none; }
 .tab-panel.active { display: block; }
-.persona-row { display: flex; gap: 14px; padding: 10px 0; border-bottom: 1px solid var(--gray-200); }
+.persona-row { display: flex; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--gray-200); }
 .persona-row:last-child { border-bottom: none; }
 .persona-role { font-size: 12px; font-weight: 500; color: var(--gray-400); min-width: 140px; padding-top: 1px; }
-.persona-text { font-size: 13px; color: var(--black); line-height: 1.5; flex: 1; }
+.persona-text { font-size: 13px; color: var(--black); line-height: 1.55; flex: 1; }
 
 /* USE CASES */
 .uc-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
-.uc { background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: var(--radius); padding: 16px; }
-.uc-title { font-size: 13px; font-weight: 500; margin-bottom: 4px; }
-.uc-body { font-size: 12px; color: var(--gray-600); line-height: 1.5; }
+.uc { background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: var(--radius); padding: 18px; }
+.uc-title { font-size: 13px; font-weight: 600; margin-bottom: 5px; }
+.uc-body { font-size: 12px; color: var(--gray-600); line-height: 1.55; }
 
 /* FIT GRID */
 .fit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.fit-yes { background: var(--green-light); border: 1px solid rgba(42,107,74,0.2); border-radius: var(--radius); padding: 18px; }
-.fit-no { background: var(--red-light); border: 1px solid rgba(180,40,40,0.12); border-radius: var(--radius); padding: 18px; }
-.fit-label { font-size: 10px; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 10px; }
+.fit-yes { background: var(--green-light); border: 1px solid rgba(42,107,74,0.2); border-radius: var(--radius); padding: 20px; }
+.fit-no { background: var(--red-light); border: 1px solid rgba(180,40,40,0.12); border-radius: var(--radius); padding: 20px; }
+.fit-label { font-size: 10px; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 12px; }
 .fit-yes .fit-label { color: var(--green); }
 .fit-no .fit-label { color: #b42828; }
 .fit-list { list-style: none; }
-.fit-list li { font-size: 13px; padding: 4px 0; border-bottom: 1px solid rgba(0,0,0,0.06); display: flex; gap: 8px; line-height: 1.4; }
+.fit-list li { font-size: 13px; padding: 5px 0; border-bottom: 1px solid rgba(0,0,0,0.06); display: flex; gap: 8px; line-height: 1.4; }
 .fit-list li:last-child { border-bottom: none; }
 .fit-yes .fit-list li::before { content: "✓"; color: var(--green); font-weight: 600; flex-shrink: 0; }
 .fit-no .fit-list li::before { content: "✗"; color: #b42828; font-weight: 600; flex-shrink: 0; }
 
 /* LOYALTY */
-.loyalty-strip { background: var(--black); border-radius: var(--radius); padding: 28px 32px; color: var(--white); }
-.loyalty-strip h3 { font-family: 'DM Serif Display', serif; font-size: 22px; margin-bottom: 8px; color: var(--white); }
-.loyalty-strip p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.6; margin-bottom: 20px; }
+.loyalty-strip { background: var(--black); border-radius: var(--radius); padding: 32px 36px; color: var(--white); }
+.loyalty-strip h3 { font-family: 'DM Serif Display', serif; font-size: 24px; margin-bottom: 10px; color: var(--white); }
+.loyalty-strip p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.65; margin-bottom: 24px; }
 .tiers { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
-.tier { border-radius: var(--radius-sm); padding: 12px 16px; }
+.tier { border-radius: var(--radius-sm); padding: 14px 18px; }
 .tier-bronze { background: rgba(205,127,50,0.15); border: 1px solid rgba(205,127,50,0.3); }
 .tier-silver { background: rgba(192,192,192,0.12); border: 1px solid rgba(192,192,192,0.3); }
 .tier-gold { background: rgba(255,215,0,0.1); border: 1px solid rgba(255,215,0,0.3); }
-.tier-name { font-size: 13px; font-weight: 500; margin-bottom: 3px; }
+.tier-name { font-size: 13px; font-weight: 500; margin-bottom: 4px; }
 .tier-bronze .tier-name { color: #cd7f32; }
 .tier-silver .tier-name { color: #c0c0c0; }
 .tier-gold .tier-name { color: #ffd700; }
 .tier-desc { font-size: 12px; color: rgba(255,255,255,0.45); }
 
+@media (max-width: 768px) {
+  :root { --topnav-h: 48px; }
+
+  /* TOP NAV — logo + scrollovatelné linky */
+  .topnav { padding: 0 16px; gap: 12px; }
+  .topnav-logo { font-size: 16px; }
+  .topnav-links { overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; flex-wrap: nowrap; gap: 0; }
+  .topnav-links::-webkit-scrollbar { display: none; }
+  .topnav-links li a { padding: 5px 10px; font-size: 12px; }
+
+  /* MAIN */
+  .main { padding-left: 18px; padding-right: 18px; padding-bottom: 60px; }
+
+  /* HEADER */
+  .doc-title { font-size: 32px; }
+  .doc-subtitle { font-size: 14px; }
+
+  /* SECTION */
+  .section { margin-bottom: 52px; }
+  .section-title { font-size: 22px; }
+  .divider { margin: 48px 0; }
+
+  /* GRIDY — vše na jeden sloupec */
+  .cards,
+  .icp-grid,
+  .fit-grid,
+  .uc-grid,
+  .tiers,
+  .pitch-notes { grid-template-columns: 1fr; }
+
+  /* PITCH BOX */
+  .pitch-box { padding: 22px 20px; }
+  .pitch-text { font-size: 15px; }
+
+  /* DMU PERSONA */
+  .persona-row { flex-direction: column; gap: 4px; }
+  .persona-role { min-width: unset; color: var(--accent); font-size: 11px; }
+
+  /* TABS */
+  .tab-nav { gap: 5px; }
+  .tab-btn { font-size: 11px; padding: 6px 10px; }
+
+  /* DISCOVERY */
+  .q-item { grid-template-columns: 24px 1fr; gap: 10px; }
+  .q-num { font-size: 18px; }
+
+  /* LOYALTY */
+  .loyalty-strip { padding: 22px 20px; }
+  .loyalty-strip h3 { font-size: 19px; }
+
+  /* OBJECTIONS */
+  .objection { padding: 14px 16px; }
+  .obj-q { font-size: 13px; }
+}
+
 @media print {
-  .sidebar { display: none; }
-  .main { margin-left: 0; padding: 32px; }
+  .topnav { display: none; }
+  .main { padding-top: 32px; }
   .objection.open .obj-a, .tab-panel { display: block !important; }
-  .tab-panel:not(.active) { border-top: 1px solid var(--gray-200); padding-top: 12px; }
 }
 </style>
 </head>
 <body>
 
-<div class="wrapper">
-
-<nav class="sidebar">
-  <div class="sidebar-logo">val<span>x</span>on</div>
-  <span class="sidebar-tag">Obsah</span>
-  <ul class="sidebar-nav">
-    <li class="sidebar-section"><a href="#propozice" class="active">Propozice</a></li>
+<nav class="topnav">
+  <a class="topnav-logo" href="#propozice">val<span>x</span>on</a>
+  <ul class="topnav-links">
+    <li><a href="#propozice" class="active">Propozice</a></li>
     <li><a href="#pitch">Call pitch</a></li>
     <li><a href="#icp">Ideální zákazník</a></li>
-    <li><a href="#discovery">Discovery otázky</a></li>
+    <li><a href="#discovery">Discovery</a></li>
     <li><a href="#fit">Fit vs. no fit</a></li>
-    <li><a href="#dmu">DMU — kdo rozhoduje</a></li>
+    <li><a href="#dmu">Kdo rozhoduje</a></li>
     <li><a href="#objekce">Námitky</a></li>
     <li><a href="#closing">Closing</a></li>
-    <li><a href="#loyalty">Loyalty program</a></li>
+    <li><a href="#loyalty">Loyalty</a></li>
   </ul>
 </nav>
 
 <main class="main">
 
   <div class="doc-header">
-    <div class="doc-badge">Interní — sales manuál</div>
+    <div class="doc-badge">Sales manuál</div>
     <h1 class="doc-title">Valxon Platform</h1>
-    <p class="doc-subtitle">Tahák pro prodej platformy. Propozice, pitch, discovery, DMU, námitky a closing — vše na jednom místě.</p>
-    <div class="doc-meta">
-      <div class="doc-meta-item"><strong>Verze:</strong> 1.0 / 2025</div>
-      <div class="doc-meta-item"><strong>Určeno pro:</strong> KAM, AM</div>
-      <div class="doc-meta-item"><strong>Konzultovat s:</strong> Head of Sales</div>
-    </div>
+    <p class="doc-subtitle">Propozice, pitch, discovery, DMU, námitky a closing — vše na jednom místě.</p>
   </div>
 
   <!-- PROPOZICE -->
@@ -371,7 +415,7 @@ body {
       <div class="callout-body"><strong>Klíčová myšlenka.</strong> Neprodáváme merch. Neprodáváme tisk ani logistiku. Prodáváme funkční systém pro řízení merche bez operativy — a platforma je k tomu zdarma.</div>
     </div>
 
-    <div class="cards" style="margin-top:16px;">
+    <div class="cards" style="margin-top:20px;">
       <div class="card">
         <div class="card-num">01</div>
         <div class="card-title">Zákaznická zóna</div>
@@ -394,8 +438,8 @@ body {
       </div>
     </div>
 
-    <div style="margin-top:16px;">
-      <div class="section-label" style="margin-bottom:10px;">Use cases — platforma řeší celý merch život firmy</div>
+    <div style="margin-top:24px;">
+      <div class="section-label" style="margin-bottom:12px;">Use cases — platforma řeší celý merch život firmy</div>
       <div class="uc-grid">
         <div class="uc"><div class="uc-title">Onboarding zaměstnanců</div><div class="uc-body">Balíček dorazí novému zaměstnanci přímo domů. HR neřeší adresy ani koordinaci.</div></div>
         <div class="uc"><div class="uc-title">Vánoce a výročí</div><div class="uc-body">Opakované zakázky s přehledem. Letos se neopakuje chaos z loňska.</div></div>
@@ -433,8 +477,8 @@ body {
       <div class="callout-body"><strong>Nenech se odbýt e-mailem.</strong> "Pošlete mi info" je slušné odmítnutí. Zareaguj: <em>"Rád pošlu, ale aby to dávalo smysl, bude lepší se na to podívat společně — zabere to 20 minut."</em></div>
     </div>
 
-    <div style="margin-top:16px;">
-      <div class="section-label" style="margin-bottom:10px;">Varianty podle situace</div>
+    <div style="margin-top:20px;">
+      <div class="section-label" style="margin-bottom:12px;">Varianty podle situace</div>
       <div class="highlight">
         <div class="highlight-label">Stávající zákazník</div>
         <div class="highlight-text">"Spolupracujeme spolu už nějakou dobu a vím, jak merch u vás funguje. Vyvíjíme novou platformu, která by vám mohla ušetřit spoustu operativy — chtěl bych vám ji ukázat, ať vidíte, jestli vám to dává smysl."</div>
@@ -479,7 +523,7 @@ body {
       </div>
     </div>
 
-    <div class="callout callout-info" style="margin-top:12px;">
+    <div class="callout callout-info" style="margin-top:14px;">
       <div class="callout-icon">→</div>
       <div class="callout-body"><strong>Příklady z portfolia:</strong> Seyfor, Air Bank, OREA Hotels jsou typičtí kandidáti. Mají opakované nákupy, merch řeší více lidí, mají pobočky nebo entity.</div>
     </div>
@@ -598,7 +642,7 @@ body {
   <!-- DMU -->
   <div class="section" id="dmu">
     <div class="section-label">06 — Rozhodování</div>
-    <h2 class="section-title">DMU — kdo rozhoduje a co chce slyšet</h2>
+    <h2 class="section-title">Kdo rozhoduje a co chce slyšet</h2>
     <p class="section-sub">V B2B nenakupuje firma — nakupují lidé. Každý člen rozhodovací jednotky sleduje jiné priority. Mluv s každým jinak.</p>
 
     <div class="tab-nav">
@@ -693,7 +737,7 @@ body {
       <div class="highlight-text">"Mezitím to pro vás budeme dělat ručně, přesně tak, jak platforma bude fungovat. Takže nic neriskujete — uvidíte výsledek, než se rozhodnete."</div>
     </div>
 
-    <div class="callout callout-tip" style="margin-top:16px;">
+    <div class="callout callout-tip" style="margin-top:20px;">
       <div class="callout-icon">💡</div>
       <div class="callout-body"><strong>Po prohraném dealu.</strong> Zeptej se: <em>"Můžu se pro naše zlepšení zeptat, co bylo klíčovým faktorem?"</em> Naplánuj follow-up za 3–6 měsíců. Každé "ne" je investicí do budoucího "ano".</div>
     </div>
@@ -726,14 +770,13 @@ body {
       </div>
     </div>
 
-    <div class="callout callout-warn" style="margin-top:12px;">
+    <div class="callout callout-warn" style="margin-top:14px;">
       <div class="callout-icon">⚠️</div>
       <div class="callout-body"><strong>Jak o tom mluvit.</strong> Nezavazuj konkrétní benefity ani termíny — to konzultuj s vedením. Říkej: <em>"Čím více s námi děláte, tím více se vám to vrátí — detaily doladíme."</em></div>
     </div>
   </div>
 
 </main>
-</div>
 
 <script>
 function toggleObj(el) {
@@ -741,15 +784,18 @@ function toggleObj(el) {
 }
 
 function switchTab(btn, group, name) {
-  document.querySelectorAll('#' + group + '-' + 'specialist, #' + group + '-manager, #' + group + '-sales, #' + group + '-cfo').forEach(function(p){ p.classList.remove('active'); });
+  ['specialist','manager','sales','cfo'].forEach(function(n) {
+    var p = document.getElementById(group + '-' + n);
+    if (p) p.classList.remove('active');
+  });
   btn.closest('.section').querySelectorAll('.tab-btn').forEach(function(b){ b.classList.remove('active'); });
   document.getElementById(group + '-' + name).classList.add('active');
   btn.classList.add('active');
 }
 
-// Active sidebar tracking
+// Active top nav tracking
 const sections = document.querySelectorAll('.section');
-const navLinks = document.querySelectorAll('.sidebar-nav a');
+const navLinks = document.querySelectorAll('.topnav-links a');
 window.addEventListener('scroll', function() {
   let current = '';
   sections.forEach(function(s) {
@@ -759,7 +805,7 @@ window.addEventListener('scroll', function() {
     a.classList.remove('active');
     if (a.getAttribute('href') === '#' + current) a.classList.add('active');
   });
-});
+}, { passive: true });
 </script>
 
 </body>
