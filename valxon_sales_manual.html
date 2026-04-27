@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valxon Platform — Sales manuál</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --black: #0f0f0f;
+  --white: #fafaf8;
+  --gray-50: #f8f7f4;
+  --gray-100: #f0ede6;
+  --gray-200: #e0ddd4;
+  --gray-400: #9e9b92;
+  --gray-600: #5c5a54;
+  --accent: #c8522a;
+  --accent-light: #f8ede8;
+  --green: #2a6b4a;
+  --green-light: #e8f2ec;
+  --red-light: #fdf0f0;
+  --radius: 10px;
+  --radius-sm: 6px;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--white);
+  color: var(--black);
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* LAYOUT */
+.wrapper { display: flex; min-height: 100vh; }
+
+/* SIDEBAR NAV */
+.sidebar {
+  width: 220px;
+  flex-shrink: 0;
+  background: var(--gray-50);
+  border-right: 1px solid var(--gray-200);
+  padding: 32px 0;
+  position: fixed;
+  top: 0; left: 0; bottom: 0;
+  overflow-y: auto;
+}
+.sidebar-logo {
+  font-family: 'DM Serif Display', serif;
+  font-size: 20px;
+  padding: 0 20px 24px;
+  border-bottom: 1px solid var(--gray-200);
+  margin-bottom: 20px;
+}
+.sidebar-logo span { color: var(--accent); }
+.sidebar-tag {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gray-400);
+  padding: 0 20px;
+  margin-bottom: 8px;
+  display: block;
+}
+.sidebar-nav { list-style: none; }
+.sidebar-nav li a {
+  display: block;
+  padding: 7px 20px;
+  font-size: 13px;
+  color: var(--gray-600);
+  text-decoration: none;
+  border-left: 2px solid transparent;
+  transition: all 0.12s;
+}
+.sidebar-nav li a:hover { color: var(--black); background: var(--gray-100); }
+.sidebar-nav li a.active { color: var(--accent); border-left-color: var(--accent); background: var(--accent-light); font-weight: 500; }
+.sidebar-section { margin-top: 20px; }
+
+/* MAIN */
+.main { margin-left: 220px; padding: 48px 56px; max-width: 900px; }
+
+/* HEADER */
+.doc-header { margin-bottom: 48px; padding-bottom: 32px; border-bottom: 1px solid var(--gray-200); }
+.doc-badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: var(--accent-light);
+  padding: 3px 10px;
+  border-radius: 100px;
+  margin-bottom: 16px;
+}
+.doc-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 36px;
+  letter-spacing: -0.8px;
+  line-height: 1.1;
+  margin-bottom: 10px;
+}
+.doc-subtitle { font-size: 15px; color: var(--gray-600); max-width: 500px; line-height: 1.6; margin-bottom: 20px; }
+.doc-meta { display: flex; gap: 24px; }
+.doc-meta-item { font-size: 12px; color: var(--gray-400); }
+.doc-meta-item strong { color: var(--gray-600); font-weight: 500; }
+
+/* SECTION */
+.section { margin-bottom: 56px; scroll-margin-top: 32px; }
+.section-label {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gray-400);
+  margin-bottom: 8px;
+}
+.section-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 26px;
+  letter-spacing: -0.5px;
+  margin-bottom: 6px;
+  line-height: 1.2;
+}
+.section-sub { font-size: 14px; color: var(--gray-600); margin-bottom: 24px; line-height: 1.6; max-width: 520px; }
+.divider { border: none; border-top: 1px solid var(--gray-200); margin: 48px 0; }
+
+/* CARDS */
+.cards { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.card {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius);
+  padding: 20px;
+}
+.card-num { font-size: 11px; font-weight: 500; color: var(--gray-400); margin-bottom: 4px; }
+.card-title { font-size: 14px; font-weight: 500; margin-bottom: 6px; }
+.card-body { font-size: 13px; color: var(--gray-600); line-height: 1.55; }
+
+/* PITCH BOX */
+.pitch-box {
+  background: var(--black);
+  border-radius: var(--radius);
+  padding: 28px 32px;
+  margin-bottom: 16px;
+}
+.pitch-box-label {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 14px;
+}
+.pitch-text {
+  font-size: 16px;
+  color: var(--white);
+  line-height: 1.75;
+  font-style: italic;
+}
+.pitch-notes { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 16px; }
+.pitch-note {
+  background: rgba(255,255,255,0.06);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.5;
+}
+.pitch-note strong { color: rgba(255,255,255,0.85); font-weight: 500; display: block; margin-bottom: 2px; }
+
+/* CALLOUT */
+.callout {
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  margin-bottom: 12px;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+.callout-tip { background: var(--accent-light); border: 1px solid rgba(200,82,42,0.2); }
+.callout-warn { background: #fffbeb; border: 1px solid rgba(180,140,0,0.2); }
+.callout-info { background: var(--gray-100); border: 1px solid var(--gray-200); }
+.callout-icon { font-size: 14px; flex-shrink: 0; margin-top: 1px; }
+.callout-body { font-size: 13px; line-height: 1.6; color: var(--gray-600); }
+.callout-body strong { color: var(--black); font-weight: 500; }
+
+/* HIGHLIGHT */
+.highlight {
+  background: var(--gray-50);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: 12px 16px;
+  margin-bottom: 10px;
+}
+.highlight-label { font-size: 10px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; }
+.highlight-text { font-size: 14px; color: var(--black); line-height: 1.6; font-style: italic; }
+
+/* ICP */
+.icp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.icp-card { border-radius: var(--radius); padding: 20px; }
+.icp-yes { background: var(--green-light); border: 1px solid rgba(42,107,74,0.2); }
+.icp-no { background: var(--red-light); border: 1px solid rgba(180,40,40,0.12); }
+.icp-label { font-size: 10px; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 12px; }
+.icp-yes .icp-label { color: var(--green); }
+.icp-no .icp-label { color: #b42828; }
+.icp-list { list-style: none; }
+.icp-list li { font-size: 13px; padding: 5px 0; border-bottom: 1px solid rgba(0,0,0,0.06); display: flex; gap: 8px; line-height: 1.4; }
+.icp-list li:last-child { border-bottom: none; }
+.icp-yes .icp-list li::before { content: "→"; color: var(--green); font-weight: 500; flex-shrink: 0; }
+.icp-no .icp-list li::before { content: "×"; color: #b42828; font-weight: 500; flex-shrink: 0; }
+
+/* DISCOVERY */
+.q-list { list-style: none; }
+.q-item {
+  display: grid;
+  grid-template-columns: 32px 1fr;
+  gap: 14px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--gray-200);
+  align-items: start;
+}
+.q-item:last-child { border-bottom: none; }
+.q-num {
+  font-family: 'DM Serif Display', serif;
+  font-size: 22px;
+  color: var(--gray-200);
+  line-height: 1.3;
+}
+.q-tag {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: var(--accent-light);
+  padding: 2px 8px;
+  border-radius: 100px;
+  margin-bottom: 5px;
+}
+.q-text { font-size: 14px; color: var(--black); margin-bottom: 4px; font-style: italic; }
+.q-why { font-size: 12px; color: var(--gray-400); }
+
+/* OBJECTIONS */
+.objection {
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: border-color 0.12s;
+}
+.objection:hover { border-color: var(--gray-400); }
+.obj-q { font-size: 14px; font-weight: 500; color: var(--black); display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.obj-q::after { content: "+"; color: var(--gray-400); font-size: 18px; font-weight: 300; flex-shrink: 0; transition: transform 0.15s; }
+.objection.open .obj-q::after { transform: rotate(45deg); }
+.obj-a { font-size: 13px; color: var(--gray-600); line-height: 1.6; margin-top: 10px; display: none; border-top: 1px solid var(--gray-200); padding-top: 10px; }
+.objection.open .obj-a { display: block; }
+
+/* DMU TABS */
+.tab-nav { display: flex; gap: 6px; margin-bottom: 16px; flex-wrap: wrap; }
+.tab-btn {
+  font-size: 12px;
+  font-weight: 500;
+  padding: 6px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--gray-200);
+  background: var(--white);
+  color: var(--gray-600);
+  cursor: pointer;
+  transition: all 0.12s;
+  font-family: inherit;
+}
+.tab-btn:hover { border-color: var(--gray-400); color: var(--black); }
+.tab-btn.active { background: var(--black); color: var(--white); border-color: var(--black); }
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+.persona-row { display: flex; gap: 14px; padding: 10px 0; border-bottom: 1px solid var(--gray-200); }
+.persona-row:last-child { border-bottom: none; }
+.persona-role { font-size: 12px; font-weight: 500; color: var(--gray-400); min-width: 140px; padding-top: 1px; }
+.persona-text { font-size: 13px; color: var(--black); line-height: 1.5; flex: 1; }
+
+/* USE CASES */
+.uc-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+.uc { background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: var(--radius); padding: 16px; }
+.uc-title { font-size: 13px; font-weight: 500; margin-bottom: 4px; }
+.uc-body { font-size: 12px; color: var(--gray-600); line-height: 1.5; }
+
+/* FIT GRID */
+.fit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.fit-yes { background: var(--green-light); border: 1px solid rgba(42,107,74,0.2); border-radius: var(--radius); padding: 18px; }
+.fit-no { background: var(--red-light); border: 1px solid rgba(180,40,40,0.12); border-radius: var(--radius); padding: 18px; }
+.fit-label { font-size: 10px; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 10px; }
+.fit-yes .fit-label { color: var(--green); }
+.fit-no .fit-label { color: #b42828; }
+.fit-list { list-style: none; }
+.fit-list li { font-size: 13px; padding: 4px 0; border-bottom: 1px solid rgba(0,0,0,0.06); display: flex; gap: 8px; line-height: 1.4; }
+.fit-list li:last-child { border-bottom: none; }
+.fit-yes .fit-list li::before { content: "✓"; color: var(--green); font-weight: 600; flex-shrink: 0; }
+.fit-no .fit-list li::before { content: "✗"; color: #b42828; font-weight: 600; flex-shrink: 0; }
+
+/* LOYALTY */
+.loyalty-strip { background: var(--black); border-radius: var(--radius); padding: 28px 32px; color: var(--white); }
+.loyalty-strip h3 { font-family: 'DM Serif Display', serif; font-size: 22px; margin-bottom: 8px; color: var(--white); }
+.loyalty-strip p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.6; margin-bottom: 20px; }
+.tiers { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+.tier { border-radius: var(--radius-sm); padding: 12px 16px; }
+.tier-bronze { background: rgba(205,127,50,0.15); border: 1px solid rgba(205,127,50,0.3); }
+.tier-silver { background: rgba(192,192,192,0.12); border: 1px solid rgba(192,192,192,0.3); }
+.tier-gold { background: rgba(255,215,0,0.1); border: 1px solid rgba(255,215,0,0.3); }
+.tier-name { font-size: 13px; font-weight: 500; margin-bottom: 3px; }
+.tier-bronze .tier-name { color: #cd7f32; }
+.tier-silver .tier-name { color: #c0c0c0; }
+.tier-gold .tier-name { color: #ffd700; }
+.tier-desc { font-size: 12px; color: rgba(255,255,255,0.45); }
+
+@media print {
+  .sidebar { display: none; }
+  .main { margin-left: 0; padding: 32px; }
+  .objection.open .obj-a, .tab-panel { display: block !important; }
+  .tab-panel:not(.active) { border-top: 1px solid var(--gray-200); padding-top: 12px; }
+}
+</style>
+</head>
+<body>
+
+<div class="wrapper">
+
+<nav class="sidebar">
+  <div class="sidebar-logo">val<span>x</span>on</div>
+  <span class="sidebar-tag">Obsah</span>
+  <ul class="sidebar-nav">
+    <li class="sidebar-section"><a href="#propozice" class="active">Propozice</a></li>
+    <li><a href="#pitch">Call pitch</a></li>
+    <li><a href="#icp">Ideální zákazník</a></li>
+    <li><a href="#discovery">Discovery otázky</a></li>
+    <li><a href="#fit">Fit vs. no fit</a></li>
+    <li><a href="#dmu">DMU — kdo rozhoduje</a></li>
+    <li><a href="#objekce">Námitky</a></li>
+    <li><a href="#closing">Closing</a></li>
+    <li><a href="#loyalty">Loyalty program</a></li>
+  </ul>
+</nav>
+
+<main class="main">
+
+  <div class="doc-header">
+    <div class="doc-badge">Interní — sales manuál</div>
+    <h1 class="doc-title">Valxon Platform</h1>
+    <p class="doc-subtitle">Tahák pro prodej platformy. Propozice, pitch, discovery, DMU, námitky a closing — vše na jednom místě.</p>
+    <div class="doc-meta">
+      <div class="doc-meta-item"><strong>Verze:</strong> 1.0 / 2025</div>
+      <div class="doc-meta-item"><strong>Určeno pro:</strong> KAM, AM</div>
+      <div class="doc-meta-item"><strong>Konzultovat s:</strong> Head of Sales</div>
+    </div>
+  </div>
+
+  <!-- PROPOZICE -->
+  <div class="section" id="propozice">
+    <div class="section-label">01 — Co prodáváme</div>
+    <h2 class="section-title">Propozice platformy</h2>
+    <p class="section-sub">Jedna věta pro zákazníka: <em>"Váš tým přestane řešit merch, začne ho jen využívat."</em></p>
+
+    <div class="callout callout-tip">
+      <div class="callout-icon">💡</div>
+      <div class="callout-body"><strong>Klíčová myšlenka.</strong> Neprodáváme merch. Neprodáváme tisk ani logistiku. Prodáváme funkční systém pro řízení merche bez operativy — a platforma je k tomu zdarma.</div>
+    </div>
+
+    <div class="cards" style="margin-top:16px;">
+      <div class="card">
+        <div class="card-num">01</div>
+        <div class="card-title">Zákaznická zóna</div>
+        <div class="card-body">Zákazník dostane vlastní prostředí se svým portfoliem. Lidé objednávají přímo — žádné emaily, žádné čekání na potvrzení.</div>
+      </div>
+      <div class="card">
+        <div class="card-num">02</div>
+        <div class="card-title">Fulfillment a sklad</div>
+        <div class="card-body">Jejich merch skladujeme u nás a rozesíláme přímo — zaměstnancům, partnerům, pobočkám. Pilotně to děláme už dnes.</div>
+      </div>
+      <div class="card">
+        <div class="card-num">03</div>
+        <div class="card-title">Přehled nákladů</div>
+        <div class="card-body">Zákazník vidí přesně co se objednalo, kdo to objednal a za kolik. Náklady přiřazené týmům nebo entitám.</div>
+      </div>
+      <div class="card">
+        <div class="card-num">04</div>
+        <div class="card-title">Napojení na jejich systémy</div>
+        <div class="card-body">Platforma se napojí na jejich intranet nebo e-shop. Merch funguje jako přirozená součást jejich prostředí.</div>
+      </div>
+    </div>
+
+    <div style="margin-top:16px;">
+      <div class="section-label" style="margin-bottom:10px;">Use cases — platforma řeší celý merch život firmy</div>
+      <div class="uc-grid">
+        <div class="uc"><div class="uc-title">Onboarding zaměstnanců</div><div class="uc-body">Balíček dorazí novému zaměstnanci přímo domů. HR neřeší adresy ani koordinaci.</div></div>
+        <div class="uc"><div class="uc-title">Vánoce a výročí</div><div class="uc-body">Opakované zakázky s přehledem. Letos se neopakuje chaos z loňska.</div></div>
+        <div class="uc"><div class="uc-title">Dárky pro partnery</div><div class="uc-body">Obchodník si sám objedná dárek přímo — bez čekání na marketing.</div></div>
+        <div class="uc"><div class="uc-title">Více poboček / entit</div><div class="uc-body">Každá pobočka objednává ze stejného portfolia. Stejná kvalita, jasné náklady.</div></div>
+        <div class="uc"><div class="uc-title">Merch store pro zaměstnance</div><div class="uc-body">Zaměstnanci si sami vyberou z portfolia. Napojitelné na e-shop nebo intranet.</div></div>
+        <div class="uc"><div class="uc-title">Konference a eventy</div><div class="uc-body">Materiály dostupné předem. Tým objedná sám, bez koordinace s dodavatelem.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- CALL PITCH -->
+  <div class="section" id="pitch">
+    <div class="section-label">02 — Akvizice</div>
+    <h2 class="section-title">Call pitch</h2>
+    <p class="section-sub">Cílem hovoru není prodat platformu. Cílem je domluvit schůzku. Používej tento skript jako základ — přizpůsob ho svým slovům.</p>
+
+    <div class="pitch-box">
+      <div class="pitch-box-label">Skript — domluva schůzky</div>
+      <div class="pitch-text">
+        "Dobrý den, jmenuji se [jméno], volám z Valxonu. Vyvíjíme novou platformu, která firmám jako je ta vaše ušetří spoustu času a zjednoduší, jak nakupují a spravují merch. Rádi bychom vám ji ukázali — ať se podíváte, jak se vám líbí, a řeknete nám, co si o tom myslíte. Bude tam i náš zakladatel, který vám ji sám provede. Hodilo by se vám příští týden, třeba ve středu odpoledne?"
+      </div>
+      <div class="pitch-notes">
+        <div class="pitch-note"><strong>Délka hovoru</strong>Maximálně 60 vteřin. Mluv pomalu, srozumitelně.</div>
+        <div class="pitch-note"><strong>Cíl</strong>Domluvit konkrétní datum a čas — ne posílat info do mailu.</div>
+        <div class="pitch-note"><strong>Zakladatel</strong>Zmiň ho — je to silný pull faktor. Zákazník ví, že nejde o rutinní demo.</div>
+        <div class="pitch-note"><strong>Pokud odmítnou</strong>Ptej se proč — každé "ne" je informace. Viz sekce Námitky.</div>
+      </div>
+    </div>
+
+    <div class="callout callout-warn" style="margin-top:4px;">
+      <div class="callout-icon">⚠️</div>
+      <div class="callout-body"><strong>Nenech se odbýt e-mailem.</strong> "Pošlete mi info" je slušné odmítnutí. Zareaguj: <em>"Rád pošlu, ale aby to dávalo smysl, bude lepší se na to podívat společně — zabere to 20 minut."</em></div>
+    </div>
+
+    <div style="margin-top:16px;">
+      <div class="section-label" style="margin-bottom:10px;">Varianty podle situace</div>
+      <div class="highlight">
+        <div class="highlight-label">Stávající zákazník</div>
+        <div class="highlight-text">"Spolupracujeme spolu už nějakou dobu a vím, jak merch u vás funguje. Vyvíjíme novou platformu, která by vám mohla ušetřit spoustu operativy — chtěl bych vám ji ukázat, ať vidíte, jestli vám to dává smysl."</div>
+      </div>
+      <div class="highlight">
+        <div class="highlight-label">Cold — víme o konkrétním pain pointu</div>
+        <div class="highlight-text">"Všiml jsem si, že [konkrétní kontext — vánoční kampaň, onboarding, konference]. Vyvíjíme platformu, která tohle řeší — chtěl bych vám ji ukázat, trvá to 20 minut."</div>
+      </div>
+      <div class="highlight">
+        <div class="highlight-label">Po prvním kontaktu bez výsledku</div>
+        <div class="highlight-text">"Snažil jsem se vás minule kontaktovat ohledně naší platformy pro správu merche. Zakladatel dělá teď sérii krátkých ukázek pro vybrané firmy — napadlo mě, že by to mohlo být zajímavé i pro vás."</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ICP -->
+  <div class="section" id="icp">
+    <div class="section-label">03 — Cílení</div>
+    <h2 class="section-title">Ideální zákazník pro platformu</h2>
+    <p class="section-sub">Platforma nedává smysl pro každého. Než začneš pitchovat, zkontroluj, jestli zákazník splňuje základní kritéria.</p>
+    <div class="icp-grid">
+      <div class="icp-card icp-yes">
+        <div class="icp-label">Základní kritéria (musí splňovat)</div>
+        <ul class="icp-list">
+          <li>150+ zaměstnanců</li>
+          <li>Merch 500k+ Kč/rok</li>
+          <li>Opakované nákupy — min. 3× ročně</li>
+          <li>Někdo má merch v popisu práce</li>
+        </ul>
+      </div>
+      <div class="icp-card icp-yes" style="background:#f0f7f4;">
+        <div class="icp-label">Silné signály — prioritizuj</div>
+        <ul class="icp-list">
+          <li>Stěžují si na operativu nebo chaos</li>
+          <li>Merch řeší více lidí nebo pobočky</li>
+          <li>Onboarding nebo partnerský merch v agendě</li>
+          <li>Chtějí přehled nad náklady</li>
+          <li>Jsou to stávající zákazníci s opakovaností</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout callout-info" style="margin-top:12px;">
+      <div class="callout-icon">→</div>
+      <div class="callout-body"><strong>Příklady z portfolia:</strong> Seyfor, Air Bank, OREA Hotels jsou typičtí kandidáti. Mají opakované nákupy, merch řeší více lidí, mají pobočky nebo entity.</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- DISCOVERY -->
+  <div class="section" id="discovery">
+    <div class="section-label">04 — Discovery</div>
+    <h2 class="section-title">Discovery otázky</h2>
+    <p class="section-sub">Neptej se na produkt. Ptej se na proces. Cílem je pochopit, kde zákazník ztrácí čas nebo kontrolu — a jestli platforma tento problém řeší. Nemusíš projít všechny — vyber ty, které sedí do kontextu.</p>
+
+    <ul class="q-list">
+      <li class="q-item">
+        <div class="q-num">1</div>
+        <div>
+          <div class="q-tag">Proces obecně</div>
+          <div class="q-text">"Kdo u vás ve firmě merch řeší? Je to jeden člověk, nebo se do toho zapojuje víc lidí nebo týmů?"</div>
+          <div class="q-why">Hledáš: více osob = více chaosu = silnější fit pro platformu</div>
+        </div>
+      </li>
+      <li class="q-item">
+        <div class="q-num">2</div>
+        <div>
+          <div class="q-tag">Operativa</div>
+          <div class="q-text">"Jak to technicky funguje dnes — jak objednáváte, sbíráte adresy nebo velikosti, jak distribuujete?"</div>
+          <div class="q-why">Hledáš: Excel, emaily, manuální sběr = přesně to, co platforma odstraní</div>
+        </div>
+      </li>
+      <li class="q-item">
+        <div class="q-num">3</div>
+        <div>
+          <div class="q-tag">HR — onboarding</div>
+          <div class="q-text">"Jak to funguje s onboardingem — posíláte novým lidem balíček? Kdo to řeší a jak dlouho to zabere?"</div>
+          <div class="q-why">Hledáš: manuální koordinace = silný HR pain point, platforma ho odstraní</div>
+        </div>
+      </li>
+      <li class="q-item">
+        <div class="q-num">4</div>
+        <div>
+          <div class="q-tag">Pobočky / entity</div>
+          <div class="q-text">"Máte merch jen pro jedno místo, nebo i pro pobočky? Jak to koordinujete?"</div>
+          <div class="q-why">Hledáš: různé pobočky po svém = ideální use case pro centrální platformu</div>
+        </div>
+      </li>
+      <li class="q-item">
+        <div class="q-num">5</div>
+        <div>
+          <div class="q-tag">Sales merch</div>
+          <div class="q-text">"Mají vaši obchodníci přístup k merchi pro klienty? Mohou si sami objednat, nebo musí žádat marketing?"</div>
+          <div class="q-why">Hledáš: čekání na marketing nebo asistentku = platforma dá přímý přístup</div>
+        </div>
+      </li>
+      <li class="q-item">
+        <div class="q-num">6</div>
+        <div>
+          <div class="q-tag">Vánoce / výročí</div>
+          <div class="q-text">"Jak řešíte vánoční dárky — kdy začínáte, kdo koordinuje, co loni nefungovalo?"</div>
+          <div class="q-why">Hledáš: chaos, pozdní start, opakující se problémy = argument pro strukturu</div>
+        </div>
+      </li>
+      <li class="q-item">
+        <div class="q-num">7</div>
+        <div>
+          <div class="q-tag">Náklady</div>
+          <div class="q-text">"Víte, kolik za merch celkově utrácíte ročně — napříč týmy nebo pobočkami?"</div>
+          <div class="q-why">Hledáš: rozptýlené nákupy bez přehledu = argument pro centralizaci</div>
+        </div>
+      </li>
+      <li class="q-item">
+        <div class="q-num">8</div>
+        <div>
+          <div class="q-tag">Zlatý důl</div>
+          <div class="q-text">"Kdybyste mohli jeden problém kolem merche prostě nechat na nás — co by to bylo?"</div>
+          <div class="q-why">Zákazník vlastními slovy pojmenuje pain — použij to doslova v pitchi</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <hr class="divider">
+
+  <!-- FIT -->
+  <div class="section" id="fit">
+    <div class="section-label">05 — Kvalifikace</div>
+    <h2 class="section-title">Fit vs. no fit</h2>
+    <p class="section-sub">Po discovery by mělo být jasné, jestli má zákazník pro platformu smysl. Pokud ne — nech ho jako ad hoc zákazníka a neztrácej čas platform pitchem.</p>
+    <div class="fit-grid">
+      <div class="fit-yes">
+        <div class="fit-label">Dobrý fit — pitchuj platformu</div>
+        <ul class="fit-list">
+          <li>Opakované nákupy, min. 3× ročně</li>
+          <li>Více osob nebo poboček do merche</li>
+          <li>Stěžují si na čas nebo chaos</li>
+          <li>Onboarding nebo partnerský merch v agendě</li>
+          <li>Chtějí přehled nad náklady</li>
+          <li>Stávající zákazník s opakovaností</li>
+        </ul>
+      </div>
+      <div class="fit-no">
+        <div class="fit-label">No fit — nech jako ad hoc</div>
+        <ul class="fit-list">
+          <li>Jednorázová zakázka, žádné opakování</li>
+          <li>Malá firma, jednoduché potřeby</li>
+          <li>Merch jen jednou ročně a stačí jim to</li>
+          <li>Proces funguje, žádný pain</li>
+          <li>Pod 150 zaměstnanců / pod 500k Kč merche</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- DMU -->
+  <div class="section" id="dmu">
+    <div class="section-label">06 — Rozhodování</div>
+    <h2 class="section-title">DMU — kdo rozhoduje a co chce slyšet</h2>
+    <p class="section-sub">V B2B nenakupuje firma — nakupují lidé. Každý člen rozhodovací jednotky sleduje jiné priority. Mluv s každým jinak.</p>
+
+    <div class="tab-nav">
+      <button class="tab-btn active" onclick="switchTab(this,'dmu','specialist')">HR / Mktg specialista</button>
+      <button class="tab-btn" onclick="switchTab(this,'dmu','manager')">HR / Mktg manažer</button>
+      <button class="tab-btn" onclick="switchTab(this,'dmu','sales')">Sales manager</button>
+      <button class="tab-btn" onclick="switchTab(this,'dmu','cfo')">CFO / Procurement</button>
+    </div>
+
+    <div id="dmu-specialist" class="tab-panel active">
+      <div class="persona-row"><div class="persona-role">Pain</div><div class="persona-text">Manuální operativa — sběr adres, velikostí, koordinace dodání. Merch bere čas, který nemá.</div></div>
+      <div class="persona-row"><div class="persona-role">Co chce slyšet</div><div class="persona-text"><em>"Přestanete řešit operativu. Nastavíte si systém jednou, pak to funguje bez vás."</em></div></div>
+      <div class="persona-row"><div class="persona-role">Jak na to</div><div class="persona-text">Ukaž konkrétně, jak objednávání funguje. Zdůrazni, že distribuce jde přímo na zaměstnance bez jejich zásahu.</div></div>
+      <div class="persona-row"><div class="persona-role">Čeho se bojí</div><div class="persona-text">Že nový systém přidělá práci místo aby ušetřil. Zdůrazni jednoduchost a že my vše nastavíme za ně.</div></div>
+    </div>
+    <div id="dmu-manager" class="tab-panel">
+      <div class="persona-row"><div class="persona-role">Pain</div><div class="persona-text">Tým řeší merch manuálně, různé pobočky po svém. Není přehled, není standard.</div></div>
+      <div class="persona-row"><div class="persona-role">Co chce slyšet</div><div class="persona-text"><em>"Máte přehled, kdo co objednal a za kolik. Systém místo improvizace."</em></div></div>
+      <div class="persona-row"><div class="persona-role">Jak na to</div><div class="persona-text">Mluv o řízení, přehledu, standardizaci. Platforma jim dá kontrolu, ne jen úsporu času.</div></div>
+      <div class="persona-row"><div class="persona-role">Čeho se bojí</div><div class="persona-text">Ztráty kontroly nebo nestandardní kvality. Zdůrazni, že vybírají produkty oni — platforma je jen nástroj pro distribuci.</div></div>
+    </div>
+    <div id="dmu-sales" class="tab-panel">
+      <div class="persona-row"><div class="persona-role">Pain</div><div class="persona-text">Obchodníci nemají merch ve správný moment — musí žádat marketing nebo asistentku a čekat.</div></div>
+      <div class="persona-row"><div class="persona-role">Co chce slyšet</div><div class="persona-text"><em>"Váš tým si sám objedná dárek pro klienta okamžitě — bez čekání na schválení."</em></div></div>
+      <div class="persona-row"><div class="persona-role">Jak na to</div><div class="persona-text">Zdůrazni autonomii a rychlost. Sales chce nástroj, ne proces navíc.</div></div>
+      <div class="persona-row"><div class="persona-role">Čeho se bojí</div><div class="persona-text">Dalšího systému, který se naučit. Zdůrazni jednoduchost — objedná se za 2 minuty.</div></div>
+    </div>
+    <div id="dmu-cfo" class="tab-panel">
+      <div class="persona-row"><div class="persona-role">Pain</div><div class="persona-text">Neví, kolik se za merch reálně utrácí. Různé nákupy, různé faktury, chaos v přefakturaci.</div></div>
+      <div class="persona-row"><div class="persona-role">Co chce slyšet</div><div class="persona-text"><em>"Jasný přehled nákladů — podle týmu, pobočky nebo use case. Žádné překvapivé faktury."</em></div></div>
+      <div class="persona-row"><div class="persona-role">Jak na to</div><div class="persona-text">Zdůrazni transparentnost a přiřazení výdajů. Pro CFO je platforma nástroj kontroly.</div></div>
+      <div class="persona-row"><div class="persona-role">Čeho se bojí</div><div class="persona-text">Dalšího nákladu navíc. Zdůrazni hned: platforma je zdarma, platí se jen za merch.</div></div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- OBJEKCE -->
+  <div class="section" id="objekce">
+    <div class="section-label">07 — Námitky</div>
+    <h2 class="section-title">Jak řešit námitky</h2>
+    <p class="section-sub">Námitka není odmítnutí — je to obranný reflex. Cílem není přeargumentovat, ale uznat postoj a přesměrovat konverzaci.</p>
+
+    <div class="objection" onclick="toggleObj(this)">
+      <div class="obj-q">"Kolik platforma stojí?"</div>
+      <div class="obj-a">Zdarma. Vydělávám na produktech, které přes ni objednáváte. Vy platíte jen za merch — nic navíc, žádný setup fee, žádné měsíční poplatky.</div>
+    </div>
+    <div class="objection" onclick="toggleObj(this)">
+      <div class="obj-q">"My to teď řešíme e-mailem a funguje to."</div>
+      <div class="obj-a">To je dobrý základ. Platforma to nenahrazuje — rozšiřuje. Váš tým bude mít přehled v jednom místě, opakované objednávky budou rychlejší a přestanete záviset na mailové komunikaci s námi.</div>
+    </div>
+    <div class="objection" onclick="toggleObj(this)">
+      <div class="obj-q">"Teď na to nemáme čas."</div>
+      <div class="obj-a">Rozumím. Schůzka trvá 20 minut. Kdy by se vám hodilo? Mohu se ozval za [konkrétní čas]?</div>
+    </div>
+    <div class="objection" onclick="toggleObj(this)">
+      <div class="obj-q">"Už máme dodavatele."</div>
+      <div class="obj-a">Rozumím — všichni naši zákazníci taky měli dodavatele. Nemám v plánu vás přesvědčovat hned teď. Ukázal bych vám platformu a vy sami uvidíte, jestli vám to dává smysl nebo ne. Zabere to 20 minut.</div>
+    </div>
+    <div class="objection" onclick="toggleObj(this)">
+      <div class="obj-q">"Pošlete mi info do mailu."</div>
+      <div class="obj-a">Rád pošlu, ale aby to dávalo smysl, bude lepší se na to podívat společně — zabere to 20 minut a okamžitě uvidíte, jestli je to relevantní nebo ne. Hodilo by se vám příští týden?</div>
+    </div>
+    <div class="objection" onclick="toggleObj(this)">
+      <div class="obj-q">"Nemáme teď rozpočet."</div>
+      <div class="obj-a">Platforma je zdarma — platíte jen za merch, který objednáváte. Takže žádný nový rozpočet nepotřebujete. Proto bych vám rád ukázal, jak to funguje.</div>
+    </div>
+    <div class="objection" onclick="toggleObj(this)">
+      <div class="obj-q">"Jsme malá firma, nepotřebujeme platformu."</div>
+      <div class="obj-a">Pokud merch řešíte jednoduše a funguje to, platforma pro vás teď nedává smysl — to je v pořádku. Rád se ozvu, až budete větší nebo až se potřeby změní. Mezitím vám samozřejmě pomůžu s konkrétními zakázkami.</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- CLOSING -->
+  <div class="section" id="closing">
+    <div class="section-label">08 — Uzavření</div>
+    <h2 class="section-title">Jak uzavřít platformu jako next step</h2>
+    <p class="section-sub">Cílem není podepsat smlouvu — cílem je domluvit schůzku nebo pilota. Platforma se "prodává" ukázkou, ne pitchem.</p>
+
+    <div class="highlight">
+      <div class="highlight-label">Po discovery — zkušební uzavření</div>
+      <div class="highlight-text">"Zdá se, že by vám platforma mohla ušetřit čas i přehled. Chcete, abychom se pobavili, jak by konkrétně fungovala u vás? Zakladatel dělá teď sérii ukázek — rád vás tam zařadím."</div>
+    </div>
+    <div class="highlight">
+      <div class="highlight-label">Nabídka pilota — pro stávající zákazníky</div>
+      <div class="highlight-text">"Hledáme první zákazníky, kteří s námi platformu spoluvytvoří. Dostanete podmínky, které ostatní mít nebudou, a vaše zpětná vazba bude mít reálný vliv na výsledek. Chcete být mezi prvními?"</div>
+    </div>
+    <div class="highlight">
+      <div class="highlight-label">Pokud váhají</div>
+      <div class="highlight-text">"Mezitím to pro vás budeme dělat ručně, přesně tak, jak platforma bude fungovat. Takže nic neriskujete — uvidíte výsledek, než se rozhodnete."</div>
+    </div>
+
+    <div class="callout callout-tip" style="margin-top:16px;">
+      <div class="callout-icon">💡</div>
+      <div class="callout-body"><strong>Po prohraném dealu.</strong> Zeptej se: <em>"Můžu se pro naše zlepšení zeptat, co bylo klíčovým faktorem?"</em> Naplánuj follow-up za 3–6 měsíců. Každé "ne" je investicí do budoucího "ano".</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- LOYALTY -->
+  <div class="section" id="loyalty">
+    <div class="section-label">09 — Loyalty</div>
+    <h2 class="section-title">Loyalty program</h2>
+    <p class="section-sub">Detaily se teprve ladí — ale vizi prodávej sebevědomě. Je to silný argument pro zákazníky, kteří přemýšlejí dlouhodobě.</p>
+
+    <div class="loyalty-strip">
+      <h3>Jako u aerolinek — čím víc letíte, tím lepší podmínky.</h3>
+      <p>Objem, který zákazník přes platformu generuje, se mu načítá jako kredity. Bronze → Silver → Gold přináší lepší ceny, prioritu a exkluzivní benefity. Detaily se ladí — zatím prodávej vizi.</p>
+      <div class="tiers">
+        <div class="tier tier-bronze">
+          <div class="tier-name">Bronze</div>
+          <div class="tier-desc">Zákaznická zóna, základní servis</div>
+        </div>
+        <div class="tier tier-silver">
+          <div class="tier-name">Silver</div>
+          <div class="tier-desc">Lepší ceny, prioritní odbavení</div>
+        </div>
+        <div class="tier tier-gold">
+          <div class="tier-name">Gold</div>
+          <div class="tier-desc">Exkluzivní podmínky, dedikovaný KAM</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout callout-warn" style="margin-top:12px;">
+      <div class="callout-icon">⚠️</div>
+      <div class="callout-body"><strong>Jak o tom mluvit.</strong> Nezavazuj konkrétní benefity ani termíny — to konzultuj s vedením. Říkej: <em>"Čím více s námi děláte, tím více se vám to vrátí — detaily doladíme."</em></div>
+    </div>
+  </div>
+
+</main>
+</div>
+
+<script>
+function toggleObj(el) {
+  el.classList.toggle('open');
+}
+
+function switchTab(btn, group, name) {
+  document.querySelectorAll('#' + group + '-' + 'specialist, #' + group + '-manager, #' + group + '-sales, #' + group + '-cfo').forEach(function(p){ p.classList.remove('active'); });
+  btn.closest('.section').querySelectorAll('.tab-btn').forEach(function(b){ b.classList.remove('active'); });
+  document.getElementById(group + '-' + name).classList.add('active');
+  btn.classList.add('active');
+}
+
+// Active sidebar tracking
+const sections = document.querySelectorAll('.section');
+const navLinks = document.querySelectorAll('.sidebar-nav a');
+window.addEventListener('scroll', function() {
+  let current = '';
+  sections.forEach(function(s) {
+    if (window.scrollY >= s.offsetTop - 80) current = s.id;
+  });
+  navLinks.forEach(function(a) {
+    a.classList.remove('active');
+    if (a.getAttribute('href') === '#' + current) a.classList.add('active');
+  });
+});
+</script>
+
+</body>
+</html>
