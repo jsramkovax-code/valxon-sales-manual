@@ -306,7 +306,8 @@ body {
 .loyalty-strip { background: var(--black); border-radius: var(--radius); padding: 32px 36px; color: var(--white); }
 .loyalty-strip h3 { font-family: 'DM Serif Display', serif; font-size: 24px; margin-bottom: 10px; color: var(--white); }
 .loyalty-strip p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.65; margin-bottom: 24px; }
-.tiers { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+.tiers { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 10px; }
+.tier-platinum { background: rgba(180,200,255,0.12); border: 1px solid rgba(180,200,255,0.3); }
 .tier { border-radius: var(--radius-sm); padding: 14px 18px; }
 .tier-bronze { background: rgba(205,127,50,0.15); border: 1px solid rgba(205,127,50,0.3); }
 .tier-silver { background: rgba(192,192,192,0.12); border: 1px solid rgba(192,192,192,0.3); }
@@ -402,6 +403,9 @@ body {
     <div class="doc-badge">Sales manuál</div>
     <h1 class="doc-title">Valxon Platform</h1>
     <p class="doc-subtitle">Propozice, pitch, discovery, kdo rozhoduje, námitky a closing — vše na jednom místě.</p>
+    <a href="https://merch-platform-prototype.vercel.app/playbook" target="_blank" style="display:inline-flex;align-items:center;gap:8px;margin-top:20px;padding:10px 18px;background:var(--black);color:var(--white);border-radius:var(--radius-sm);font-size:13px;font-weight:500;text-decoration:none;">
+      Demo playbook → jak vést demo zákazníkovi
+    </a>
   </div>
 
   <!-- PROPOZICE -->
@@ -412,7 +416,7 @@ body {
 
     <div class="callout callout-tip">
       <div class="callout-icon">💡</div>
-      <div class="callout-body"><strong>Klíčová myšlenka.</strong> Neprodáváme merch. Neprodáváme tisk ani logistiku. Prodáváme funkční systém pro řízení merche bez operativy — a platforma je k tomu zdarma.</div>
+      <div class="callout-body"><strong>Klíčová myšlenka.</strong> Neprodáváme jen merch. Prodáváme systém pro jeho řízení — od poptávky přes sklad až po automatizovaný gifting. Merch je součástí, ne cílem. A platforma je k tomu zdarma.</div>
     </div>
 
     <div class="cards" style="margin-top:20px;">
@@ -503,7 +507,7 @@ body {
     <p class="section-sub">Platforma nedává smysl pro každého. Než začneš pitchovat, zkontroluj, jestli zákazník splňuje základní kritéria.</p>
     <div class="icp-grid">
       <div class="icp-card icp-yes">
-        <div class="icp-label">Základní kritéria (musí splňovat)</div>
+        <div class="icp-label">Ideální zákazník (full fit)</div>
         <ul class="icp-list">
           <li>150+ zaměstnanců</li>
           <li>Merch 500k+ Kč/rok</li>
@@ -522,7 +526,10 @@ body {
         </ul>
       </div>
     </div>
-
+    <div class="callout callout-info" style="margin-top:14px;">
+      <div class="callout-icon">→</div>
+      <div class="callout-body"><strong>Menší zákazníci jsou také OK.</strong> Firmy pod kritéria lze onboardovat jako "začátek cesty" — ukaž jim, jak to vypadá za 2–3 roky (kontrast malý vs. velký účet). Neposuzuj jen podle velikosti, ale podle potenciálu růstu a otevřenosti k systému.</div>
+    </div>
     <div class="callout callout-info" style="margin-top:14px;">
       <div class="callout-icon">→</div>
       <div class="callout-body"><strong>Příklady z portfolia:</strong> Seyfor, Air Bank, OREA Hotels jsou typičtí kandidáti. Mají opakované nákupy, merch řeší více lidí, mají pobočky nebo entity.</div>
@@ -766,6 +773,10 @@ body {
         <div class="tier tier-gold">
           <div class="tier-name">Gold</div>
           <div class="tier-desc">Exkluzivní podmínky, dedikovaný KAM</div>
+        </div>
+        <div class="tier tier-platinum">
+          <div class="tier-name" style="color:#b0c4ff;">Platinum</div>
+          <div class="tier-desc">Nejvyšší tier — individuální podmínky, top priorita</div>
         </div>
       </div>
     </div>
