@@ -177,37 +177,60 @@ body {
   font-style: italic;
 }
 
+/* PROC TEXT */
+.proc-text { font-size: 15px; color: var(--gray-600); line-height: 1.7; max-width: 640px; }
+
 /* DISCOVERY QUESTIONS */
-.q-list { list-style: none; }
-.q-item {
-  display: grid;
-  grid-template-columns: 24px 1fr;
-  gap: 14px;
-  padding: 14px 0;
-  border-bottom: 1px solid var(--gray-200);
-  align-items: start;
-}
-.q-item:last-child { border-bottom: none; }
-.q-num {
-  font-family: 'DM Serif Display', serif;
-  font-size: 18px;
-  color: var(--gray-200);
-  line-height: 1.4;
-}
-.q-tag {
-  display: inline-block;
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--accent);
-  background: var(--accent-light);
-  padding: 2px 8px;
-  border-radius: 100px;
+.q-groups { display: flex; flex-direction: column; gap: 0; }
+.q-group { border-bottom: 1px solid var(--gray-200); padding: 20px 0; }
+.q-group:last-child { border-bottom: none; }
+.q-group-header {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
   margin-bottom: 4px;
 }
-.q-text { font-size: 14px; color: var(--black); margin-bottom: 4px; font-style: italic; line-height: 1.5; }
-.q-why { font-size: 11px; color: var(--gray-400); line-height: 1.5; }
+.q-group-num {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  flex-shrink: 0;
+  min-width: 22px;
+}
+.q-group-name {
+  font-family: 'DM Serif Display', serif;
+  font-size: 20px;
+  color: var(--black);
+  line-height: 1.2;
+}
+.q-group-desc {
+  font-size: 12px;
+  color: var(--gray-400);
+  margin-bottom: 14px;
+  line-height: 1.5;
+  padding-left: 34px;
+}
+.q-sublist { list-style: none; padding-left: 34px; }
+.q-sub {
+  font-size: 15px;
+  color: var(--black);
+  padding: 9px 0;
+  border-bottom: 1px solid var(--gray-100);
+  line-height: 1.55;
+  font-style: italic;
+  position: relative;
+  padding-left: 16px;
+}
+.q-sub:last-child { border-bottom: none; }
+.q-sub::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--gray-400);
+  font-style: normal;
+  font-size: 13px;
+}
 
 /* EXPANDABLE */
 .expandable {
@@ -296,8 +319,11 @@ body {
   .doc-subtitle { font-size: 14px; }
   .section { margin-bottom: 36px; }
   .divider { margin: 28px 0; }
-  .q-item { grid-template-columns: 22px 1fr; gap: 10px; padding: 12px 0; }
-  .q-text { font-size: 14px; }
+  .q-group { padding: 16px 0; }
+  .q-group-name { font-size: 18px; }
+  .q-group-desc { padding-left: 28px; }
+  .q-sublist { padding-left: 28px; }
+  .q-sub { font-size: 14px; }
   .pitch-box { padding: 18px 16px; }
   .pitch-text { font-size: 14px; }
   .expandable-header { padding: 14px 16px; }
@@ -332,18 +358,7 @@ body {
   <div class="section" id="proc">
     <div class="section-label">01 — Kontext</div>
     <h2 class="section-title">Proč to děláme</h2>
-    <div class="callout callout-tip">
-      <div class="callout-icon">💡</div>
-      <div class="callout-body">Chystáme další iteraci platformy a potřebujeme vědět, jak to reálně funguje u zákazníků. U každého zákazníka potřebujeme znát odpovědi na níže uvedené otázky — ať máme v Pipedrive jasný přehled o jeho situaci a víme, jak s ním pracovat dál.</div>
-    </div>
-    <div class="callout callout-info">
-      <div class="callout-icon">→</div>
-      <div class="callout-body">Zároveň je to přirozená záminka, jak otevřít schůzku se spícím kontaktem — <strong>zajímáme se o jejich situaci, ne jim něco prodáváme.</strong></div>
-    </div>
-    <div class="callout callout-info">
-      <div class="callout-icon">→</div>
-      <div class="callout-body">Nemusíte otázky odříkat doslova — důležité je odpovědi zjistit. Cesta k nim je na vás. <strong>Po každém rozhovoru vyplňte šablonu a pinnujte ji nahoru k organizaci v Pipedrive.</strong></div>
-    </div>
+    <p class="proc-text">Chceme poskytnout firmám nástroj který opravdu změní to, jak dodnes pracují s merchem. Z otravného procesu jim chceme udělat doslova zážitek. Aby se nám to povedlo, musíme perfektně chápat, jak to dnes každý zákazník řeší, a co mu nejvíce pomůže. Níže jsou základní oblasti, na které potřebujeme mít odpovědi u všech našich klientů.</p>
   </div>
 
   <hr class="divider">
@@ -366,80 +381,148 @@ body {
     <h2 class="section-title">Discovery otázky</h2>
     <p class="section-sub">Projdi všechny. Cílem je mít po schůzce vyplněné odpovědi na každou z nich.</p>
 
-    <ul class="q-list">
-      <li class="q-item">
-        <div class="q-num">1</div>
-        <div>
-          <div class="q-tag">Proces obecně</div>
-          <div class="q-text">"Kdo u vás ve firmě merch řeší? Je to jeden člověk, nebo se do toho zapojuje víc lidí nebo týmů?"</div>
-          <div class="q-why">Hledáš: více osob = více chaosu = silnější fit pro platformu</div>
+    <div class="q-groups">
+
+      <div class="q-group">
+        <div class="q-group-header">
+          <span class="q-group-num">01</span>
+          <span class="q-group-name">Jak merch dnes funguje</span>
         </div>
-      </li>
-      <li class="q-item">
-        <div class="q-num">2</div>
-        <div>
-          <div class="q-tag">Operativa</div>
-          <div class="q-text">"Jak to technicky funguje dnes — jak objednáváte, sbíráte adresy nebo velikosti, jak distribuujete?"</div>
-          <div class="q-why">Hledáš: Excel, emaily, manuální sběr = přesně to, co platforma odstraní</div>
+        <div class="q-group-desc">Kdo to řeší, jak vypadá proces v praxi, co jim zabírá nejvíc času.</div>
+        <ul class="q-sublist">
+          <li class="q-sub">Kdo u vás merch reálně řeší? Je to součást něčí hlavní náplně, nebo to padá na někoho jako vedlejší úkol?</li>
+          <li class="q-sub">Jak vypadá typická objednávka od nápadu po dodání — co všechno musí proběhnout?</li>
+          <li class="q-sub">Kolik času vám to zhruba měsíčně vezme?</li>
+          <li class="q-sub">Máte pocit, že to máte pod kontrolou, nebo spíš improvizujete?</li>
+        </ul>
+      </div>
+
+      <div class="q-group">
+        <div class="q-group-header">
+          <span class="q-group-num">02</span>
+          <span class="q-group-name">K čemu merch využívají</span>
         </div>
-      </li>
-      <li class="q-item">
-        <div class="q-num">3</div>
-        <div>
-          <div class="q-tag">Use case</div>
-          <div class="q-text">"K čemu merch u vás hlavně využíváte — onboarding nových lidí, dárky pro klienty, Vánoce, firemní akce? A kdo ho objednává — jedno oddělení, nebo víc týmů samostatně?"</div>
-          <div class="q-why">Hledáš: více use casů a oddělení = větší potenciál; obchodníci čekají na marketing = přímý přístup přes platformu; onboarding řeší HR manuálně = silný pain point</div>
+        <div class="q-group-desc">Use case.</div>
+        <ul class="q-sublist">
+          <li class="q-sub">K čemu merch u vás hlavně využíváte? (onboarding, firemní akce, dárky pro klienty, obchodní schůzky, Vánoce…)</li>
+          <li class="q-sub">Řeší merch více oddělení odděleně — HR, marketing, obchod? Nebo společně?</li>
+        </ul>
+      </div>
+
+      <div class="q-group">
+        <div class="q-group-header">
+          <span class="q-group-num">03</span>
+          <span class="q-group-name">Dodavatelé</span>
         </div>
-      </li>
-      <li class="q-item">
-        <div class="q-num">4</div>
-        <div>
-          <div class="q-tag">Pobočky / entity</div>
-          <div class="q-text">"Máte merch jen pro jedno místo, nebo i pro pobočky? Jak to koordinujete — nakupuje každá zvlášť, nebo centrálně? Má každá vlastní sklad a budget?"</div>
-          <div class="q-why">Hledáš: různé pobočky po svém = ideální use case pro centrální platformu</div>
+        <div class="q-group-desc">Jestli mají smluvně vázaného dodavatele — a na jak dlouho.</div>
+        <ul class="q-sublist">
+          <li class="q-sub">Máte smluvně nasmlouvaného dodavatele merche? Pokud ano, kdo to je a jak dlouho vás ta smlouva váže?</li>
+        </ul>
+      </div>
+
+      <div class="q-group">
+        <div class="q-group-header">
+          <span class="q-group-num">04</span>
+          <span class="q-group-name">Kde to bolí nejvíc</span>
         </div>
-      </li>
-      <li class="q-item">
-        <div class="q-num">5</div>
-        <div>
-          <div class="q-tag">Dodavatelé</div>
-          <div class="q-text">"Máte smluvně nasmlouvaného dodavatele merche? Pokud ano, kdo to je a jak dlouho vás ta smlouva váže?"</div>
-          <div class="q-why">Hledáš: locked dodavatel = víš, kdy má smysl tlačit na uzavření</div>
+        <div class="q-group-desc">Co jim vadí, co by nejradši přestali dělat, kde ztrácí čas nebo nervy.</div>
+        <ul class="q-sublist">
+          <li class="q-sub">Co vás na tom procesu nejvíc zdržuje nebo otravuje?</li>
+          <li class="q-sub">Stalo se vám, že něco nevyšlo, nestihlo se, nebo bylo zbytečně složité? Co to bylo?</li>
+          <li class="q-sub">Kdybych vám řekl, že jeden problém kolem merche zmizí — který by to byl?</li>
+        </ul>
+      </div>
+
+      <div class="q-group">
+        <div class="q-group-header">
+          <span class="q-group-num">05</span>
+          <span class="q-group-name">Frekvence a typy objednávek</span>
         </div>
-      </li>
-      <li class="q-item">
-        <div class="q-num">6</div>
-        <div>
-          <div class="q-tag">Náklady</div>
-          <div class="q-text">"Víte, kolik za merch celkově utrácíte ročně — napříč týmy nebo pobočkami? A pokud nakupujete centrálně, jak pak řešíte rozúčtování nákladů mezi pobočkami nebo entitami?"</div>
-          <div class="q-why">Hledáš: rozptýlené nákupy bez přehledu, chaos v přefakturaci = argument pro centralizaci</div>
+        <div class="q-group-desc">Kdy a proč objednávají — jak často, jak velké objemy, jestli se to opakuje.</div>
+        <ul class="q-sublist">
+          <li class="q-sub">Jak často objednáváte — máte pravidelné cykly, nebo spíš ad hoc?</li>
+          <li class="q-sub">Máte pocit, že objednáváte efektivně, nebo spíš vždy znovu od nuly?</li>
+        </ul>
+      </div>
+
+      <div class="q-group">
+        <div class="q-group-header">
+          <span class="q-group-num">06</span>
+          <span class="q-group-name">Skladování a expedice</span>
         </div>
-      </li>
-      <li class="q-item">
-        <div class="q-num">7</div>
-        <div>
-          <div class="q-tag">Financování zásob</div>
-          <div class="q-text">"Jak merch typicky nakupujete — jednorázově větší objem dopředu, nebo průběžně? Stalo se vám, že nákup uvázl kvůli schvalování rozpočtu?"</div>
-          <div class="q-why">Hledáš: vázaný kapitál, zdlouhavé schvalování = argument pro model průběžného odběru</div>
+        <div class="q-group-desc">Kde merch fyzicky je, kdo ho expeduje, jak řeší rozvoz na pobočky nebo vzdáleným zaměstnancům.</div>
+        <ul class="q-sublist">
+          <li class="q-sub">Kde merch fyzicky skladujete?</li>
+          <li class="q-sub">Kdo fyzicky balí a posílá zásilky?</li>
+          <li class="q-sub">Jak řešíte doručení — třeba novému zaměstnanci, vzdálené pobočce, nebo klientovi přímo?</li>
+        </ul>
+      </div>
+
+      <div class="q-group">
+        <div class="q-group-header">
+          <span class="q-group-num">07</span>
+          <span class="q-group-name">Nákup merche a cash flow</span>
         </div>
-      </li>
-      <li class="q-item">
-        <div class="q-num">8</div>
-        <div>
-          <div class="q-tag">Viditelnost</div>
-          <div class="q-text">"Když se vás šéf zeptá, kolik jste za merch loni utratili — víte to odpovědět hned, nebo to musíte dohledávat?"</div>
-          <div class="q-why">Hledáš: "musím dohledávat / nevím přesně" = silný argument pro přehled v platformě</div>
+        <div class="q-group-desc">Jestli je pro ně jednorázová investice do zásob problém — a jestli by ocenili model, kde merch mají dostupný bez předchozího výdaje.</div>
+        <ul class="q-sublist">
+          <li class="q-sub">Jak merch typicky nakupujete — jednorázově větší objem dopředu, nebo průběžně podle potřeby?</li>
+          <li class="q-sub">Stalo se vám, že jste merch potřebovali, ale nákup se protáhl kvůli schvalování rozpočtu?</li>
+          <li class="q-sub">Kdybychom merch nakoupili za vás a vy byste platili postupně podle toho, co reálně odeberete — řešilo by vám to něco?</li>
+        </ul>
+      </div>
+
+      <div class="q-group">
+        <div class="q-group-header">
+          <span class="q-group-num">08</span>
+          <span class="q-group-name">Více poboček nebo entit — centrála vs. samostatnost</span>
         </div>
-      </li>
-      <li class="q-item">
-        <div class="q-num">9</div>
-        <div>
-          <div class="q-tag">Zlatý důl</div>
-          <div class="q-text">"Kdybyste mohli jeden problém kolem merche prostě nechat na nás — co by to bylo?"</div>
-          <div class="q-why">Zákazník vlastními slovy pojmenuje pain — použij to doslova v pitchi</div>
+        <div class="q-group-desc">Jestli přistupují k merchi centrálně nebo každá jednotka po svém — a co to znamená pro sklad a budget.</div>
+        <ul class="q-sublist">
+          <li class="q-sub">Nakupujete merch centrálně pro celou skupinu, nebo si to každá pobočka / firma řeší sama?</li>
+          <li class="q-sub">Pokud každá zvlášť — má každá vlastní sklad a vlastní budget?</li>
+          <li class="q-sub">Pokud centrálně — kdo to řídí a jak se pak merch distribuuje dolů na pobočky?</li>
+        </ul>
+      </div>
+
+      <div class="q-group">
+        <div class="q-group-header">
+          <span class="q-group-num">09</span>
+          <span class="q-group-name">Více poboček nebo entit — rozúčtování</span>
         </div>
-      </li>
-    </ul>
+        <div class="q-group-desc">Jestli vědí, kolik každá pobočka nebo firma za merch utratí — a jak to mezi sebou řeší.</div>
+        <ul class="q-sublist">
+          <li class="q-sub">Když nakoupíte merch centrálně, jak pak poznáte, kolik utratila která pobočka nebo firma?</li>
+          <li class="q-sub">Funguje tohle u vás bez problémů, nebo je to spíš chaos?</li>
+        </ul>
+      </div>
+
+      <div class="q-group">
+        <div class="q-group-header">
+          <span class="q-group-num">10</span>
+          <span class="q-group-name">Rozhodování a schvalování</span>
+        </div>
+        <div class="q-group-desc">Kdo rozhoduje o nákupu, jak vypadá schvalovací proces, kde to vázne.</div>
+        <ul class="q-sublist">
+          <li class="q-sub">Kdo ve firmě rozhoduje o tom, co se objedná a za kolik?</li>
+          <li class="q-sub">Jak vypadá schválení — musíte žádat o souhlas, nebo máte volnou ruku?</li>
+          <li class="q-sub">Je někdo, kdo by platformu musel schválit, než byste ji mohli začít používat?</li>
+        </ul>
+      </div>
+
+      <div class="q-group">
+        <div class="q-group-header">
+          <span class="q-group-num">11</span>
+          <span class="q-group-name">Co by ideální řešení muselo umět</span>
+        </div>
+        <div class="q-group-desc">Jejich vlastními slovy — co by muselo platit, aby to začali používat. Co by byl dealbreaker.</div>
+        <ul class="q-sublist">
+          <li class="q-sub">Kdybychom platformu postavili přesně pro vás — co by musela umět jako první?</li>
+          <li class="q-sub">Co by vám nejvíc ušetřilo čas nebo starosti?</li>
+          <li class="q-sub">Je něco, bez čeho to pro vás nedává smysl?</li>
+        </ul>
+      </div>
+
+    </div>
   </div>
 
   <hr class="divider">
