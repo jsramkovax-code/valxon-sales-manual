@@ -18,8 +18,8 @@ html { scroll-behavior: smooth; }
   --gray-200: #e0ddd4;
   --gray-400: #9e9b92;
   --gray-600: #5c5a54;
-  --accent: #c8522a;
-  --accent-light: #f8ede8;
+  --accent: #e84248;
+  --accent-light: #fdecea;
   --green: #2a6b4a;
   --green-light: #e8f2ec;
   --red-light: #fdf0f0;
@@ -53,14 +53,13 @@ body {
   z-index: 100;
 }
 .topnav-logo {
-  font-family: 'DM Serif Display', serif;
-  font-size: 18px;
-  color: var(--black);
   text-decoration: none;
   flex-shrink: 0;
   margin-right: 8px;
+  display: flex;
+  align-items: center;
 }
-.topnav-logo span { color: var(--accent); }
+.topnav-logo img { height: 20px; display: block; filter: brightness(0); }
 .topnav-links {
   display: flex;
   gap: 2px;
@@ -383,7 +382,7 @@ body {
 <body>
 
 <nav class="topnav">
-  <a class="topnav-logo" href="#propozice">val<span>x</span>on</a>
+  <a class="topnav-logo" href="#propozice"><img src="https://static.tildacdn.net/tild3063-6335-4637-b831-666438316361/logo.svg" alt="Valxon"></a>
   <ul class="topnav-links">
     <li><a href="#propozice" class="active">Propozice</a></li>
     <li><a href="#usps">Přidaná hodnota</a></li>
