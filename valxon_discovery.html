@@ -319,7 +319,41 @@ body {
 }
 .note-block strong { color: var(--black); }
 
+/* MOBILE QUICK NAV */
+.mobile-quicknav { display: none; }
+
 @media (max-width: 768px) {
+  .mobile-quicknav {
+    display: flex;
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+    background: rgba(250,250,248,0.96);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-top: 1px solid var(--gray-200);
+    gap: 10px;
+    z-index: 200;
+  }
+  .mqn-btn {
+    flex: 1;
+    text-align: center;
+    padding: 13px 10px;
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    background: var(--gray-100);
+    color: var(--black);
+    border: 1px solid var(--gray-200);
+  }
+  .mqn-btn.mqn-primary {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+  }
+  .main { padding-bottom: calc(80px + env(safe-area-inset-bottom)); }
+}
   :root { --topnav-h: 48px; }
   .topnav { padding: 0 16px; gap: 8px; }
   .topnav-back { display: none; }
@@ -354,10 +388,10 @@ body {
 <nav class="topnav">
   <a class="topnav-logo" href="valxon_sales_manual.html"><img src="https://static.tildacdn.net/tild3063-6335-4637-b831-666438316361/logo.svg" alt="Valxon"></a>
   <ul class="topnav-links">
-    <li><a href="#proc">Proč to děláme</a></li>
-    <li><a href="#pitch">Pitch</a></li>
     <li><a href="#otazky" class="active">Discovery otázky</a></li>
+    <li><a href="#pitch">Call pitch</a></li>
     <li><a href="#nastroje">Pipedrive zápis</a></li>
+    <li><a href="#proc">Proč to děláme</a></li>
   </ul>
   <a class="topnav-back" href="valxon_sales_manual.html">← Sales manuál</a>
 </nav>
@@ -371,30 +405,9 @@ body {
     <p class="doc-subtitle">Otázky, pitch a nástroje pro discovery call. Po každém rozhovoru vyplň šablonu a pinnuj do Pipedrive.</p>
   </div>
 
-  <!-- PROC -->
-  <div class="section" id="proc">
-    <div class="section-label">01 — Kontext</div>
-    <h2 class="section-title">Proč to děláme</h2>
-    <p class="proc-text">Chceme poskytnout firmám nástroj který opravdu změní to, jak dodnes pracují s merchem. Z otravného procesu jim chceme udělat doslova zážitek. Aby se nám to povedlo, musíme perfektně chápat, jak to dnes každý zákazník řeší, a co mu nejvíce pomůže. Níže jsou základní oblasti, na které potřebujeme mít odpovědi u všech našich klientů.</p>
-  </div>
-
-  <hr class="divider">
-
-  <!-- PITCH -->
-  <div class="section" id="pitch">
-    <div class="section-label">02 — Akvizice</div>
-    <h2 class="section-title">Pitch pro domluvení schůzky</h2>
-    <div class="pitch-box">
-      <div class="pitch-box-label">Skript</div>
-      <div class="pitch-text">"Právě spouštíme platformu, která firmám zjednodušuje celý proces kolem merche — od objednávky po dodání. Rádi bychom vám ji ukázali na živém demu, ať vidíte, jak to funguje, a řeknete nám, co by nejvíc pomohlo vám. Bude u toho i náš zakladatel, který vám to sám provede."</div>
-    </div>
-  </div>
-
-  <hr class="divider">
-
   <!-- OTAZKY -->
   <div class="section" id="otazky">
-    <div class="section-label">03 — Discovery</div>
+    <div class="section-label">01 — Discovery</div>
     <h2 class="section-title">Discovery otázky</h2>
     <p class="section-sub">Projdi všechny. Cílem je mít po schůzce vyplněné odpovědi na každou z nich.</p>
 
@@ -553,7 +566,7 @@ body {
 
   <!-- NASTROJE -->
   <div class="section" id="nastroje">
-    <div class="section-label">04 — Pipedrive</div>
+    <div class="section-label">02 — Pipedrive</div>
     <h2 class="section-title">Zápis do Pipedrive — Pinned note</h2>
     <p class="section-sub">Obsah zkopíruj a vlož se svými poznámkami do AI. Výstup zkopíruj do Pipedrive jako pinnovanou note k organizaci.</p>
 
@@ -709,7 +722,34 @@ Demo s Adamem — Jana pozve CMO. Termín: první polovina května.</div>
     </div>
   </div>
 
+  <hr class="divider">
+
+  <!-- PITCH -->
+  <div class="section" id="pitch">
+    <div class="section-label">03 — Akvizice</div>
+    <h2 class="section-title">Call pitch</h2>
+    <div class="pitch-box">
+      <div class="pitch-box-label">Skript pro domluvení schůzky</div>
+      <div class="pitch-text">"Právě spouštíme platformu, která firmám zjednodušuje celý proces kolem merche — od objednávky po dodání. Rádi bychom vám ji ukázali na živém demu, ať vidíte, jak to funguje, a řeknete nám, co by nejvíc pomohlo vám. Bude u toho i náš zakladatel, který vám to sám provede."</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- PROC -->
+  <div class="section" id="proc">
+    <div class="section-label">04 — Kontext</div>
+    <h2 class="section-title">Proč to děláme</h2>
+    <p class="proc-text">Chceme poskytnout firmám nástroj který opravdu změní to, jak dodnes pracují s merchem. Z otravného procesu jim chceme udělat doslova zážitek. Aby se nám to povedlo, musíme perfektně chápat, jak to dnes každý zákazník řeší, a co mu nejvíce pomůže. Níže jsou základní oblasti, na které potřebujeme mít odpovědi u všech našich klientů.</p>
+  </div>
+
 </main>
+
+<!-- MOBILE QUICK NAV -->
+<div class="mobile-quicknav">
+  <a href="#otazky" class="mqn-btn mqn-primary">Discovery otázky</a>
+  <a href="#pitch" class="mqn-btn">Call pitch</a>
+</div>
 
 <script>
 function toggleGroup(header) {
