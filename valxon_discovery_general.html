@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valxon — Discovery obecná schůzka</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+:root {
+  --black: #0f0f0f;
+  --white: #fafaf8;
+  --gray-50: #f8f7f4;
+  --gray-100: #f0ede6;
+  --gray-200: #e0ddd4;
+  --gray-400: #9e9b92;
+  --gray-600: #5c5a54;
+  --accent: #e84248;
+  --accent-light: #fdecea;
+  --green: #2a6b4a;
+  --green-light: #e8f2ec;
+  --radius: 10px;
+  --radius-sm: 6px;
+  --topnav-h: 56px;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--white);
+  color: var(--black);
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* TOP NAV */
+.topnav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--topnav-h);
+  background: rgba(250,250,248,0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--gray-200);
+  display: flex;
+  align-items: center;
+  padding: 0 40px;
+  gap: 32px;
+  z-index: 100;
+}
+.topnav-back-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: var(--accent-light);
+  padding: 5px 12px;
+  border-radius: 100px;
+  text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: opacity 0.12s;
+}
+.topnav-back-badge:hover { opacity: 0.75; }
+.topnav-links {
+  display: flex;
+  gap: 2px;
+  list-style: none;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.topnav-links::-webkit-scrollbar { display: none; }
+.topnav-links li a {
+  display: block;
+  padding: 6px 12px;
+  font-size: 13px;
+  color: var(--gray-600);
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+  transition: all 0.12s;
+}
+.topnav-links li a:hover { color: var(--black); background: var(--gray-100); }
+.topnav-links li a.active { color: var(--accent); background: var(--accent-light); font-weight: 500; }
+
+/* MAIN */
+.main {
+  padding-top: calc(var(--topnav-h) + 36px);
+  padding-bottom: 60px;
+  padding-left: 40px;
+  padding-right: 40px;
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+/* SECTION */
+.section { margin-bottom: 48px; scroll-margin-top: calc(var(--topnav-h) + 24px); }
+.section-label {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gray-400);
+  margin-bottom: 6px;
+}
+.section-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 26px;
+  letter-spacing: -0.5px;
+  margin-bottom: 6px;
+  line-height: 1.2;
+}
+.section-sub { font-size: 13px; color: var(--gray-600); margin-bottom: 20px; line-height: 1.6; max-width: 600px; }
+.divider { border: none; border-top: 1px solid var(--gray-200); margin: 40px 0; }
+
+/* CALLOUT */
+.callout {
+  border-radius: var(--radius);
+  padding: 12px 16px;
+  margin-bottom: 8px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.callout-tip { background: var(--accent-light); border: 1px solid rgba(200,82,42,0.2); }
+.callout-info { background: var(--gray-100); border: 1px solid var(--gray-200); }
+.callout-icon { font-size: 13px; flex-shrink: 0; margin-top: 1px; }
+.callout-body { font-size: 13px; line-height: 1.55; color: var(--gray-600); }
+.callout-body strong { color: var(--black); font-weight: 500; }
+
+/* PITCH BOX */
+.pitch-box {
+  background: var(--black);
+  border-radius: var(--radius);
+  padding: 32px 36px;
+}
+.pitch-box-label {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 16px;
+}
+.pitch-text {
+  font-size: 17px;
+  color: var(--white);
+  line-height: 1.8;
+  font-style: italic;
+}
+
+/* DISCOVERY QUESTIONS */
+.q-groups { display: flex; flex-direction: column; gap: 0; }
+.q-group { border-bottom: 1px solid var(--gray-200); }
+.q-group:last-child { border-bottom: none; }
+.q-group-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 0;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.q-group-header:hover .q-group-name { color: var(--accent); }
+.q-group-meta { display: flex; align-items: baseline; gap: 12px; flex: 1; min-width: 0; }
+.q-group-num {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  flex-shrink: 0;
+  min-width: 22px;
+}
+.q-group-name {
+  font-family: 'DM Serif Display', serif;
+  font-size: 19px;
+  color: var(--black);
+  line-height: 1.2;
+  transition: color 0.12s;
+}
+.q-group-icon {
+  font-size: 20px;
+  font-weight: 300;
+  color: var(--gray-400);
+  flex-shrink: 0;
+  transition: transform 0.15s;
+  line-height: 1;
+}
+.q-group.open .q-group-icon { transform: rotate(45deg); }
+.q-group-body { display: none; padding-bottom: 16px; }
+.q-group.open .q-group-body { display: block; }
+.q-group-desc {
+  font-size: 12px;
+  color: var(--gray-400);
+  margin-bottom: 12px;
+  line-height: 1.5;
+  padding-left: 34px;
+}
+.q-sublist { list-style: none; padding-left: 34px; }
+.q-sub {
+  font-size: 15px;
+  color: var(--black);
+  padding: 9px 0;
+  border-bottom: 1px solid var(--gray-100);
+  line-height: 1.55;
+  font-style: italic;
+  position: relative;
+  padding-left: 16px;
+}
+.q-sub:last-child { border-bottom: none; }
+.q-sub::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--gray-400);
+  font-style: normal;
+  font-size: 13px;
+}
+
+/* EXPANDABLE */
+.expandable {
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius);
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+.expandable-header {
+  padding: 18px 22px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  user-select: none;
+  transition: background 0.12s;
+}
+.expandable-header:hover { background: var(--gray-50); }
+.expandable-title { font-size: 14px; font-weight: 500; color: var(--black); }
+.expandable-title small { display: block; font-size: 12px; font-weight: 400; color: var(--gray-400); margin-top: 2px; }
+.expandable-icon { font-size: 20px; font-weight: 300; color: var(--gray-400); flex-shrink: 0; transition: transform 0.15s; }
+.expandable.open .expandable-icon { transform: rotate(45deg); }
+.expandable-body {
+  display: none;
+  border-top: 1px solid var(--gray-200);
+  padding: 24px 22px;
+}
+.expandable.open .expandable-body { display: block; }
+
+/* CODE BLOCK */
+.code-block {
+  background: var(--black);
+  color: rgba(255,255,255,0.82);
+  border-radius: var(--radius-sm);
+  padding: 20px 22px;
+  font-family: 'SF Mono', 'Fira Mono', monospace;
+  font-size: 12px;
+  line-height: 1.7;
+  white-space: pre-wrap;
+  overflow-x: auto;
+  margin-bottom: 14px;
+}
+.copy-btn {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 7px 14px;
+  background: var(--gray-100);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-family: inherit;
+  color: var(--gray-600);
+  transition: all 0.12s;
+}
+.copy-btn:hover { background: var(--gray-200); color: var(--black); }
+
+/* EXAMPLE NOTE */
+.note-block {
+  background: var(--gray-50);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-sm);
+  padding: 20px 22px;
+  font-size: 13px;
+  line-height: 1.75;
+  white-space: pre-wrap;
+  color: var(--gray-600);
+  font-family: 'SF Mono', 'Fira Mono', monospace;
+}
+.note-block strong { color: var(--black); }
+
+/* MOBILE QUICK NAV */
+.mobile-quicknav { display: none; }
+
+@media (max-width: 768px) {
+  :root { --topnav-h: 52px; }
+  .topnav { padding: 0 12px; gap: 6px; }
+  .topnav-links { gap: 0; flex: 1; }
+  .topnav-links li a { padding: 8px 10px; font-size: 13px; }
+  .main {
+    padding-top: calc(var(--topnav-h) + 20px);
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-bottom: calc(80px + env(safe-area-inset-bottom));
+  }
+  .section { margin-bottom: 36px; }
+  .divider { margin: 28px 0; }
+  .q-group { padding: 14px 0; }
+  .q-group-name { font-size: 17px; }
+  .q-group-desc { padding-left: 28px; }
+  .q-sublist { padding-left: 28px; }
+  .q-sub { font-size: 14px; }
+  .pitch-box { padding: 18px 16px; }
+  .pitch-text { font-size: 14px; }
+  .expandable-header { padding: 14px 16px; }
+  .expandable-body { padding: 16px; }
+  .code-block { font-size: 11px; padding: 14px; }
+  .note-block { font-size: 12px; padding: 14px; }
+
+  .mobile-quicknav {
+    display: flex;
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+    background: rgba(250,250,248,0.96);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-top: 1px solid var(--gray-200);
+    gap: 10px;
+    z-index: 200;
+  }
+  .mqn-btn {
+    flex: 1;
+    text-align: center;
+    padding: 13px 10px;
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    background: var(--gray-100);
+    color: var(--black);
+    border: 1px solid var(--gray-200);
+  }
+  .mqn-btn.mqn-primary {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+  }
+}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <a class="topnav-back-badge" href="valxon_sales_manual.html">← Sales manuál</a>
+  <ul class="topnav-links">
+    <li><a href="#otazky" class="active">Discovery otázky</a></li>
+    <li><a href="#nastroje">Pipedrive zápis</a></li>
+  </ul>
+</nav>
+
+<main class="main">
+
+  <!-- OTAZKY -->
+  <div class="section" id="otazky">
+    <h2 class="section-title" style="font-size:32px;margin-bottom:20px;">Discovery questions — obecná schůzka</h2>
+
+    <div class="pitch-box" style="margin-bottom:24px;">
+      <div class="pitch-box-label">Úvod schůzky</div>
+      <div class="pitch-text">"Než si povíme víc o nás, rádi bychom nejdřív rozuměli tomu, jak to u vás funguje — ať náš rozhovor dává co největší smysl pro vás konkrétně."</div>
+    </div>
+
+    <div class="q-groups">
+
+      <div class="q-group">
+        <div class="q-group-header" onclick="toggleGroup(this)">
+          <div class="q-group-meta"><span class="q-group-num">01</span><span class="q-group-name">Firma a kontext</span></div>
+          <span class="q-group-icon">+</span>
+        </div>
+        <div class="q-group-body">
+          <div class="q-group-desc">Čím se zabývají, jak jsou velcí, jak jsou organizačně uspořádáni — abychom mluvili ve správném kontextu.</div>
+          <ul class="q-sublist">
+            <li class="q-sub">(Zkus zjistit: Co firma dělá, jak velká je, kde působí — ideálně vlastními slovy, ne co jsi četl na webu.)</li>
+            <li class="q-sub">Jak byste popsali firmu vy sami? Co je vaše hlavní byznys?</li>
+            <li class="q-sub">Kolik máte zaměstnanců a jak jste organizačně uspořádáni?</li>
+            <li class="q-sub">Máte více poboček nebo entit — působíte jen v ČR, nebo i v zahraničí?</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="q-group">
+        <div class="q-group-header" onclick="toggleGroup(this)">
+          <div class="q-group-meta"><span class="q-group-num">02</span><span class="q-group-name">Aktuální priority a výzvy</span></div>
+          <span class="q-group-icon">+</span>
+        </div>
+        <div class="q-group-body">
+          <div class="q-group-desc">Co teď firmu tlačí, co řeší, na co se soustředí — abychom rozuměli, do čeho vstupujeme.</div>
+          <ul class="q-sublist">
+            <li class="q-sub">Co jsou vaše klíčové priority na tento rok?</li>
+            <li class="q-sub">Co vás jako firmu nebo váš tým teď nejvíc zaměstnává?</li>
+            <li class="q-sub">Kde máte pocit, že vám věci nefungují tak, jak by měly?</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="q-group">
+        <div class="q-group-header" onclick="toggleGroup(this)">
+          <div class="q-group-meta"><span class="q-group-num">03</span><span class="q-group-name">Klíčové osoby a jejich role</span></div>
+          <span class="q-group-icon">+</span>
+        </div>
+        <div class="q-group-body">
+          <div class="q-group-desc">Kdo je na schůzce, kdo u firmy rozhoduje, kdo ovlivňuje, kdo platí — mapování stakeholderů.</div>
+          <ul class="q-sublist">
+            <li class="q-sub">(Zkus zjistit: Kdo všechno bude zapojen do případného rozhodnutí — kdo to iniciuje, kdo schvaluje, kdo platí?)</li>
+            <li class="q-sub">Jak vypadá váš tým kolem oblasti, o které se bavíme?</li>
+            <li class="q-sub">Je u vás ještě někdo, kdo by do toho byl zapojen — nebo koho by to zajímalo?</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="q-group">
+        <div class="q-group-header" onclick="toggleGroup(this)">
+          <div class="q-group-meta"><span class="q-group-num">04</span><span class="q-group-name">Osobní motivace a zájem</span></div>
+          <span class="q-group-icon">+</span>
+        </div>
+        <div class="q-group-body">
+          <div class="q-group-desc">Co chce každý konkrétní člověk z té schůzky — co ho trápí, co by mu osobně pomohlo.</div>
+          <ul class="q-sublist">
+            <li class="q-sub">Co vás osobně na dnešní schůzce zajímá nejvíc?</li>
+            <li class="q-sub">Kdybychom to dnes posunuli správným směrem — co by to pro vás osobně znamenalo?</li>
+            <li class="q-sub">Co by bylo největší výhra, kdybyste z toho dostali přesně to, co potřebujete?</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="q-group">
+        <div class="q-group-header" onclick="toggleGroup(this)">
+          <div class="q-group-meta"><span class="q-group-num">05</span><span class="q-group-name">Rozhodovací proces</span></div>
+          <span class="q-group-icon">+</span>
+        </div>
+        <div class="q-group-body">
+          <div class="q-group-desc">Jak u nich probíhá rozhodování, co je potřeba ke schválení, kde se to zasekává.</div>
+          <ul class="q-sublist">
+            <li class="q-sub">Jak u vás probíhá rozhodnutí o takové věci?</li>
+            <li class="q-sub">Kdo dalšího by musel být zapojen, než by se mohlo cokoli uzavřít?</li>
+            <li class="q-sub">Co takové rozhodnutí nejčastěji zdržuje nebo komplikuje?</li>
+            <li class="q-sub">Jak dlouho taková rozhodnutí u vás obvykle trvají?</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="q-group">
+        <div class="q-group-header" onclick="toggleGroup(this)">
+          <div class="q-group-meta"><span class="q-group-num">06</span><span class="q-group-name">Budget a investiční logika</span></div>
+          <span class="q-group-icon">+</span>
+        </div>
+        <div class="q-group-body">
+          <div class="q-group-desc">Jak velký budget mají na danou oblast, jak se rozhodují o výdajích, kdo drží klíče.</div>
+          <ul class="q-sublist">
+            <li class="q-sub">Máte na toto téma vyčleněný budget — nebo by bylo potřeba ho nejdřív získat?</li>
+            <li class="q-sub">Jak se u vás rozhoduje o investicích tohoto typu?</li>
+            <li class="q-sub">Kdo drží klíče od budgetu — kdo musí říct ano?</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="q-group">
+        <div class="q-group-header" onclick="toggleGroup(this)">
+          <div class="q-group-meta"><span class="q-group-num">07</span><span class="q-group-name">Vztah s Valxonem a očekávání</span></div>
+          <span class="q-group-icon">+</span>
+        </div>
+        <div class="q-group-body">
+          <div class="q-group-desc">Jak nás znají, co o nás vědí, co je přivedlo na tuto schůzku a co od ní čekají.</div>
+          <ul class="q-sublist">
+            <li class="q-sub">Jak jste se o Valxonu dozvěděli?</li>
+            <li class="q-sub">Co vás přivedlo na tuto schůzku — co jste chtěli zjistit nebo vyřešit?</li>
+            <li class="q-sub">Co o nás víte nebo jste slyšeli?</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="q-group">
+        <div class="q-group-header" onclick="toggleGroup(this)">
+          <div class="q-group-meta"><span class="q-group-num">08</span><span class="q-group-name">Potenciál a časování</span></div>
+          <span class="q-group-icon">+</span>
+        </div>
+        <div class="q-group-body">
+          <div class="q-group-desc">Jak urgentní to je, co by muselo nastat, aby se pohli — a kdy je reálné cokoli uzavřít.</div>
+          <ul class="q-sublist">
+            <li class="q-sub">Je tohle téma pro vás teď urgentní, nebo to spíš explorujete?</li>
+            <li class="q-sub">Jak brzy byste chtěli mít řešení funkční?</li>
+            <li class="q-sub">Co by se muselo stát, abyste mohli říct "jdeme do toho"?</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- NASTROJE -->
+  <div class="section" id="nastroje">
+    <div class="section-label">02 — Pipedrive</div>
+    <h2 class="section-title">Zápis do Pipedrive — Pinned note</h2>
+    <p class="section-sub">Obsah zkopíruj a vlož se svými poznámkami do AI. Výstup zkopíruj do Pipedrive jako pinnovanou note k organizaci.</p>
+
+    <div class="expandable" id="exp-prompt">
+      <div class="expandable-header" onclick="toggleExp('exp-prompt')">
+        <div class="expandable-title">
+          Prompt pro AI — strukturovaný zápis do Pipedrive
+          <small>Otevři ChatGPT nebo Claude, vlož prompt a na konec přidej svoje poznámky ze schůzky</small>
+        </div>
+        <div class="expandable-icon">+</div>
+      </div>
+      <div class="expandable-body">
+        <div class="callout callout-tip" style="margin-bottom:16px;">
+          <div class="callout-icon">💡</div>
+          <div class="callout-body">Vlož celý prompt níže do AI a na konec přidej svoje poznámky — klidně jako chaos, zkratky nebo odrážky. Výstup zkopíruj do Pipedrive jako pinnovanou note.</div>
+        </div>
+        <div class="code-block" id="ai-prompt">Jsi asistent obchodního zástupce firmy Valxon, která prodává platformu pro řízení firemního merche (Merch-as-a-Service).
+Dostaneš surové poznámky z obecné sales schůzky se zákazníkem.
+Tvým úkolem je zpracovat je do dvou částí níže.
+
+Piš stručně a věcně. Nepoužívej celé věty tam, kde stačí pár slov. Pokud zákazník řekl něco konkrétního a zajímavého, zachovej to doslova v uvozovkách. Pokud informace chybí, napiš "nezjištěno". Odpovídej VŽDY v češtině.
+
+DŮLEŽITÉ PRAVIDLO: Nikdy si nic nevymýšlej. Vycházej výhradně z toho, co zaznělo v poznámkách. Přísně rozlišuj mezi tím, co řekl zákazník, a tím, co říkal obchodník — feedback zákazníka jsou pouze jeho vlastní reakce a slova. Pokud zákazník k něčemu nic neřekl, nepiš to.
+
+════════════════════════════════════════
+ČÁST 1 — PROFIL ZÁKAZNÍKA A SCHŮZKY
+════════════════════════════════════════
+
+Datum schůzky:
+Kontakt (jméno, role):
+
+FIRMA A KONTEXT
+Co dělají, jak jsou velcí, struktura, pobočky, trhy:
+
+AKTUÁLNÍ PRIORITY A VÝZVY
+Co teď firmu tlačí, na co se soustředí, kde mají problém:
+
+KLÍČOVÉ OSOBY A JEJICH ROLE
+Kdo je na schůzce, kdo rozhoduje, kdo ovlivňuje, kdo platí — mapa stakeholderů:
+
+OSOBNÍ MOTIVACE A ZÁJEM
+Co chce každý konkrétní člověk osobně — co ho trápí, co by mu pomohlo:
+
+ROZHODOVACÍ PROCES
+Jak u nich probíhá rozhodování, kdo musí říct ano, co to zdržuje, jak dlouho trvá:
+
+BUDGET A INVESTIČNÍ LOGIKA
+Mají vyčleněný budget? Kdo ho drží? Jak se rozhodují o investicích tohoto typu?
+
+VZTAH S VALXONEM A OČEKÁVÁNÍ
+Jak nás znají, co o nás vědí, co je přivedlo na schůzku, co od ní čekali:
+
+POTENCIÁL A ČASOVÁNÍ
+Jak urgentní je to pro ně teď? Co by je přivedlo k rozhodnutí? Kdy je reálné uzavření?
+
+NEXT STEP
+Co jsme domluvili:
+
+════════════════════════════════════════
+ČÁST 2 — CO TO ZNAMENÁ PRO NÁS
+════════════════════════════════════════
+
+Na základě poznámek odpověz na tyto otázky. Buď konkrétní — odkazuj na to, co zákazník řekl, ne na obecné fráze.
+
+FIT S VALXONEM
+Kde přesně naše řešení odpovídá jejich aktuálním potřebám nebo výzvám? Proč jsme pro ně relevantní?
+
+NEJVĚTŠÍ ARGUMENTY PRO UZAVŘENÍ
+Co z discovery použít v dalším rozhovoru nebo nabídce? (Citace zákazníka, konkrétní situace, čísla pokud zazněla)
+
+KLÍČOVÝ STAKEHOLDER
+Kdo je náš hlavní spojenec a proč? Kdo může být blokátor a jak s ním pracovat?
+
+RIZIKA A NÁMITKY
+Co může komplikovat rozhodnutí? (smlouvy, schvalovací procesy, IT/GDPR, interní odpor, budget...)
+
+TIMING
+Je teď správný čas tlačit na posun, nebo čekat? Co timing ovlivňuje?
+
+CELKOVÝ POTENCIÁL
+Vysoký / Střední / Nízký — a proč jednou větou.
+
+Tady jsou moje poznámky ze schůzky:
+[SEM VLOŽ SVOJE POZNÁMKY]</div>
+        <button class="copy-btn" onclick="copyPrompt()">Zkopírovat prompt</button>
+      </div>
+    </div>
+
+    <div class="expandable" id="exp-example">
+      <div class="expandable-header" onclick="toggleExp('exp-example')">
+        <div class="expandable-title">
+          Příklad zápisu v Pipedrive pinned note
+          <small>Takhle vypadá výstup po zpracování přes AI</small>
+        </div>
+        <div class="expandable-icon">+</div>
+      </div>
+      <div class="expandable-body">
+        <div class="note-block">════════════════════════════════════════
+ČÁST 1 — PROFIL ZÁKAZNÍKA A SCHŮZKY
+════════════════════════════════════════
+
+Datum schůzky: 15. 5. 2025
+Kontakt: Tomáš Kovář, HR Director + Petra Horáková, CMO
+
+--- FIRMA A KONTEXT ---
+IT firma, 320 zaměstnanců, 4 pobočky (Praha, Brno, Bratislava,
+Varšava). Rychle rostou — loni +80 lidí. Silný employer brand,
+hodně investují do firemní kultury a onboardingu.
+
+--- AKTUÁLNÍ PRIORITY A VÝZVY ---
+Skalování onboardingu při rychlém náboru — mají pocit, že
+ztrácejí konzistenci. Employer brand na zahraničních trzích.
+CMO: "Potřebujeme, aby každý nový člověk cítil, že je vítaný
+od první minuty — a teď to nestíháme." Loni nestihli onboarding
+balíčky pro 25 % nováčků z Q4.
+
+--- KLÍČOVÉ OSOBY A JEJICH ROLE ---
+Tomáš Kovář (HR Director) — iniciátor, operativně rozhoduje
+o nástrojích pro HR. Petra Horáková (CMO) — drží budget na
+employer brand. CFO (není na schůzce) — schvaluje investice
+nad 500k ročně. IT security — musí projít GDPR check.
+
+--- OSOBNÍ MOTIVACE A ZÁJEM ---
+Tomáš: chce přestat řešit onboarding manuálně, šetřit čas svého
+týmu. "Teď trávím každý pondělí ráno tím, že řídím onboarding
+balíčky — to nemůže pokračovat."
+Petra: záleží jí na vizuální konzistenci merche napříč pobočkami.
+Vadí jí, že Praha vypadá jinak než Brno.
+
+--- ROZHODOVACÍ PROCES ---
+Tomáš + Petra navrhují, CFO schvaluje nad 500k. GDPR check IT.
+Interně říkají 6–8 týdnů od rozhodnutí k podpisu. Největší
+blokátor: CFO je teď vytížený — Tomáš říká "do září."
+
+--- BUDGET A INVESTIČNÍ LOGIKA ---
+Budget na employer brand tools má Petra — orientačně 1–1,5M Kč
+ročně. HR tools rozpočet Tomáš — menší, cca 300–400k. Finální
+investici musí schválit CFO. Rozhodují na základě ROI a referencí.
+
+--- VZTAH S VALXONEM A OČEKÁVÁNÍ ---
+Dozvěděli se přes Startup Grind — viděli nás na panelu.
+Petra říká, že sleduje Valxon na LinkedIn. Přišli zjistit,
+jestli umíme skalovat do zahraničí. Čekali hlavně reference
+a ceník.
+
+--- POTENCIÁL A ČASOVÁNÍ ---
+Téma urgentní — nábor pokračuje, onboarding bolí teď. Ale
+CFO je volný až po létu. Reálné uzavření: Q3/Q4 2025.
+"Kdyby to šlo spustit do září, bylo by to ideální."
+
+--- NEXT STEP ---
+Zaslat case study od podobně velké IT firmy. Tomáš pozve CFO
+na druhé demo — termín do konce května.
+
+════════════════════════════════════════
+ČÁST 2 — CO TO ZNAMENÁ PRO NÁS
+════════════════════════════════════════
+
+--- FIT S VALXONEM ---
+Silný fit. Onboarding flow řeší jejich největší pain přímo —
+automatické spuštění balíčku bez manuální práce Tomáše.
+Centrální platforma pro 4 pobočky v různých zemích odpovídá
+jejich potřebě konzistence. Skalování = přesně jejich problém.
+
+--- NEJVĚTŠÍ ARGUMENTY PRO UZAVŘENÍ ---
+"Teď trávím každý pondělí ráno tím, že řídím onboarding
+balíčky — to nemůže pokračovat." — použít doslova u CFO demu.
+Loni 25 % nováčků bez balíčku v Q4 — konkrétní číslo, které
+rezonuje s CFO logikou (risk vs. cost).
+Petra chce konzistenci napříč pobočkami — připravit vizuální
+ukázku, jak to vypadá z Varšavy vs. Prahy dnes vs. s námi.
+
+--- KLÍČOVÝ STAKEHOLDER ---
+Tomáš je spojenec — cítí pain každý den, chce změnu.
+CFO je blokátor — nepotkat ho bez konkrétní ROI argumentace.
+Petra může pomoct přes brand angle — zapojit ji do přípravy
+CFO prezentace.
+
+--- RIZIKA A NÁMITKY ---
+CFO vytížený do září — timeline se může posunout.
+GDPR/IT check — zahrnout do nabídky security dokumentaci předem.
+Zahraniční pobočky (Bratislava, Varšava) — ověřit, jestli
+umíme dodat tam bez problémů.
+
+--- TIMING ---
+Nespěchat na podpis — CFO není dostupný. Ale udržet tempo:
+case study hned, druhé demo s CFO co nejdříve po létě.
+Optimální okno: září–říjen.
+
+--- CELKOVÝ POTENCIÁL ---
+Vysoký — rychle rostoucí firma, jasný pain, silný spojenec
+v Tomášovi, budget existuje, timing Q3/Q4 2025.</div>
+      </div>
+    </div>
+
+  </div>
+
+</main>
+
+<!-- MOBILE QUICK NAV -->
+<div class="mobile-quicknav">
+  <a href="#otazky" class="mqn-btn mqn-primary">Discovery otázky</a>
+  <a href="#nastroje" class="mqn-btn">Pipedrive zápis</a>
+</div>
+
+<script>
+function toggleGroup(header) {
+  header.closest('.q-group').classList.toggle('open');
+}
+
+function toggleExp(id) {
+  document.getElementById(id).classList.toggle('open');
+}
+
+function copyPrompt() {
+  const text = document.getElementById('ai-prompt').innerText;
+  navigator.clipboard.writeText(text).then(function() {
+    const btn = document.querySelector('.copy-btn');
+    btn.textContent = 'Zkopírováno ✓';
+    setTimeout(function() { btn.textContent = 'Zkopírovat prompt'; }, 2000);
+  });
+}
+
+// Active nav tracking
+const sections = document.querySelectorAll('.section');
+const navLinks = document.querySelectorAll('.topnav-links a');
+window.addEventListener('scroll', function() {
+  let current = '';
+  sections.forEach(function(s) {
+    if (window.scrollY >= s.offsetTop - 80) current = s.id;
+  });
+  navLinks.forEach(function(a) {
+    a.classList.remove('active');
+    if (a.getAttribute('href') === '#' + current) a.classList.add('active');
+  });
+}, { passive: true });
+</script>
+
+</body>
+</html>
