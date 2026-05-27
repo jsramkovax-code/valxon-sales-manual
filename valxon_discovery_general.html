@@ -175,14 +175,21 @@ body {
   margin-top: 2px;
 }
 .version-chevron {
-  font-size: 24px;
-  font-weight: 300;
-  color: var(--gray-400);
+  font-size: 26px;
+  font-weight: 400;
+  color: var(--accent);
   flex-shrink: 0;
   transition: transform 0.2s;
   line-height: 1;
 }
 .version-block.open .version-chevron { transform: rotate(45deg); }
+.version-hint {
+  font-size: 11px;
+  color: var(--gray-400);
+  margin-top: 3px;
+  font-style: italic;
+}
+.version-block.open .version-hint { display: none; }
 .version-body {
   display: none;
   padding: 28px 24px;
@@ -468,17 +475,13 @@ body {
           <div class="version-letter version-letter-a">A</div>
           <div class="version-info">
             <div class="version-title">Obecná schůzka</div>
-            <div class="version-subtitle">Poznáváme firmu — 8 témat</div>
+            <div class="version-subtitle">Poznáváme firmu — 9 témat</div>
+            <div class="version-hint">Klikni pro rozbalení</div>
           </div>
         </div>
         <span class="version-chevron">+</span>
       </div>
       <div class="version-body">
-
-        <div class="pitch-box">
-          <div class="pitch-box-label">Úvod schůzky — řekni nahlas</div>
-          <div class="pitch-text">"Než si povíme víc o nás, rád bych nejdřív pochopil, jak to u vás funguje — ať se bavíme o věcech, které jsou pro vás opravdu relevantní."</div>
-        </div>
 
         <div class="q-groups">
 
@@ -510,7 +513,24 @@ body {
 
           <div class="q-group">
             <div class="q-group-header" onclick="toggleGroup(this)">
-              <div class="q-group-meta"><span class="q-group-num">02</span><span class="q-group-name">Merch kalendář</span></div>
+              <div class="q-group-meta"><span class="q-group-num">02</span><span class="q-group-name">Lidé: role a cíle</span></div>
+              <span class="q-group-icon">+</span>
+            </div>
+            <div class="q-group-body">
+              <div class="q-group-desc">Zmapuj konkrétní lidi, kteří jsou do merche zapojení — co každý z nich řeší a co chce. Příprava na to, s kým budeš jednat dál a koho bude potřeba přesvědčit.</div>
+              <ul class="q-sublist">
+                <li class="q-sub">Kdo všechno je u vás do výběru nebo změny dodavatele merche zapojený?</li>
+                <li class="q-sub">A do každodenní správy — kdo objednává, schvaluje, komunikuje s dodavateli?</li>
+                <li class="q-sub">Co každý z nich na tom merchi primárně řeší — co je pro každého z nich klíčové?</li>
+                <li class="q-sub">Je někdo, komu teď nejvíc vadí, jak to funguje? A naopak, kdo je se status quo spokojený?</li>
+                <li class="q-sub">Kdybyste přecházeli na jiné řešení, kdo by musel říct „ano"? Kdo by mohl mít výhrady?</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="q-group">
+            <div class="q-group-header" onclick="toggleGroup(this)">
+              <div class="q-group-meta"><span class="q-group-num">03</span><span class="q-group-name">Merch kalendář</span></div>
               <span class="q-group-icon">+</span>
             </div>
             <div class="q-group-body">
@@ -526,7 +546,7 @@ body {
 
           <div class="q-group">
             <div class="q-group-header" onclick="toggleGroup(this)">
-              <div class="q-group-meta"><span class="q-group-num">03</span><span class="q-group-name">Dodavatelé</span></div>
+              <div class="q-group-meta"><span class="q-group-num">04</span><span class="q-group-name">Dodavatelé</span></div>
               <span class="q-group-icon">+</span>
             </div>
             <div class="q-group-body">
@@ -542,7 +562,7 @@ body {
 
           <div class="q-group">
             <div class="q-group-header" onclick="toggleGroup(this)">
-              <div class="q-group-meta"><span class="q-group-num">04</span><span class="q-group-name">Podle čeho vybíráte</span></div>
+              <div class="q-group-meta"><span class="q-group-num">05</span><span class="q-group-name">Podle čeho vybíráte</span></div>
               <span class="q-group-icon">+</span>
             </div>
             <div class="q-group-body">
@@ -558,7 +578,7 @@ body {
 
           <div class="q-group">
             <div class="q-group-header" onclick="toggleGroup(this)">
-              <div class="q-group-meta"><span class="q-group-num">05</span><span class="q-group-name">Současný proces</span></div>
+              <div class="q-group-meta"><span class="q-group-num">06</span><span class="q-group-name">Současný proces</span></div>
               <span class="q-group-icon">+</span>
             </div>
             <div class="q-group-body">
@@ -577,7 +597,7 @@ body {
 
           <div class="q-group">
             <div class="q-group-header" onclick="toggleGroup(this)">
-              <div class="q-group-meta"><span class="q-group-num">06</span><span class="q-group-name">Motivace kontaktu</span></div>
+              <div class="q-group-meta"><span class="q-group-num">07</span><span class="q-group-name">Motivace kontaktu</span></div>
               <span class="q-group-icon">+</span>
             </div>
             <div class="q-group-body">
@@ -594,7 +614,7 @@ body {
 
           <div class="q-group">
             <div class="q-group-header" onclick="toggleGroup(this)">
-              <div class="q-group-meta"><span class="q-group-num">07</span><span class="q-group-name">Budget</span></div>
+              <div class="q-group-meta"><span class="q-group-num">08</span><span class="q-group-name">Budget</span></div>
               <span class="q-group-icon">+</span>
             </div>
             <div class="q-group-body">
@@ -611,7 +631,7 @@ body {
 
           <div class="q-group">
             <div class="q-group-header" onclick="toggleGroup(this)">
-              <div class="q-group-meta"><span class="q-group-num">08</span><span class="q-group-name">Komunikace a další kroky</span></div>
+              <div class="q-group-meta"><span class="q-group-num">09</span><span class="q-group-name">Komunikace a další kroky</span></div>
               <span class="q-group-icon">+</span>
             </div>
             <div class="q-group-body">
@@ -629,6 +649,12 @@ body {
     </div>
   </div>
 
+  <div style="display:flex;align-items:center;gap:16px;margin:24px 0;">
+    <div style="flex:1;height:1px;background:var(--gray-200);"></div>
+    <span style="font-size:11px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--gray-400);">nebo</span>
+    <div style="flex:1;height:1px;background:var(--gray-200);"></div>
+  </div>
+
   <!-- SECTION B — KONKRÉTNÍ ZAKÁZKA -->
   <div class="section" id="zakazka">
     <div class="version-block" id="ver-b">
@@ -638,16 +664,12 @@ body {
           <div class="version-info">
             <div class="version-title">Konkrétní zakázka</div>
             <div class="version-subtitle">Mají poptávku, potřebujeme i kontext — 9 témat</div>
+            <div class="version-hint">Klikni pro rozbalení</div>
           </div>
         </div>
         <span class="version-chevron">+</span>
       </div>
       <div class="version-body">
-
-        <div class="pitch-box">
-          <div class="pitch-box-label">Úvod schůzky — řekni nahlas</div>
-          <div class="pitch-text">"Než se podíváme na konkrétní zadání, rád bych se nejdřív zorientoval v tom, jak to u vás funguje obecně — abychom vám pak nabídli řešení, které dává smysl ne jen pro tuhle zakázku, ale i dlouhodobě."</div>
-        </div>
 
         <div class="callout callout-info" style="margin-bottom:20px;">
           <div class="callout-icon">⚖️</div>
@@ -849,8 +871,8 @@ Co dělají, jak jsou velcí (počet zaměstnanců, počet poboček, trhy):
 USE CASES — CO A KDE SE DĚJE
 Přehled per oddělení: co dělá HR, marketing, sales kolem merche. Dárky klientům, partnerské balíčky, eventy. Co je objemově největší:
 
-KDO TO DRŽÍ — ROZHODOVACÍ STRUKTURA
-Kdo má jednotlivé use casy na starosti. Kdo operativně objednává. Kdo schvaluje finančně a kreativně. Je tam někdo, kdo merch zastřešuje napříč firmou:
+LIDÉ — ROLE A CÍLE
+Kdo je do výběru/změny dodavatele zapojený. Kdo objednává a spravuje operativně. Co každý z nich na merchi primárně řeší / co je pro každého klíčové. Kdo je nespokojený se status quo. Kdo musí říct „ano" u změny a kdo může mít výhrady. Je tam někdo, kdo merch zastřešuje napříč firmou:
 
 MERCH KALENDÁŘ
 Plánované vs. ad hoc. Co proběhne každý rok (onboarding, Vánoce, eventy). Jak často padají ad hoc požadavky a odkud:
