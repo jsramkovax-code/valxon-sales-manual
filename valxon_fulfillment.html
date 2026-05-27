@@ -457,11 +457,10 @@ body {
 <nav class="topnav">
   <a class="topnav-back-badge" href="valxon_sales_manual.html">← Sales manuál</a>
   <ul class="topnav-links">
-    <li><a href="#jak" class="active">Jak to probíhá</a></li>
-    <li><a href="#schuze">Na schůzce</a></li>
-    <li><a href="#pitch">Pitch</a></li>
-    <li><a href="#icp">Komu sklad sedí</a></li>
-    <li><a href="#cenik">Ceník</a></li>
+    <li><a href="#jak" class="active">Jak to funguje v krocích</a></li>
+    <li><a href="#schuze">Otázky na klienta</a></li>
+    <li><a href="#pitch">Co po klientovi potřebujeme</a></li>
+    <li><a href="#cenik">Kolik ho to stojí</a></li>
     <li><a href="#closing">Closing</a></li>
   </ul>
 </nav>
@@ -497,7 +496,7 @@ body {
         <div class="flow-num">K3</div>
         <div class="flow-content">
           <div class="flow-title">Nastavíme sklady a přístupy</div>
-          <div class="flow-desc">Jakmile máme tabulku, lídr nastaví sklady, uživatelské přístupy v platformě a domluví s klientem detaily. Do 48 hodin od vyplněné tabulky vidí klient zásoby v platformě.</div>
+          <div class="flow-desc">Jakmile máme tabulku, operations nastaví sklady, uživatelské přístupy v platformě a domluví s klientem detaily. Do 48 hodin od vyplněné tabulky vidí klient zásoby v platformě.</div>
         </div>
       </div>
       <div class="flow-step">
@@ -532,21 +531,21 @@ body {
         <div class="flow-num">→</div>
         <div class="flow-content">
           <div class="flow-title">Objednávka</div>
-          <div class="flow-desc">Klient (nebo jeho tým) objedná přes platformu — komu, kolik, kam. Objednávka se do skladu propíše automaticky. Funguje i objednávání mailem či telefonem — do systému to zadáme my.</div>
+          <div class="flow-desc">Klient (nebo jeho tým) objedná přes platformu — komu, kolik, kam. Objednávka se do skladu propíše automaticky. Funguje i starý způsob (e-mail, telefon) — v tom případě objednávku zadá do platformy operations interně.</div>
         </div>
       </div>
       <div class="flow-step">
         <div class="flow-num">→</div>
         <div class="flow-content">
           <div class="flow-title">Vyřízení a doručení</div>
-          <div class="flow-desc">Objednávku vyskladníme, zabalíme a odešleme přímo příjemci — zaměstnanci, na pobočku, klientovi. Příjemce nic nedoplácí. Klient v platformě vidí, že zásilka odešla.</div>
+          <div class="flow-desc">Objednávku vyskladníme, zabalíme a odešleme přímo příjemci — zaměstnanci, na pobočku, klientovi. Příjemce standardně nic nedoplácí. Klient v platformě vidí, že zásilka odešla.</div>
         </div>
       </div>
       <div class="flow-step">
         <div class="flow-num">→</div>
         <div class="flow-content">
           <div class="flow-title">Doskladnění</div>
-          <div class="flow-desc">Zásoby hlídáme my. Když klesnou, klient dostane notifikaci v platformě a pár kliky schválí doobjednání. Pokud chce jiný režim, nastavíme individuálně.</div>
+          <div class="flow-desc">Zásoby si dnes sleduje klient sám v platformě. Cílem do budoucna je posílat mu automatické alerty, když zásoby klesnou pod nastavenou hranici — zatím to ale není k dispozici.</div>
         </div>
       </div>
     </div>
@@ -606,14 +605,13 @@ body {
   <div class="section" id="pitch">
     <div class="section-label">03 — Pitch</div>
     <h2 class="section-title">Jak to klientovi vysvětlit</h2>
-    <p class="section-sub">Když klient řekne „tak jak to funguje?", tady jsou tři věty. Nevyprávěj víc, než klient potřebuje — když se zeptá na detail, odpověz. Když ne, nech to plynout.</p>
+    <p class="section-sub">Když klient řekne „tak jak to funguje?", tady jsou tři věty.</p>
 
     <div class="pitch-box" style="margin-bottom:28px;">
-      <div class="pitch-box-label">Tři věty — řekni nahlas</div>
       <ul class="pitch-text" style="list-style:none;">
-        <li data-n="1">Vyplníš nám tabulku, co máš na skladě, a domluvíme detaily.</li>
+        <li data-n="1">Vyplníte nám tabulku, co máte na skladě, a domluvíme detaily.</li>
         <li data-n="2">My zařídíme převoz, naskladnění, a od té chvíle merch leží u nás.</li>
-        <li data-n="3">Objednáváš přes platformu — komu, kolik, kam — a my pošleme. Doskladnění hlídáme my, ty jen schvaluješ.</li>
+        <li data-n="3">Objednáváte přes platformu — komu, kolik, kam — a my pošleme. Zásoby si sledujete v platformě sami.</li>
       </ul>
     </div>
 
@@ -630,38 +628,9 @@ body {
 
   <hr class="divider">
 
-  <!-- KOMU SKLAD SEDÍ -->
-  <div class="section" id="icp">
-    <div class="section-label">04 — ICP</div>
-    <h2 class="section-title">Komu sklad sedí (a komu ne)</h2>
-    <p class="section-sub">Než klientovi sklad nabídneš, ověř si v hlavě, jestli mu to dává smysl. Ne každý klient na sklad zraje.</p>
-
-    <div class="icp-grid">
-      <div class="icp-card icp-yes">
-        <div class="icp-label">Sklad má smysl — nabídni ho, když</div>
-        <ul class="icp-list">
-          <li>Má dnes někde naskládané krabice merche</li>
-          <li>Pravidelně to posílá lidem — zaměstnancům, klientům, na eventy</li>
-          <li>Někdo to interně řeší ručně a tráví tím čas</li>
-          <li>Má víc poboček nebo posílá i ven z Česka</li>
-        </ul>
-      </div>
-      <div class="icp-card icp-no">
-        <div class="icp-label">Netlač, když klient</div>
-        <ul class="icp-list">
-          <li>Objedná merch jednou za rok a sám si ho rozdá z kanceláře</li>
-          <li>Nemá nic na skladě a neplánuje</li>
-        </ul>
-        <div style="margin-top:14px;font-size:12px;color:var(--gray-400);line-height:1.5;">U těchto klientů stačí samotná platforma — sklad by jim přidělal víc starostí než užitku.</div>
-      </div>
-    </div>
-  </div>
-
-  <hr class="divider">
-
   <!-- CENÍK -->
   <div class="section" id="cenik">
-    <div class="section-label">05 — Ceník</div>
+    <div class="section-label">04 — Ceník</div>
     <h2 class="section-title">Co stojí kolik</h2>
     <p class="section-sub">Ceny jsou na orientaci — používej je v hovoru, ne jako nabídku. Vždycky říkej "od X Kč", nikdy "to vás bude stát X".</p>
 
@@ -822,7 +791,7 @@ body {
 
   <!-- CLOSING -->
   <div class="section" id="closing">
-    <div class="section-label">06 — Closing</div>
+    <div class="section-label">05 — Closing</div>
     <h2 class="section-title">Když klient řekne „jdeme do toho"</h2>
     <p class="section-sub">Pravidlo: než klient vychladne, ozvi se mu znova.</p>
 
