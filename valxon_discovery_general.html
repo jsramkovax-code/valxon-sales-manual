@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Valxon — Discovery obecná schůzka</title>
+<title>Valxon — Discovery questions</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -100,7 +100,7 @@ body {
 }
 
 /* SECTION */
-.section { margin-bottom: 48px; scroll-margin-top: calc(var(--topnav-h) + 24px); }
+.section { margin-bottom: 20px; scroll-margin-top: calc(var(--topnav-h) + 24px); }
 .section-label {
   font-size: 10px;
   font-weight: 500;
@@ -117,13 +117,85 @@ body {
   line-height: 1.2;
 }
 .section-sub { font-size: 13px; color: var(--gray-600); margin-bottom: 20px; line-height: 1.6; max-width: 600px; }
-.divider { border: none; border-top: 1px solid var(--gray-200); margin: 40px 0; }
+.divider { border: none; border-top: 1px solid var(--gray-200); margin: 36px 0; }
+
+/* PAGE HEADER */
+.page-header { margin-bottom: 28px; }
+.page-header h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 32px;
+  letter-spacing: -0.5px;
+  line-height: 1.15;
+  margin-bottom: 8px;
+}
+.page-header p { font-size: 14px; color: var(--gray-600); line-height: 1.6; }
+
+/* VERSION BLOCK */
+.version-block {
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.version-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 22px 24px;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  background: var(--gray-50);
+  transition: background 0.12s;
+}
+.version-header:hover { background: var(--gray-100); }
+.version-header-left { display: flex; align-items: center; gap: 16px; }
+.version-letter {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'DM Serif Display', serif;
+  font-size: 24px;
+  flex-shrink: 0;
+}
+.version-letter-a { background: var(--black); color: var(--white); }
+.version-letter-b { background: var(--accent); color: #fff; }
+.version-info { }
+.version-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 21px;
+  line-height: 1.2;
+  color: var(--black);
+}
+.version-subtitle {
+  font-size: 12px;
+  color: var(--gray-400);
+  margin-top: 2px;
+}
+.version-chevron {
+  font-size: 24px;
+  font-weight: 300;
+  color: var(--gray-400);
+  flex-shrink: 0;
+  transition: transform 0.2s;
+  line-height: 1;
+}
+.version-block.open .version-chevron { transform: rotate(45deg); }
+.version-body {
+  display: none;
+  padding: 28px 24px;
+  border-top: 1px solid var(--gray-200);
+}
+.version-block.open .version-body { display: block; }
 
 /* CALLOUT */
 .callout {
   border-radius: var(--radius);
   padding: 12px 16px;
-  margin-bottom: 8px;
+  margin-bottom: 16px;
   display: flex;
   gap: 12px;
   align-items: flex-start;
@@ -138,7 +210,8 @@ body {
 .pitch-box {
   background: var(--black);
   border-radius: var(--radius);
-  padding: 32px 36px;
+  padding: 28px 32px;
+  margin-bottom: 24px;
 }
 .pitch-box-label {
   font-size: 10px;
@@ -146,10 +219,10 @@ body {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: rgba(255,255,255,0.4);
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
 .pitch-text {
-  font-size: 17px;
+  font-size: 16px;
   color: var(--white);
   line-height: 1.8;
   font-style: italic;
@@ -180,7 +253,7 @@ body {
 }
 .q-group-name {
   font-family: 'DM Serif Display', serif;
-  font-size: 19px;
+  font-size: 18px;
   color: var(--black);
   line-height: 1.2;
   transition: color 0.12s;
@@ -223,6 +296,32 @@ body {
   font-style: normal;
   font-size: 13px;
 }
+
+/* RULES LIST */
+.rules-list { display: flex; flex-direction: column; }
+.rule-item {
+  display: flex;
+  gap: 18px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--gray-200);
+  align-items: flex-start;
+}
+.rule-item:last-child { border-bottom: none; }
+.rule-num {
+  font-family: 'DM Serif Display', serif;
+  font-size: 24px;
+  color: var(--accent);
+  flex-shrink: 0;
+  width: 26px;
+  line-height: 1.2;
+}
+.rule-body {
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--black);
+  padding-top: 3px;
+}
+.rule-body strong { font-weight: 600; }
 
 /* EXPANDABLE */
 .expandable {
@@ -281,7 +380,7 @@ body {
 }
 .copy-btn:hover { background: var(--gray-200); color: var(--black); }
 
-/* EXAMPLE NOTE */
+/* NOTE BLOCK */
 .note-block {
   background: var(--gray-50);
   border: 1px solid var(--gray-200);
@@ -309,9 +408,12 @@ body {
     padding-right: 16px;
     padding-bottom: calc(80px + env(safe-area-inset-bottom));
   }
-  .section { margin-bottom: 36px; }
-  .divider { margin: 28px 0; }
-  .q-group { padding: 14px 0; }
+  .section { margin-bottom: 16px; }
+  .divider { margin: 24px 0; }
+  .version-header { padding: 16px 18px; }
+  .version-letter { width: 38px; height: 38px; font-size: 20px; }
+  .version-title { font-size: 19px; }
+  .version-body { padding: 20px 16px; }
   .q-group-name { font-size: 17px; }
   .q-group-desc { padding-left: 28px; }
   .q-sublist { padding-left: 28px; }
@@ -322,6 +424,7 @@ body {
   .expandable-body { padding: 16px; }
   .code-block { font-size: 11px; padding: 14px; }
   .note-block { font-size: 12px; padding: 14px; }
+  .page-header h1 { font-size: 26px; }
 
   .mobile-quicknav {
     display: flex;
@@ -360,139 +463,410 @@ body {
 <nav class="topnav">
   <a class="topnav-back-badge" href="valxon_sales_manual.html">← Sales manuál</a>
   <ul class="topnav-links">
-    <li><a href="#otazky" class="active">Discovery otázky</a></li>
+    <li><a href="#obecna">Obecná schůzka</a></li>
+    <li><a href="#zakazka">Konkrétní zakázka</a></li>
+    <li><a href="#obchodnici">Pro obchodníky</a></li>
     <li><a href="#nastroje">Pipedrive zápis</a></li>
   </ul>
 </nav>
 
 <main class="main">
 
-  <!-- OTAZKY -->
-  <div class="section" id="otazky">
-    <h2 class="section-title" style="font-size:32px;margin-bottom:20px;">Discovery questions — obecná schůzka</h2>
+  <div class="page-header">
+    <div class="section-label">Discovery questions</div>
+    <h1>Jak vést sales schůzku</h1>
+    <p>Dvě verze podle situace — rozbali tu, která odpovídá tvé schůzce.</p>
+  </div>
 
-    <div class="pitch-box" style="margin-bottom:24px;">
-      <div class="pitch-box-label">Úvod schůzky</div>
-      <div class="pitch-text">"Než si povíme víc o nás, rád bych nejdřív pochopil, jak to u vás funguje — ať se bavíme o věcech, které jsou pro vás opravdu relevantní."</div>
+  <!-- SECTION A — OBECNÁ SCHŮZKA -->
+  <div class="section" id="obecna">
+    <div class="version-block" id="ver-a">
+      <div class="version-header" onclick="toggleVersion('ver-a')">
+        <div class="version-header-left">
+          <div class="version-letter version-letter-a">A</div>
+          <div class="version-info">
+            <div class="version-title">Obecná schůzka</div>
+            <div class="version-subtitle">Poznáváme firmu — 8 témat</div>
+          </div>
+        </div>
+        <span class="version-chevron">+</span>
+      </div>
+      <div class="version-body">
+
+        <div class="pitch-box">
+          <div class="pitch-box-label">Úvod schůzky — řekni nahlas</div>
+          <div class="pitch-text">"Než si povíme víc o nás, rád bych nejdřív pochopil, jak to u vás funguje — ať se bavíme o věcech, které jsou pro vás opravdu relevantní."</div>
+        </div>
+
+        <div class="q-groups">
+
+          <div class="q-group">
+            <div class="q-group-header" onclick="toggleGroup(this)">
+              <div class="q-group-meta"><span class="q-group-num">01</span><span class="q-group-name">Jak to u vás funguje</span></div>
+              <span class="q-group-icon">+</span>
+            </div>
+            <div class="q-group-body">
+              <div class="q-group-desc">Otevírací otázka — ať mluví vlastními slovy. Zajímá tě to, co není na webu: kdo co reálně řeší, jak to probíhá v praxi.</div>
+              <ul class="q-sublist">
+                <li class="q-sub">Jak to u vás aktuálně funguje — kdo to řeší a jak to probíhá v praxi?</li>
+                <li class="q-sub">Máte na to jednoho člověka, nebo to padá na víc lidí napříč firmou?</li>
+                <li class="q-sub">Jak jste velcí — kolik lidí, kolik poboček, kolik entit?</li>
+                <li class="q-sub">Máte to spíš centrálně, nebo si to každá pobočka / tým řeší po svém?</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="q-group">
+            <div class="q-group-header" onclick="toggleGroup(this)">
+              <div class="q-group-meta"><span class="q-group-num">02</span><span class="q-group-name">K čemu to u vás slouží</span></div>
+              <span class="q-group-icon">+</span>
+            </div>
+            <div class="q-group-body">
+              <div class="q-group-desc">Cíl: pochopit, kde všude se merch ve firmě objevuje. Některé use casy zákazník sám nezmíní, dokud se ho nezeptáš. HR má často jiný pohled než marketing nebo sales.</div>
+              <ul class="q-sublist">
+                <li class="q-sub">Pro co všechno merch reálně používáte? — onboarding, eventy, dárky klientům, veletrhy, interní akce…</li>
+                <li class="q-sub">Co z toho je nejčastější / objemově největší?</li>
+                <li class="q-sub">Jezdíte na veletrhy nebo konference, kde rozdáváte merch?</li>
+                <li class="q-sub">Dáváte něco klientům — dárky, vánoční pozornosti, partnerské balíčky?</li>
+                <li class="q-sub">Používáte merch v sales procesu — nosí to obchodníci na schůzky, posíláte to prospektům?</li>
+                <li class="q-sub">Jak řešíte onboarding nových lidí — dostávají welcome balíček?</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="q-group">
+            <div class="q-group-header" onclick="toggleGroup(this)">
+              <div class="q-group-meta"><span class="q-group-num">03</span><span class="q-group-name">Merch kalendář a předvídatelnost</span></div>
+              <span class="q-group-icon">+</span>
+            </div>
+            <div class="q-group-body">
+              <div class="q-group-desc">Cíl: zjistit, jestli je to plánovaná aktivita nebo hašení požárů. Plánovaná firma = lepší zákazník (předvídatelný objem). Ad hoc firma = velký pain, který umíme adresovat.</div>
+              <ul class="q-sublist">
+                <li class="q-sub">Máte merch nějak rozplánovaný v roce dopředu, nebo to řešíte ad hoc, když přijde požadavek?</li>
+                <li class="q-sub">Co jsou pravidelné věci, které víte, že každý rok proběhnou? (onboarding, Vánoce, výroční event…)</li>
+                <li class="q-sub">Co bývá nejvíc stresové — kdy to obvykle hoří?</li>
+                <li class="q-sub">Když přijde požadavek od vedení nebo od týmu, jak rychle to musíte vyřešit?</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="q-group">
+            <div class="q-group-header" onclick="toggleGroup(this)">
+              <div class="q-group-meta"><span class="q-group-num">04</span><span class="q-group-name">Současný proces</span></div>
+              <span class="q-group-icon">+</span>
+            </div>
+            <div class="q-group-body">
+              <div class="q-group-desc">Cíl: detailní pohled na to, jak to dnes probíhá. Tady se schovává největší pain. Ptej se konkrétně a nech je popsat krok po kroku — uvidíš, kde to drhne. Tohle je nejdůležitější blok celé schůzky.</div>
+              <ul class="q-sublist">
+                <li class="q-sub">Provedete mě tím procesem — od momentu, kdy někdo řekne "potřebuju merch", až po to, že to má příjemce v ruce?</li>
+                <li class="q-sub">Jak sbíráte adresy a velikosti? (Excel, formuláře, e-maily?)</li>
+                <li class="q-sub">Jak řešíte distribuci — posíláte si to sami, nebo to rozesílá dodavatel přímo lidem?</li>
+                <li class="q-sub">Máte vlastní sklad, nebo vám to skladuje někdo jiný?</li>
+                <li class="q-sub">Máte interní e-shop pro zaměstnance, nebo se objednává jinak?</li>
+                <li class="q-sub">Co na tom procesu funguje a co naopak vůbec?</li>
+                <li class="q-sub">Kde podle vás ztrácíte nejvíc času?</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="q-group">
+            <div class="q-group-header" onclick="toggleGroup(this)">
+              <div class="q-group-meta"><span class="q-group-num">05</span><span class="q-group-name">Dodavatelé a jak je vybíráte</span></div>
+              <span class="q-group-icon">+</span>
+            </div>
+            <div class="q-group-body">
+              <div class="q-group-desc">Cíl: zmapovat konkurenční pole a rozhodovací kritéria. Tady zjistíš, jestli máš co nabídnout (cenou, kvalitou, procesem) a kdo jsou tví reální konkurenti.</div>
+              <ul class="q-sublist">
+                <li class="q-sub">Máte nějakého stálého dodavatele, nebo poptáváte případ od případu?</li>
+                <li class="q-sub">Pracujete s jedním na všechno, nebo to máte rozdělené podle typu produktu — textil vs. drobnosti vs. tisk?</li>
+                <li class="q-sub">Co se vám na nich líbí — co je důvod, že s nimi zůstáváte?</li>
+                <li class="q-sub">Co vám naopak chybí nebo vás štve?</li>
+                <li class="q-sub">Když se rozhodujete o novém merchi, podle čeho vybíráte — cena, kvalita, kreativa, jednoduchost?</li>
+                <li class="q-sub">Stalo se vám někdy, že to s dodavatelem nedopadlo — co se stalo?</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="q-group">
+            <div class="q-group-header" onclick="toggleGroup(this)">
+              <div class="q-group-meta"><span class="q-group-num">06</span><span class="q-group-name">Budget a rozhodování</span></div>
+              <span class="q-group-icon">+</span>
+            </div>
+            <div class="q-group-body">
+              <div class="q-group-desc">Cíl: pochopit ekonomiku a kdo má reálnou pravomoc. Pozor — na peníze se ptej s respektem, ne hned na začátku. Když se zeptáš příliš brzy a tvrdě, zavřou se.</div>
+              <ul class="q-sublist">
+                <li class="q-sub">Máte na merch nějaký fixní roční budget, nebo se to schvaluje případ od případu?</li>
+                <li class="q-sub">Kdo to schvaluje — vy, váš šéf, finance, jednatel?</li>
+                <li class="q-sub">Jak dlouho takové schvalování obvykle trvá?</li>
+                <li class="q-sub">Kolik vám zhruba za rok merchem projde — jen abych pochopil objem, o kterém se bavíme?</li>
+                <li class="q-sub">Máte na letošek ještě nějaké rozjeté projekty nebo už je to vyčerpané?</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="q-group">
+            <div class="q-group-header" onclick="toggleGroup(this)">
+              <div class="q-group-meta"><span class="q-group-num">07</span><span class="q-group-name">Motivace konkrétního kontaktu</span></div>
+              <span class="q-group-icon">+</span>
+            </div>
+            <div class="q-group-body">
+              <div class="q-group-desc">Cíl: pochopit, co řeší konkrétně tenhle člověk, ne firma obecně. Tady najdeš osobní hooks — co ho bolí, co je jeho cíl, podle čeho ho hodnotí. To je tvoje munice pro follow-up. Ptej se přirozeně, ne jako na pohovoru.</div>
+              <ul class="q-sublist">
+                <li class="q-sub">Co konkrétně u vás máte na starosti — kde merch v tom všem stojí?</li>
+                <li class="q-sub">Kdyby vám merch zítra zmizel ze stolu, co byste dělali jiného / lepšího?</li>
+                <li class="q-sub">Co je pro vás osobně to nejotravnější, co kolem toho řešíte?</li>
+                <li class="q-sub">Co byste si přál, aby se na tom změnilo?</li>
+                <li class="q-sub">Když na konci roku ukazujete výsledky vedení, jak se merch promítá do toho, co děláte?</li>
+                <li class="q-sub">Je pro vás důležitější ušetřit čas, peníze, nebo abyste z toho měli lepší výstup?</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="q-group">
+            <div class="q-group-header" onclick="toggleGroup(this)">
+              <div class="q-group-meta"><span class="q-group-num">08</span><span class="q-group-name">Závěr — co dál</span></div>
+              <span class="q-group-icon">+</span>
+            </div>
+            <div class="q-group-body">
+              <div class="q-group-desc">Cíl: vyjasnit další kroky a získat reálný kontakt. Důležité: nepouštět to "do prázdna" frází "tak já vám pošlu nabídku" — ujistit se, kdo, jak a kdy.</div>
+              <ul class="q-sublist">
+                <li class="q-sub">Když by vás z toho, co jsme si řekli, něco zajímalo blíž — jak preferujete, abych se ozval? E-mail, telefon, WhatsApp?</li>
+                <li class="q-sub">Budete to potřebovat probrat ještě s někým u vás, než to půjde dál? S kým?</li>
+                <li class="q-sub">Kdy by dávalo smysl se znovu slyšet?</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
     </div>
+  </div>
 
-    <div class="q-groups">
-
-      <div class="q-group">
-        <div class="q-group-header" onclick="toggleGroup(this)">
-          <div class="q-group-meta"><span class="q-group-num">01</span><span class="q-group-name">Jak to u vás funguje</span></div>
-          <span class="q-group-icon">+</span>
+  <!-- SECTION B — KONKRÉTNÍ ZAKÁZKA -->
+  <div class="section" id="zakazka">
+    <div class="version-block" id="ver-b">
+      <div class="version-header" onclick="toggleVersion('ver-b')">
+        <div class="version-header-left">
+          <div class="version-letter version-letter-b">B</div>
+          <div class="version-info">
+            <div class="version-title">Konkrétní zakázka</div>
+            <div class="version-subtitle">Mají poptávku, ale potřebujeme i kontext firmy — 9 témat</div>
+          </div>
         </div>
-        <div class="q-group-body">
-          <div class="q-group-desc">Otevírací otázka — ať mluví vlastními slovy. Zajímá tě to, co není na webu: kdo co reálně řeší, jak to probíhá v praxi.</div>
-          <ul class="q-sublist">
-            <li class="q-sub">Jak to u vás aktuálně funguje — kdo to řeší a jak to probíhá v praxi?</li>
-            <li class="q-sub">Máte na to jednoho člověka, nebo to padá na víc lidí napříč firmou?</li>
-            <li class="q-sub">Jak jste velcí — kolik lidí, kolik poboček?</li>
-          </ul>
+        <span class="version-chevron">+</span>
+      </div>
+      <div class="version-body">
+
+        <div class="pitch-box">
+          <div class="pitch-box-label">Úvod schůzky — řekni nahlas</div>
+          <div class="pitch-text">"Než se vrhneme na konkrétní zadání, rád bych se nejdřív zorientoval v tom, jak to u vás funguje obecně — abych vám pak mohl navrhnout řešení, které dává smysl ne jen pro tuhle zakázku, ale i dlouhodobě."</div>
+        </div>
+
+        <div class="callout callout-info" style="margin-bottom:20px;">
+          <div class="callout-icon">⚖️</div>
+          <div class="callout-body"><strong>Pravidlo 60/40:</strong> 60 % času na firmu a kontext, 40 % na konkrétní zakázku. Pokud zákazník tlačí rovnou na zakázku, věnuj se jí — ale do otázek o firmě se vrať během konverzace přirozeně.</div>
+        </div>
+
+        <div class="q-groups">
+
+          <div class="q-group">
+            <div class="q-group-header" onclick="toggleGroup(this)">
+              <div class="q-group-meta"><span class="q-group-num">01</span><span class="q-group-name">Co konkrétně řešíte</span></div>
+              <span class="q-group-icon">+</span>
+            </div>
+            <div class="q-group-body">
+              <div class="q-group-desc">Cíl: pochopit zadání. Nech je popsat to vlastními slovy dřív, než půjdeš do detailů.</div>
+              <ul class="q-sublist">
+                <li class="q-sub">Co konkrétně teď řešíte — můžete mi popsat, o co jde?</li>
+                <li class="q-sub">Pro koho to je — interně pro zaměstnance, pro klienty, pro event?</li>
+                <li class="q-sub">Kolik kusů zhruba?</li>
+                <li class="q-sub">Máte už představu, co by to mělo být, nebo to teprve hledáte?</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="q-group">
+            <div class="q-group-header" onclick="toggleGroup(this)">
+              <div class="q-group-meta"><span class="q-group-num">02</span><span class="q-group-name">Kritéria výběru</span></div>
+              <span class="q-group-icon">+</span>
+            </div>
+            <div class="q-group-body">
+              <div class="q-group-desc">Cíl: zjistit, co je pro ně reálně důležité. Pozor — "chceme kvalitu i cenu" je default odpověď. Tlačit dál: kdyby museli volit, co je první.</div>
+              <ul class="q-sublist">
+                <li class="q-sub">Podle čeho budete rozhodovat o tom, co vyberete?</li>
+                <li class="q-sub">Co je pro tuhle zakázku nejdůležitější — aby se to líbilo příjemci, vejít se do ceny, rychlost dodání, kreativa?</li>
+                <li class="q-sub">Kdyby to byl trade-off mezi kvalitou a cenou, kam byste se nejspíš přiklonili?</li>
+                <li class="q-sub">Máte nějakou referenci, podle které jdete — jako "chceme něco podobného jako tohle"?</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="q-group">
+            <div class="q-group-header" onclick="toggleGroup(this)">
+              <div class="q-group-meta"><span class="q-group-num">03</span><span class="q-group-name">Budget</span></div>
+              <span class="q-group-icon">+</span>
+            </div>
+            <div class="q-group-body">
+              <div class="q-group-desc">Cíl: dostat reálné číslo nebo aspoň rozsah. Pokud se budget tvrdě tají, ptej se na "rámec" nebo "kolem čeho se to pohybuje".</div>
+              <ul class="q-sublist">
+                <li class="q-sub">Máte na tuhle zakázku konkrétní budget?</li>
+                <li class="q-sub">Je to už schválené, nebo se schválení teprve čeká?</li>
+                <li class="q-sub">Pohybujeme se v jakém řádu — desítky, stovky tisíc?</li>
+                <li class="q-sub">Je tam ještě prostor, kdyby řešení dávalo smysl, nebo je strop pevný?</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="q-group">
+            <div class="q-group-header" onclick="toggleGroup(this)">
+              <div class="q-group-meta"><span class="q-group-num">04</span><span class="q-group-name">Timing a deadline</span></div>
+              <span class="q-group-icon">+</span>
+            </div>
+            <div class="q-group-body">
+              <div class="q-group-desc">Cíl: pochopit, kolik máš času a kde je v procesu hard stop. Ptej se i na to, co se stane, když se to nestihne — tam je často reálný pain.</div>
+              <ul class="q-sublist">
+                <li class="q-sub">Do kdy to potřebujete mít hotové?</li>
+                <li class="q-sub">Je za tím nějaký konkrétní event, datum, fronta?</li>
+                <li class="q-sub">Co se stane, když se to nestihne včas?</li>
+                <li class="q-sub">Kdy ideálně musíte mít rozhodnuto o dodavateli?</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="q-group">
+            <div class="q-group-header" onclick="toggleGroup(this)">
+              <div class="q-group-meta"><span class="q-group-num">05</span><span class="q-group-name">Proces rozhodování a stakeholdeři</span></div>
+              <span class="q-group-icon">+</span>
+            </div>
+            <div class="q-group-body">
+              <div class="q-group-desc">Cíl: zjistit, s kým reálně mluvíš a kdo má poslední slovo. Krycí otázka: "abych vám připravil podklady, které budou užitečné pro všechny zúčastněné".</div>
+              <ul class="q-sublist">
+                <li class="q-sub">Kdo všechno bude do výběru zapojený?</li>
+                <li class="q-sub">Kdo dává finální rozhodnutí?</li>
+                <li class="q-sub">Jak u vás obvykle takové rozhodnutí probíhá — kolik kol, kolik schůzek?</li>
+                <li class="q-sub">Je tam někdo, kdo to bude muset odsouhlasit, kdo dnes není u stolu?</li>
+                <li class="q-sub">Co budou ti další lidé chtít vidět, aby řekli ano?</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="q-group">
+            <div class="q-group-header" onclick="toggleGroup(this)">
+              <div class="q-group-meta"><span class="q-group-num">06</span><span class="q-group-name">Konkurence</span></div>
+              <span class="q-group-icon">+</span>
+            </div>
+            <div class="q-group-body">
+              <div class="q-group-desc">Cíl: zjistit, kdo další je v hře. Lidé to často řeknou, když se zeptáš přirozeně. Pokud máš jejich konkurenční nabídku, můžeš nabídnout lepší podmínky nebo se odlišit jinde.</div>
+              <ul class="q-sublist">
+                <li class="q-sub">Oslovili jste i někoho dalšího, nebo to řešíme jen s námi?</li>
+                <li class="q-sub">S kým ještě se na to díváte?</li>
+                <li class="q-sub">Mají už od nich nějakou nabídku, kterou byste mi mohli ukázat? Pomůže mi to nastavit naši nabídku tak, ať dává smysl porovnat.</li>
+                <li class="q-sub">Co se vám na těch ostatních nabídkách líbí / nelíbí?</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="q-group">
+            <div class="q-group-header" onclick="toggleGroup(this)">
+              <div class="q-group-meta"><span class="q-group-num">07</span><span class="q-group-name">Kontext firmy</span></div>
+              <span class="q-group-icon">+</span>
+            </div>
+            <div class="q-group-body">
+              <div class="q-group-desc">Cíl: i když jsi tu kvůli zakázce, vždy si odnes základní obrázek o firmě. Pro retenci a další zakázky. Ptej se přirozeně, jakoby mimochodem.</div>
+              <ul class="q-sublist">
+                <li class="q-sub">Jak často u vás takové zakázky vznikají — je to ad hoc, nebo víte, že každý rok je třeba onboarding, Vánoce, eventy?</li>
+                <li class="q-sub">K čemu všemu vlastně merch ve firmě používáte — jen tahle zakázka, nebo víc věcí?</li>
+                <li class="q-sub">Máte nějaký systém, kterým to dnes spravujete, nebo se to řeší pokaždé znovu?</li>
+                <li class="q-sub">Kdyby vás něco mohlo dlouhodobě odlehčit od téhle operativy, mělo by to u vás místo?</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="q-group">
+            <div class="q-group-header" onclick="toggleGroup(this)">
+              <div class="q-group-meta"><span class="q-group-num">08</span><span class="q-group-name">Motivace kontaktu</span></div>
+              <span class="q-group-icon">+</span>
+            </div>
+            <div class="q-group-body">
+              <div class="q-group-desc">Cíl: stejně jako u obecné schůzky — pochopit, co řeší konkrétně tenhle člověk. I u "transakční" zakázky platí, že rozhoduje konkrétní člověk, ne firma.</div>
+              <ul class="q-sublist">
+                <li class="q-sub">Co je pro vás osobně klíčové, aby tahle zakázka dopadla dobře?</li>
+                <li class="q-sub">Co by se muselo stát, abyste si po dodání řekl "tohle bylo super"?</li>
+                <li class="q-sub">Co byste si přál, aby vám z toho odpadlo?</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="q-group">
+            <div class="q-group-header" onclick="toggleGroup(this)">
+              <div class="q-group-meta"><span class="q-group-num">09</span><span class="q-group-name">Závěr — co dál</span></div>
+              <span class="q-group-icon">+</span>
+            </div>
+            <div class="q-group-body">
+              <div class="q-group-desc">Cíl: odejít s jasným next stepem a dohodnutým formátem nabídky.</div>
+              <ul class="q-sublist">
+                <li class="q-sub">Kdy ideálně potřebujete mít naši nabídku?</li>
+                <li class="q-sub">V jaké formě vám to pošlu — PDF, prezentace, Excel s rozpočtem?</li>
+                <li class="q-sub">Jak preferujete další komunikaci — e-mail, telefon, WhatsApp?</li>
+                <li class="q-sub">Kdy se ozveme znovu?</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- PRO OBCHODNÍKY -->
+  <div class="section" id="obchodnici">
+    <div class="section-label">Pravidla</div>
+    <h2 class="section-title">Pro obchodníky</h2>
+    <p class="section-sub">Pár pravidel pro práci s otázkami — před každou schůzkou, ne jen jednou.</p>
+
+    <div class="rules-list">
+
+      <div class="rule-item">
+        <div class="rule-num">1</div>
+        <div class="rule-body">
+          <strong>Neodříkávat jako checklist.</strong> Otázky jsou mapa, ne scénář. Pokud zákazník odpovídá široce, často odpoví na 3 otázky najednou — neptej se znovu na to, co už řekl.
         </div>
       </div>
 
-      <div class="q-group">
-        <div class="q-group-header" onclick="toggleGroup(this)">
-          <div class="q-group-meta"><span class="q-group-num">02</span><span class="q-group-name">K čemu to u vás slouží</span></div>
-          <span class="q-group-icon">+</span>
-        </div>
-        <div class="q-group-body">
-          <div class="q-group-desc">Use case — pro koho, k čemu, jak často. Firmy to řeší velmi různě: HR, marketing, obchodníci, asistentka ředitele — každý jinak.</div>
-          <ul class="q-sublist">
-            <li class="q-sub">K čemu to hlavně využíváte — HR, akce pro klienty, Vánoce, onboarding...?</li>
-            <li class="q-sub">Řeší to jedno oddělení, nebo každý si to řeší sám?</li>
-            <li class="q-sub">Máte teď nějakou konkrétní akci nebo termín, na který to směřujete?</li>
-          </ul>
+      <div class="rule-item">
+        <div class="rule-num">2</div>
+        <div class="rule-body">
+          <strong>Naslouchat víc, než mluvit.</strong> Cíl je, aby zákazník mluvil aspoň 70 % času.
         </div>
       </div>
 
-      <div class="q-group">
-        <div class="q-group-header" onclick="toggleGroup(this)">
-          <div class="q-group-meta"><span class="q-group-num">03</span><span class="q-group-name">Co vás na tom nebaví</span></div>
-          <span class="q-group-icon">+</span>
-        </div>
-        <div class="q-group-body">
-          <div class="q-group-desc">Hledej konkrétní situaci — ne obecné "je to složité". Nejlepší odpovědi přicházejí po otázce na konkrétní příhodu.</div>
-          <ul class="q-sublist">
-            <li class="q-sub">Co vám na tom procesu bere nejvíc času nebo nervů?</li>
-            <li class="q-sub">Stalo se vám, že něco nevyšlo nebo se nestihlo — co to bylo?</li>
-            <li class="q-sub">Kdybychom jednu věc vyřešili — která by vám ulehčila nejvíc?</li>
-          </ul>
+      <div class="rule-item">
+        <div class="rule-num">3</div>
+        <div class="rule-body">
+          <strong>Follow-up je důležitější než další otázka.</strong> Když řeknou "je to chaos", neptej se další otázku ze seznamu — zeptej se "jak konkrétně se ten chaos projevuje?".
         </div>
       </div>
 
-      <div class="q-group">
-        <div class="q-group-header" onclick="toggleGroup(this)">
-          <div class="q-group-meta"><span class="q-group-num">04</span><span class="q-group-name">Co chce každý osobně</span></div>
-          <span class="q-group-icon">+</span>
-        </div>
-        <div class="q-group-body">
-          <div class="q-group-desc">Ne co chce firma — co chce člověk naproti tobě. Osobní frustrace a ambice jsou mnohem silnější motivátory než firemní potřeby.</div>
-          <ul class="q-sublist">
-            <li class="q-sub">Co vás osobně na té schůzce zajímá nejvíc?</li>
-            <li class="q-sub">Co by to pro vás osobně znamenalo, kdybychom to dotáhli dobře?</li>
-          </ul>
+      <div class="rule-item">
+        <div class="rule-num">4</div>
+        <div class="rule-body">
+          <strong>Na peníze přirozeně.</strong> Otázku na budget nedávat jako první. Ideálně až poté, co jsi pochopil jejich proces a use casy.
         </div>
       </div>
 
-      <div class="q-group">
-        <div class="q-group-header" onclick="toggleGroup(this)">
-          <div class="q-group-meta"><span class="q-group-num">05</span><span class="q-group-name">Kdo je kdo a kdo rozhoduje</span></div>
-          <span class="q-group-icon">+</span>
-        </div>
-        <div class="q-group-body">
-          <div class="q-group-desc">(Zkus zmapovat: kdo to iniciuje, kdo schvaluje, kdo platí — i bez přímé otázky.) Člověk na schůzce skoro nikdy není finální rozhodovatel.</div>
-          <ul class="q-sublist">
-            <li class="q-sub">Kdo ještě u vás tyhle věci řeší — nebo koho by to zajímalo?</li>
-            <li class="q-sub">Jak u vás probíhá schválení takového nákupu — kdo do toho musí říct ano?</li>
-            <li class="q-sub">Koho dalšího bychom do toho měli zapojit?</li>
-          </ul>
+      <div class="rule-item">
+        <div class="rule-num">5</div>
+        <div class="rule-body">
+          <strong>Zapisovat hned po schůzce.</strong> Nejpozději 30 minut po. Otázky 07 (motivace osoby) a 02 (use casy) jsou nejdůležitější pro follow-up — to bývá to, co se nejrychleji zapomene.
         </div>
       </div>
 
-      <div class="q-group">
-        <div class="q-group-header" onclick="toggleGroup(this)">
-          <div class="q-group-meta"><span class="q-group-num">06</span><span class="q-group-name">Budget — kolik a odkud</span></div>
-          <span class="q-group-icon">+</span>
-        </div>
-        <div class="q-group-body">
-          <div class="q-group-desc">Ptej se přímo — funguje to. "Ten budget kolik bývá ročně?" je přirozená otázka, ne dotazník. Cíl: vědět číslo a odkud jde.</div>
-          <ul class="q-sublist">
-            <li class="q-sub">Ten budget — kolik bývá ročně, orientačně?</li>
-            <li class="q-sub">Je to pevná položka v rozpočtu, nebo se to řeší každý rok znovu?</li>
-            <li class="q-sub">Z jakého střediska nebo oddělení to jde — marketing, HR, vedení?</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="q-group">
-        <div class="q-group-header" onclick="toggleGroup(this)">
-          <div class="q-group-meta"><span class="q-group-num">07</span><span class="q-group-name">Proč jste přišli</span></div>
-          <span class="q-group-icon">+</span>
-        </div>
-        <div class="q-group-body">
-          <div class="q-group-desc">Jak se k nám dostali, co o nás vědí, co od schůzky čekají. Pomůže to zacílit zbytek hovoru.</div>
-          <ul class="q-sublist">
-            <li class="q-sub">Jak jste se dostali k nám — co vás přivedlo?</li>
-            <li class="q-sub">Co jste z té schůzky chtěli dostat?</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="q-group">
-        <div class="q-group-header" onclick="toggleGroup(this)">
-          <div class="q-group-meta"><span class="q-group-num">08</span><span class="q-group-name">Timing — kdy a jak rychle</span></div>
-          <span class="q-group-icon">+</span>
-        </div>
-        <div class="q-group-body">
-          <div class="q-group-desc">Vždycky hledej konkrétní termín nebo akci. "Vánoce", "veletrh v říjnu", "konference v září" — to jsou kotvy, podle kterých se odhaduje urgence.</div>
-          <ul class="q-sublist">
-            <li class="q-sub">Máte teď něco konkrétního, na co se to váže — akci, veletrh, Vánoce?</li>
-            <li class="q-sub">Kdy byste to reálně potřebovali mít hotové?</li>
-            <li class="q-sub">Je to teď urgentní, nebo spíš zjišťujete možnosti?</li>
-          </ul>
+      <div class="rule-item">
+        <div class="rule-num">6</div>
+        <div class="rule-body">
+          <strong>Vždy si odnést tři věci:</strong> kdo rozhoduje, kdy se rozhoduje, podle čeho se rozhoduje.
         </div>
       </div>
 
@@ -501,9 +875,9 @@ body {
 
   <hr class="divider">
 
-  <!-- NASTROJE -->
+  <!-- PIPEDRIVE ZÁPIS -->
   <div class="section" id="nastroje">
-    <div class="section-label">02 — Pipedrive</div>
+    <div class="section-label">Pipedrive</div>
     <h2 class="section-title">Zápis do Pipedrive — Pinned note</h2>
     <p class="section-sub">Obsah zkopíruj a vlož se svými poznámkami do AI. Výstup zkopíruj do Pipedrive jako pinnovanou note k organizaci.</p>
 
@@ -708,13 +1082,17 @@ v Tomášovi, budget existuje, timing Q3/Q4 2025.</div>
 
 <!-- MOBILE QUICK NAV -->
 <div class="mobile-quicknav">
-  <a href="#otazky" class="mqn-btn mqn-primary">Discovery otázky</a>
-  <a href="#nastroje" class="mqn-btn">Pipedrive zápis</a>
+  <a href="#obecna" class="mqn-btn mqn-primary">A — Obecná schůzka</a>
+  <a href="#zakazka" class="mqn-btn">B — Konkrétní zakázka</a>
 </div>
 
 <script>
 function toggleGroup(header) {
   header.closest('.q-group').classList.toggle('open');
+}
+
+function toggleVersion(id) {
+  document.getElementById(id).classList.toggle('open');
 }
 
 function toggleExp(id) {
@@ -730,7 +1108,6 @@ function copyPrompt() {
   });
 }
 
-// Active nav tracking
 const sections = document.querySelectorAll('.section');
 const navLinks = document.querySelectorAll('.topnav-links a');
 window.addEventListener('scroll', function() {
