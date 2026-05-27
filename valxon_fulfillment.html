@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valxon — Sklad & Fulfillment</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+:root {
+  --black: #0f0f0f;
+  --white: #fafaf8;
+  --gray-50: #f8f7f4;
+  --gray-100: #f0ede6;
+  --gray-200: #e0ddd4;
+  --gray-400: #9e9b92;
+  --gray-600: #5c5a54;
+  --accent: #e84248;
+  --accent-light: #fdecea;
+  --green: #2a6b4a;
+  --green-light: #e8f2ec;
+  --radius: 10px;
+  --radius-sm: 6px;
+  --topnav-h: 56px;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--white);
+  color: var(--black);
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* TOP NAV */
+.topnav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--topnav-h);
+  background: rgba(250,250,248,0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--gray-200);
+  display: flex;
+  align-items: center;
+  padding: 0 40px;
+  gap: 32px;
+  z-index: 100;
+}
+.topnav-back-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: var(--accent-light);
+  padding: 5px 12px;
+  border-radius: 100px;
+  text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: opacity 0.12s;
+}
+.topnav-back-badge:hover { opacity: 0.75; }
+.topnav-links {
+  display: flex;
+  gap: 2px;
+  list-style: none;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.topnav-links::-webkit-scrollbar { display: none; }
+.topnav-links li a {
+  display: block;
+  padding: 6px 12px;
+  font-size: 13px;
+  color: var(--gray-600);
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+  transition: all 0.12s;
+}
+.topnav-links li a:hover { color: var(--black); background: var(--gray-100); }
+.topnav-links li a.active { color: var(--accent); background: var(--accent-light); font-weight: 500; }
+
+/* MAIN */
+.main {
+  padding-top: calc(var(--topnav-h) + 36px);
+  padding-bottom: 60px;
+  padding-left: 40px;
+  padding-right: 40px;
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+/* SECTION */
+.section { margin-bottom: 48px; scroll-margin-top: calc(var(--topnav-h) + 24px); }
+.section-label {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gray-400);
+  margin-bottom: 6px;
+}
+.section-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 26px;
+  letter-spacing: -0.5px;
+  margin-bottom: 6px;
+  line-height: 1.2;
+}
+.section-sub { font-size: 13px; color: var(--gray-600); margin-bottom: 20px; line-height: 1.6; max-width: 600px; }
+.divider { border: none; border-top: 1px solid var(--gray-200); margin: 40px 0; }
+
+/* CALLOUT */
+.callout {
+  border-radius: var(--radius);
+  padding: 12px 16px;
+  margin-bottom: 16px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.callout-tip { background: var(--accent-light); border: 1px solid rgba(232,66,72,0.2); }
+.callout-info { background: var(--gray-100); border: 1px solid var(--gray-200); }
+.callout-warn { background: #fffbe6; border: 1.5px solid #f0d000; }
+.callout-icon { font-size: 13px; flex-shrink: 0; margin-top: 1px; }
+.callout-body { font-size: 13px; line-height: 1.55; color: var(--gray-600); }
+.callout-body strong { color: var(--black); font-weight: 500; }
+
+/* FLOW */
+.flow { display: flex; flex-direction: column; gap: 0; margin-bottom: 32px; }
+.flow-step {
+  display: flex;
+  gap: 20px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--gray-200);
+  align-items: flex-start;
+}
+.flow-step:last-child { border-bottom: none; }
+.flow-num {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  min-width: 22px;
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+.flow-content { flex: 1; }
+.flow-title { font-weight: 500; font-size: 15px; margin-bottom: 3px; color: var(--black); }
+.flow-desc { font-size: 13px; color: var(--gray-600); line-height: 1.55; }
+
+/* PRICE GRID */
+.price-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.price-card {
+  background: var(--gray-50);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius);
+  padding: 16px;
+}
+.price-card-label {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--gray-400);
+  margin-bottom: 6px;
+}
+.price-card-value {
+  font-family: 'DM Serif Display', serif;
+  font-size: 22px;
+  letter-spacing: -0.5px;
+  color: var(--black);
+  line-height: 1.1;
+  margin-bottom: 3px;
+}
+.price-card-note { font-size: 11px; color: var(--gray-400); }
+
+/* TWO-COL */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 8px; }
+.col-block {
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius);
+  padding: 20px;
+}
+.col-block-label {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gray-400);
+  margin-bottom: 14px;
+}
+.col-block ul { list-style: none; }
+.col-block ul li {
+  font-size: 13px;
+  color: var(--black);
+  padding: 7px 0;
+  border-bottom: 1px solid var(--gray-100);
+  display: flex;
+  gap: 8px;
+  line-height: 1.5;
+}
+.col-block ul li:last-child { border-bottom: none; }
+.col-block ul li::before { content: '—'; color: var(--gray-400); flex-shrink: 0; font-size: 12px; margin-top: 1px; }
+
+/* EXPANDABLE */
+.expandable {
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius);
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+.expandable-header {
+  padding: 18px 22px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.12s;
+}
+.expandable-header:hover { background: var(--gray-50); }
+.expandable-title { font-size: 14px; font-weight: 500; color: var(--black); }
+.expandable-title small { display: block; font-size: 12px; font-weight: 400; color: var(--gray-400); margin-top: 2px; }
+.expandable-icon { font-size: 20px; font-weight: 300; color: var(--gray-400); flex-shrink: 0; transition: transform 0.15s; }
+.expandable.open .expandable-icon { transform: rotate(45deg); }
+.expandable-body {
+  display: none;
+  border-top: 1px solid var(--gray-200);
+  padding: 24px 22px;
+}
+.expandable.open .expandable-body { display: block; }
+
+/* PRICE TABLE */
+.price-table { width: 100%; border-collapse: collapse; margin-bottom: 24px; }
+.price-table th {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gray-400);
+  text-align: left;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--gray-200);
+}
+.price-table td {
+  font-size: 13px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--gray-100);
+  vertical-align: top;
+  color: var(--gray-600);
+  line-height: 1.45;
+}
+.price-table td:first-child { font-weight: 500; color: var(--black); width: 40%; }
+.price-table td:last-child { font-weight: 500; color: var(--accent); text-align: right; white-space: nowrap; }
+.price-table tr:last-child td { border-bottom: none; }
+.price-section-title {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--black);
+  margin: 20px 0 10px;
+}
+.price-section-title:first-child { margin-top: 0; }
+
+/* MOBILE */
+.mobile-quicknav { display: none; }
+
+@media (max-width: 768px) {
+  :root { --topnav-h: 52px; }
+  .topnav { padding: 0 12px; gap: 6px; }
+  .topnav-links { gap: 0; flex: 1; }
+  .topnav-links li a { padding: 8px 10px; font-size: 13px; }
+  .main {
+    padding-top: calc(var(--topnav-h) + 20px);
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-bottom: calc(80px + env(safe-area-inset-bottom));
+  }
+  .section { margin-bottom: 36px; }
+  .divider { margin: 28px 0; }
+  .price-grid { grid-template-columns: repeat(2, 1fr); }
+  .two-col { grid-template-columns: 1fr; }
+  .expandable-header { padding: 14px 16px; }
+  .expandable-body { padding: 16px; }
+  .price-table td, .price-table th { font-size: 12px; }
+
+  .mobile-quicknav {
+    display: flex;
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+    background: rgba(250,250,248,0.96);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-top: 1px solid var(--gray-200);
+    gap: 10px;
+    z-index: 200;
+  }
+  .mqn-btn {
+    flex: 1;
+    text-align: center;
+    padding: 13px 10px;
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    background: var(--gray-100);
+    color: var(--black);
+    border: 1px solid var(--gray-200);
+  }
+  .mqn-btn.mqn-primary {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+  }
+}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <a class="topnav-back-badge" href="valxon_sales_manual.html">← Sales manuál</a>
+  <ul class="topnav-links">
+    <li><a href="#jak" class="active">Jak to funguje</a></li>
+    <li><a href="#onboarding">Onboarding</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#cenik">Ceník</a></li>
+  </ul>
+</nav>
+
+<main class="main">
+
+  <!-- JAK TO FUNGUJE -->
+  <div class="section" id="jak">
+    <h2 class="section-title" style="font-size:32px;margin-bottom:8px;">Sklad &amp; Fulfillment</h2>
+    <p class="section-sub" style="margin-bottom:28px;">Zákazník si v platformě řekne o sklad — ty dostaneš notifikaci a kontaktuješ ho. Níže je vše, co potřebuješ vědět: jak to funguje, co zjistit, co mu říct.</p>
+
+    <div class="flow">
+      <div class="flow-step">
+        <div class="flow-num">01</div>
+        <div class="flow-content">
+          <div class="flow-title">Zákazník v platformě klikne na „Chci řešit sklad"</div>
+          <div class="flow-desc">Dostaneš notifikaci. Zavoláš mu do 1–2 pracovních dní.</div>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">02</div>
+        <div class="flow-content">
+          <div class="flow-title">Na call zjistíš základní info</div>
+          <div class="flow-desc">Kolik SKU, jaký objem, jestli mají zboží u sebe nebo u dodavatele, jestli chtějí rozesílky i do zahraničí. Viz checklist v sekci Onboarding.</div>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">03</div>
+        <div class="flow-content">
+          <div class="flow-title">Pošleš mu šablonovou tabulku zásob</div>
+          <div class="flow-desc">Zákazník vyplní: název produktu, SKU, interní kód, počet kusů. Čím líp to připraví, tím rychleji rozjedeme.</div>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">04</div>
+        <div class="flow-content">
+          <div class="flow-title">My nastavíme sklady a přístupy v platformě</div>
+          <div class="flow-desc">Do 48 hodin od vyplnění tabulky. Zákazník uvidí zásoby real-time.</div>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">05</div>
+        <div class="flow-content">
+          <div class="flow-title">Zákazník připraví zboží — my zajistíme převoz</div>
+          <div class="flow-desc">Zboží musí být správně zabaleno a označeno (1 SKU = 1 balení). Odvoz zajistíme my, zákazník jen připraví.</div>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">06</div>
+        <div class="flow-content">
+          <div class="flow-title">Naskladnění a rozjezd</div>
+          <div class="flow-desc">Od teď jede systém. Objednávky z e-shopu nebo platformy se expedují automaticky. My průběžně hlídáme zásoby a navrhujeme doskladnění — zákazník jen schvaluje.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout callout-info" style="margin-bottom:20px;">
+      <div class="callout-icon">💬</div>
+      <div class="callout-body"><strong>Co říct zákazníkovi jako orientační ceny</strong> — finální nabídka se vždy upřesní podle objemu, typu balení a frekvence pohybu zboží.</div>
+    </div>
+
+    <div class="price-grid">
+      <div class="price-card">
+        <div class="price-card-label">Setup</div>
+        <div class="price-card-value">od 3 000 Kč</div>
+        <div class="price-card-note">jednorázově</div>
+      </div>
+      <div class="price-card">
+        <div class="price-card-label">Naskladnění</div>
+        <div class="price-card-value">od 60 Kč</div>
+        <div class="price-card-note">za paletu</div>
+      </div>
+      <div class="price-card">
+        <div class="price-card-label">Skladování</div>
+        <div class="price-card-value">od 300 Kč</div>
+        <div class="price-card-note">za paletu / měsíc</div>
+      </div>
+      <div class="price-card">
+        <div class="price-card-label">Expedice CZ</div>
+        <div class="price-card-value">od 110 Kč</div>
+        <div class="price-card-note">za zásilku</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ONBOARDING -->
+  <div class="section" id="onboarding">
+    <div class="section-label">02 — Onboarding</div>
+    <h2 class="section-title">Co potřebujeme a co zařídíme</h2>
+    <p class="section-sub">Checklist pro první call se zákazníkem — co zjistit a co mu říct, co se stane na naší straně.</p>
+
+    <div class="two-col">
+      <div class="col-block">
+        <div class="col-block-label">Co potřebujeme od zákazníka</div>
+        <ul>
+          <li>Přibližný počet SKU a základní přehled sortimentu</li>
+          <li>Vyplněnou šablonovou tabulku zásob (název produktu, SKU kód, počet kusů)</li>
+          <li>Info, jak je zboží dnes baleno a označeno — ideálně 1 SKU = 1 balení</li>
+          <li>Připravenost zboží k předání — čím lépe označené, tím rychlejší naskladnění</li>
+          <li>Jestli chce standardní doskladnění (my navrhujeme, zákazník schvaluje), nebo jiný režim</li>
+        </ul>
+      </div>
+      <div class="col-block">
+        <div class="col-block-label">Co zařídíme my</div>
+        <ul>
+          <li>Pošleme šablonovou tabulku zásob a zkontrolujeme vstupy</li>
+          <li>Nastavíme sklady a uživatelské přístupy v platformě</li>
+          <li>Zajistíme kompletní převoz zboží na naše sklady</li>
+          <li>Nastavíme proces příjmu, evidence a expedice</li>
+          <li>Průběžně hlídáme zásoby a připravujeme podklady pro doskladnění</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- FAQ -->
+  <div class="section" id="faq">
+    <div class="section-label">03 — FAQ</div>
+    <h2 class="section-title">Časté otázky</h2>
+    <p class="section-sub">Co se zákazníci nejčastěji ptají a jak to vysvětlit.</p>
+
+    <div class="expandable" id="faq1">
+      <div class="expandable-header" onclick="toggleExp('faq1')">
+        <div class="expandable-title">Jak rychle to rozjedeme?</div>
+        <div class="expandable-icon">+</div>
+      </div>
+      <div class="expandable-body">
+        Záleží hlavně na připravenosti zákazníka. Jakmile vyplní tabulku zásob a zboží je připravené k předání, sklady a přístupy nastavíme do 48 hodin. Celý onboarding od prvního callu do rozjezdu trvá standardně 1–2 týdny.
+      </div>
+    </div>
+
+    <div class="expandable" id="faq2">
+      <div class="expandable-header" onclick="toggleExp('faq2')">
+        <div class="expandable-title">Zákazník má merch u sebe nebo u jiného dodavatele. Jak ho dostaneme k nám?</div>
+        <div class="expandable-icon">+</div>
+      </div>
+      <div class="expandable-body">
+        Převoz zajistíme my. Zákazník jen zboží připraví a správně označí — odvezeme si ho sami. Cena převozu závisí na vzdálenosti a objemu, domlouváme individuálně.
+      </div>
+    </div>
+
+    <div class="expandable" id="faq3">
+      <div class="expandable-header" onclick="toggleExp('faq3')">
+        <div class="expandable-title">Jsou nějaké minimální objemy nebo počty zásilek?</div>
+        <div class="expandable-icon">+</div>
+      </div>
+      <div class="expandable-body">
+        Žádný pevný limit. Ceny jsou variabilní podle objemu — čím větší provoz, tím lépe vychází cena za zásilku. Pro velmi malé objemy (pár zásilek měsíčně) se domluvíme individuálně.
+      </div>
+    </div>
+
+    <div class="expandable" id="faq4">
+      <div class="expandable-header" onclick="toggleExp('faq4')">
+        <div class="expandable-title">Jak zákazník vidí zásoby a objednávky?</div>
+        <div class="expandable-icon">+</div>
+      </div>
+      <div class="expandable-body">
+        Přímo v platformě Valxon — real-time přehled zásob, stav expedice, historii objednávek. Přístup může mít jen jeden člověk nebo celý tým, záleží na nastavení.
+      </div>
+    </div>
+
+    <div class="expandable" id="faq5">
+      <div class="expandable-header" onclick="toggleExp('faq5')">
+        <div class="expandable-title">Posíláte i do zahraničí?</div>
+        <div class="expandable-icon">+</div>
+      </div>
+      <div class="expandable-body">
+        Ano — standardně Česko a Slovensko, na dotaz i Německo a další země. Viz podrobný ceník pro konkrétní ceny dopravy.
+      </div>
+    </div>
+
+    <div class="expandable" id="faq6">
+      <div class="expandable-header" onclick="toggleExp('faq6')">
+        <div class="expandable-title">Může zákazník přidat do balíčku voucher nebo personalizovanou kartičku?</div>
+        <div class="expandable-icon">+</div>
+      </div>
+      <div class="expandable-body">
+        Ano. Vložení marketingového materiálu (voucher, karta, brandingový materiál) je za 2 Kč/ks. Pokud chce zákazník i potisk (samolepka s tiskem), je to 4 Kč/ks.
+      </div>
+    </div>
+
+    <div class="expandable" id="faq7">
+      <div class="expandable-header" onclick="toggleExp('faq7')">
+        <div class="expandable-title">Jak funguje doskladnění? Musí zákazník sám sledovat zásoby?</div>
+        <div class="expandable-icon">+</div>
+      </div>
+      <div class="expandable-body">
+        Ne — my zásoby sledujeme průběžně a připravujeme návrhy na doskladnění. Zákazník návrhy jen schvaluje. Pokud chce jiný režim (např. automatické doskladnění bez schvalování), nastavíme individuálně.
+      </div>
+    </div>
+
+    <div class="expandable" id="faq8">
+      <div class="expandable-header" onclick="toggleExp('faq8')">
+        <div class="expandable-title">Co když zákazník chce schvalovat každou objednávku před odesláním?</div>
+        <div class="expandable-icon">+</div>
+      </div>
+      <div class="expandable-body">
+        Lze nastavit. Standardní režim je automatická expedice — objednávka přijde a odejde bez zásahu zákazníka. Pokud chce schvalovací krok, nastavíme ho individuálně.
+      </div>
+    </div>
+
+    <div class="expandable" id="faq9">
+      <div class="expandable-header" onclick="toggleExp('faq9')">
+        <div class="expandable-title">Zákazník prodává merch externě — můžeme napojit jeho e-shop?</div>
+        <div class="expandable-icon">+</div>
+      </div>
+      <div class="expandable-body">
+        Ano. Napojíme e-shop přes API nebo systémovou integraci. Jednorázový setup integrace je 2 990 Kč + 35 Kč za každou systémově zpracovanou objednávku.
+      </div>
+    </div>
+
+    <div class="expandable" id="faq10">
+      <div class="expandable-header" onclick="toggleExp('faq10')">
+        <div class="expandable-title">Jak funguje fakturace?</div>
+        <div class="expandable-icon">+</div>
+      </div>
+      <div class="expandable-body">
+        Fakturujeme měsíčně. Zákazník dostane přehled všech pohybů (příjmy, expedice, skladování) a výpočet za dané období.
+      </div>
+    </div>
+
+  </div>
+
+  <hr class="divider">
+
+  <!-- CENÍK -->
+  <div class="section" id="cenik">
+    <div class="section-label">04 — Ceník</div>
+    <h2 class="section-title">Ceník</h2>
+    <p class="section-sub">Orientační ceny pro zákazníka jsou v sekci Jak to funguje. Níže je podrobný interní ceník od našeho logistického partnera Olicon.</p>
+
+    <div class="callout callout-warn" style="margin-bottom:16px;">
+      <div class="callout-icon">⚠️</div>
+      <div class="callout-body"><strong>Interní podklad — nezasílat zákazníkovi.</strong> Zákazníkovi vždy komunikuj orientační ceny „od" z horní sekce. Finální nabídka se upřesňuje individuálně dle objemu.</div>
+    </div>
+
+    <div class="expandable" id="exp-cenik">
+      <div class="expandable-header" onclick="toggleExp('exp-cenik')">
+        <div class="expandable-title">
+          Podrobný ceník — Olicon logistics
+          <small>Nabídka ze dne 28. 4. 2026 · všechny ceny bez DPH</small>
+        </div>
+        <div class="expandable-icon">+</div>
+      </div>
+      <div class="expandable-body">
+
+        <div class="price-section-title">Skladování zboží</div>
+        <table class="price-table">
+          <thead><tr><th>Služba</th><th>Popis</th><th>Cena</th></tr></thead>
+          <tbody>
+            <tr><td>Paleta – pick (zemní pozice)</td><td>1 paleta = 1 pozice (zem)</td><td>12 Kč / paleta / den</td></tr>
+            <tr><td>Paleta – doplňovací (pal. regál)</td><td>1 paleta = 1 pozice (regál)</td><td>6,5 Kč / paleta / den</td></tr>
+            <tr><td>Regál – drobné položky</td><td>výška do 0,45 m</td><td>8,5 Kč / m² / den</td></tr>
+          </tbody>
+        </table>
+
+        <div class="price-section-title">Manipulace</div>
+        <table class="price-table">
+          <thead><tr><th>Služba</th><th>Popis</th><th>Cena</th></tr></thead>
+          <tbody>
+            <tr><td>Příjem palety (IN)</td><td>Naskladnění, kontrola, evidence</td><td>59 Kč / paleta</td></tr>
+            <tr><td>Výdej palety (OUT)</td><td>Expedice, manipulace</td><td>59 Kč / paleta</td></tr>
+          </tbody>
+        </table>
+
+        <div class="price-section-title">Fulfillment</div>
+        <table class="price-table">
+          <thead><tr><th>Služba</th><th>Popis</th><th>Cena</th></tr></thead>
+          <tbody>
+            <tr><td>Systémové zpracování objednávky</td><td>Napojení e-shopu, IT procesy, administrativa</td><td>35 Kč / objednávka</td></tr>
+            <tr><td>Pick – položka</td><td>Každá položka v objednávce</td><td>6 Kč / položka</td></tr>
+            <tr><td>Pick – kus</td><td>Každý kus v objednávce</td><td>0,5 Kč / ks</td></tr>
+          </tbody>
+        </table>
+
+        <div class="price-section-title">Balení a handling</div>
+        <table class="price-table">
+          <thead><tr><th>Zásilka</th><th>Popis</th><th>Cena</th></tr></thead>
+          <tbody>
+            <tr><td>do 5 kg</td><td>Bublinkové obálky / balík — obal + manipulace</td><td>8 Kč</td></tr>
+            <tr><td>do 10 kg</td><td>Obal + manipulace</td><td>12 Kč</td></tr>
+            <tr><td>do 20 kg</td><td>Obal + manipulace</td><td>20 Kč</td></tr>
+            <tr><td>do 30 kg</td><td>Obal + manipulace</td><td>30 Kč</td></tr>
+          </tbody>
+        </table>
+
+        <div class="price-section-title">Další služby</div>
+        <table class="price-table">
+          <thead><tr><th>Služba</th><th>Popis</th><th>Cena</th></tr></thead>
+          <tbody>
+            <tr><td>Vložení marketingového materiálu</td><td>Voucher, karta, brandingový materiál</td><td>2 Kč / ks</td></tr>
+            <tr><td>Polep (při dodané samolepce)</td><td>Aplikace samolepky</td><td>2 Kč / ks</td></tr>
+            <tr><td>Polep s tiskem</td><td>Tisk a aplikace samolepky</td><td>4 Kč / ks</td></tr>
+            <tr><td>Zpracování vratky</td><td>Zpracování + kontrola + evidence</td><td>29 Kč / ks</td></tr>
+            <tr><td>Prvotní jednorázové nastavení</td><td>Setup integrace e-shopu</td><td>2 990 Kč</td></tr>
+            <tr><td>Stretch fólie</td><td>Fixace palety</td><td>85 Kč</td></tr>
+            <tr><td>EUR paleta</td><td>Použití palety dle potřeby</td><td>450 Kč</td></tr>
+            <tr><td>Extra skladové práce</td><td>Nestandardní operace</td><td>425 Kč / hod</td></tr>
+          </tbody>
+        </table>
+
+        <div class="price-section-title">Přeprava — Česko</div>
+        <table class="price-table">
+          <thead><tr><th>Dopravce</th><th>Hmotnost</th><th>Cena</th></tr></thead>
+          <tbody>
+            <tr><td>Zásilkovna Z-Point</td><td>do 5 kg</td><td>44 Kč</td></tr>
+            <tr><td>Česká pošta — Balíkovna</td><td>do 5 kg</td><td>42 Kč</td></tr>
+            <tr><td>Česká pošta — Balíkovna Plus</td><td>do 5 kg (na adresu)</td><td>62 Kč</td></tr>
+            <tr><td>GLS BusinessParcel</td><td>do 5 kg</td><td>64 Kč</td></tr>
+            <tr><td>GLS BusinessParcel</td><td>do 10 kg</td><td>76 Kč</td></tr>
+            <tr><td>GLS BusinessParcel</td><td>do 20 kg</td><td>85 Kč</td></tr>
+            <tr><td>GLS BusinessParcel</td><td>do 30 kg</td><td>120 Kč</td></tr>
+          </tbody>
+        </table>
+
+        <div class="price-section-title">Přeprava — Slovensko</div>
+        <table class="price-table">
+          <thead><tr><th>Dopravce</th><th>Hmotnost</th><th>Cena</th></tr></thead>
+          <tbody>
+            <tr><td>Zásilkovna Z-Point SK</td><td>do 5 kg</td><td>61 Kč</td></tr>
+            <tr><td>GLS EuroBusinessParcel</td><td>do 5 kg</td><td>83 Kč</td></tr>
+            <tr><td>GLS EuroBusinessParcel</td><td>do 10 kg</td><td>126 Kč</td></tr>
+            <tr><td>GLS EuroBusinessParcel</td><td>do 20 kg</td><td>173 Kč</td></tr>
+            <tr><td>GLS EuroBusinessParcel</td><td>do 30 kg</td><td>233 Kč</td></tr>
+          </tbody>
+        </table>
+
+        <div class="price-section-title">Přeprava — Německo</div>
+        <table class="price-table">
+          <thead><tr><th>Dopravce</th><th>Hmotnost</th><th>Cena</th></tr></thead>
+          <tbody>
+            <tr><td>DPD Line-Haul Spring</td><td>do 1 kg</td><td>4,61 EUR</td></tr>
+            <tr><td>DPD Line-Haul Spring</td><td>do 2 kg</td><td>5,72 EUR</td></tr>
+            <tr><td>DPD Line-Haul Spring</td><td>do 5 kg</td><td>6,11 EUR</td></tr>
+            <tr><td>DPD Line-Haul Spring</td><td>do 10 kg</td><td>6,33 EUR</td></tr>
+            <tr><td>GLS EuroBusinessParcel</td><td>do 5 kg</td><td>98 Kč</td></tr>
+            <tr><td>GLS EuroBusinessParcel</td><td>do 10 kg</td><td>157 Kč</td></tr>
+            <tr><td>GLS EuroBusinessParcel</td><td>do 20 kg</td><td>216 Kč</td></tr>
+            <tr><td>GLS EuroBusinessParcel</td><td>do 30 kg</td><td>290 Kč</td></tr>
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+
+  </div>
+
+</main>
+
+<!-- MOBILE QUICK NAV -->
+<div class="mobile-quicknav">
+  <a href="#jak" class="mqn-btn mqn-primary">Jak to funguje</a>
+  <a href="#faq" class="mqn-btn">FAQ</a>
+</div>
+
+<script>
+function toggleExp(id) {
+  document.getElementById(id).classList.toggle('open');
+}
+
+const sections = document.querySelectorAll('.section');
+const navLinks = document.querySelectorAll('.topnav-links a');
+window.addEventListener('scroll', function() {
+  let current = '';
+  sections.forEach(function(s) {
+    if (window.scrollY >= s.offsetTop - 80) current = s.id;
+  });
+  navLinks.forEach(function(a) {
+    a.classList.remove('active');
+    if (a.getAttribute('href') === '#' + current) a.classList.add('active');
+  });
+}, { passive: true });
+</script>
+
+</body>
+</html>
