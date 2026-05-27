@@ -505,11 +505,11 @@ body {
 <nav class="topnav">
   <a class="topnav-back-badge" href="valxon_sales_manual.html">← Sales manuál</a>
   <ul class="topnav-links">
-    <li><a href="#jak" class="active">Jak to funguje v krocích</a></li>
-    <li><a href="#pitch">Co potřebujeme od klienta</a></li>
-    <li><a href="#faq">Co se klient ptá</a></li>
-    <li><a href="#schuze">Otázky na klienta</a></li>
+    <li><a href="#jak" class="active">Jak to funguje</a></li>
+    <li><a href="#info">Co potřebujeme</a></li>
+    <li><a href="#co-my">Co uděláme my</a></li>
     <li><a href="#cenik">Kolik ho to stojí</a></li>
+    <li><a href="#faq">Co se klient ptá</a></li>
     <li><a href="#closing">Closing</a></li>
   </ul>
 </nav>
@@ -612,84 +612,125 @@ body {
 
   <hr class="divider">
 
-  <!-- CO POTŘEBUJEME OD KLIENTA -->
-  <div class="section" id="pitch">
-    <div class="section-label">02 — Onboarding</div>
-    <h2 class="section-title">Co potřebujeme od klienta</h2>
-    <p class="section-sub">Tři věty do pitch a pak co konkrétně potřebujeme od klienta před startem.</p>
+  <!-- CO POTŘEBUJEME OD ZÁKAZNÍKA -->
+  <div class="section" id="info">
+    <div class="section-label">02 — Discovery</div>
+    <h2 class="section-title">Co potřebujeme od zákazníka</h2>
+    <p class="section-sub">Na schůzce zjisti klíčové informace. Po schůzce pošli šablonu a zajisti podklady pro operations.</p>
 
-    <div class="pitch-box" style="margin-bottom:28px;">
-      <ul class="pitch-text" style="list-style:none;">
-        <li data-n="1">Vyplníte nám tabulku, co máte na skladě, a domluvíme detaily.</li>
-        <li data-n="2">My zařídíme převoz, naskladnění, a od té chvíle merch leží u nás.</li>
-        <li data-n="3">Objednáváte přes platformu — komu, kolik, kam — a my pošleme. Zásoby si sledujete v platformě sami.</li>
-      </ul>
+    <div class="phase-label" style="margin-top:0;">
+      <span class="phase-name">Na schůzce — zjisti</span>
     </div>
+
+    <div class="q-blocks" style="margin-bottom:28px;">
+      <div class="q-block">
+        <div class="q-block-q">Kolik merche mají a kde to momentálně leží?</div>
+        <div class="q-block-why">Pár krabic v kanceláři, paleta u dodavatele nebo více palet v externím skladu — určí rozsah prvního převozu a typ skladování.</div>
+      </div>
+      <div class="q-block">
+        <div class="q-block-q">Jak často posílají zásilky a komu?</div>
+        <div class="q-block-why">Zaměstnancům, klientům nebo na eventy. Frekvence a typ příjemce = základ pro odhad objemu a nastavení procesů.</div>
+      </div>
+      <div class="q-block">
+        <div class="q-block-q">Posílají i mimo Česko? Kam?</div>
+        <div class="q-block-why">Slovensko a základní EU destinace umíme. Jiné destinace ověř s operations před tím, než cokoli slibuješ.</div>
+      </div>
+      <div class="q-block">
+        <div class="q-block-q">Kdo to u nich interně řeší a kdo schvaluje?</div>
+        <div class="q-block-why">Zjistíš kontaktní osobu pro další kroky a kdo bude podpisovat smlouvu.</div>
+      </div>
+      <div class="q-block">
+        <div class="q-block-q">Jakou evidenci dnes mají?</div>
+        <div class="q-block-why">Excel a maily = velký posun kupředu. Vlastní WMS = spíš doplnění než náhrada — ověř s operations.</div>
+      </div>
+    </div>
+
+    <div class="phase-label">
+      <span class="phase-name">Po schůzce — získej</span>
+    </div>
+
+    <ul class="ob-items" style="border:1px solid var(--gray-200);border-radius:var(--radius);padding:8px 22px;">
+      <li class="ob-item">
+        <div>
+          <div class="ob-item-title">Vyplněnou šablonovou tabulku zásob.</div>
+          <div class="ob-item-desc">Minimálně název produktu, název SKU, interní kód SKU a počet kusů. Šablonu pošleš ty hned po schůzce.</div>
+        </div>
+      </li>
+      <li class="ob-item">
+        <div>
+          <div class="ob-item-title">Informaci o balení a označení zboží.</div>
+          <div class="ob-item-desc">Ideálně 1 SKU = 1 jasně označený skladový celek. Čím lépe připravené, tím rychlejší naskladnění.</div>
+        </div>
+      </li>
+      <li class="ob-item">
+        <div>
+          <div class="ob-item-title">Přibližný počet SKU a základní přehled sortimentu.</div>
+          <div class="ob-item-desc">Pomůže operations odhadnout rozsah onboardingu a skladového nastavení.</div>
+        </div>
+      </li>
+      <li class="ob-item">
+        <div>
+          <div class="ob-item-title">Potvrzení preferovaného režimu doskladnění.</div>
+          <div class="ob-item-desc">Standardní průběh nebo individuální nastavení — operations to nastaví podle toho.</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <hr class="divider">
+
+  <!-- CO UDĚLÁME MY -->
+  <div class="section" id="co-my">
+    <div class="section-label">03 — Naše kroky</div>
+    <h2 class="section-title">Co uděláme my</h2>
+    <p class="section-sub">Co zařídí Sales a co Operations poté, co klient potvrdí zájem.</p>
 
     <div class="ob-grid">
       <div class="ob-col">
-        <div class="ob-col-label">Co potřebujeme od klienta</div>
+        <div class="ob-col-label">Sales</div>
         <ul class="ob-items">
           <li class="ob-item">
             <div>
-              <div class="ob-item-title">Přibližný počet SKU a základní přehled sortimentu.</div>
-              <div class="ob-item-desc">Pomůže nám to odhadnout rozsah onboardingu i skladového nastavení.</div>
+              <div class="ob-item-title">Pošle klientovi šablonovou tabulku zásob a ověří, zda je správně vyplněná.</div>
             </div>
           </li>
           <li class="ob-item">
             <div>
-              <div class="ob-item-title">Vyplněnou šablonovou tabulku zásob.</div>
-              <div class="ob-item-desc">Minimálně název produktu, název SKU, interní kód SKU a počet kusů.</div>
+              <div class="ob-item-title">Připraví předběžnou kalkulaci.</div>
+              <div class="ob-item-desc">Na základě orientačního ceníku níže a konzultace s operations. Kalkulaci posílá Sales, ne operations.</div>
             </div>
           </li>
           <li class="ob-item">
             <div>
-              <div class="ob-item-title">Informaci, jak je zboží dnes baleno a označeno.</div>
-              <div class="ob-item-desc">Ideálně platí 1 SKU = 1 balení / 1 jasně označený skladový celek.</div>
-            </div>
-          </li>
-          <li class="ob-item">
-            <div>
-              <div class="ob-item-title">Co nejlepší připravenost zboží pro převoz a příjem.</div>
-              <div class="ob-item-desc">Čím lépe bude zboží ze strany klienta připravené a označené, tím rychleji proběhne naskladnění.</div>
-            </div>
-          </li>
-          <li class="ob-item">
-            <div>
-              <div class="ob-item-title">Potvrzení, zda klientovi vyhovuje standardní režim doskladnění.</div>
-              <div class="ob-item-desc">Pokud chce schvalování nebo práci se zásobami řešit jinak, nastavíme postup individuálně.</div>
+              <div class="ob-item-title">Vytvoří zakázku v Pipedrive a předá info operations.</div>
+              <div class="ob-item-desc">Operations pak kontaktuje klienta pro podpis smlouvy a technické detaily onboardingu.</div>
             </div>
           </li>
         </ul>
       </div>
       <div class="ob-col">
-        <div class="ob-col-label">Co zařídíme my</div>
+        <div class="ob-col-label">Operations</div>
         <ul class="ob-items">
           <li class="ob-item">
             <div>
-              <div class="ob-item-title">Pošleme klientovi šablonovou tabulku zásob a zkontrolujeme vstupy.</div>
+              <div class="ob-item-title">Nastaví sklady, produkty a uživatelské přístupy v platformě.</div>
+              <div class="ob-item-desc">Do 48 hodin od vyplněné tabulky vidí klient zásoby v platformě.</div>
             </div>
           </li>
           <li class="ob-item">
             <div>
-              <div class="ob-item-title">Nastavíme sklady a uživatelské přístupy v platformě.</div>
+              <div class="ob-item-title">Zajistí kompletní převoz zboží na naše sklady.</div>
             </div>
           </li>
           <li class="ob-item">
             <div>
-              <div class="ob-item-title">Zajistíme kompletní převoz zboží na naše sklady.</div>
-              <div class="ob-item-desc">Podle připravenosti ze strany klienta pak navážeme rychlým příjmem do skladu.</div>
+              <div class="ob-item-title">Provede příjem zboží, kontrolu a evidenci.</div>
             </div>
           </li>
           <li class="ob-item">
             <div>
-              <div class="ob-item-title">Nastavíme proces příjmu, evidence a expedice.</div>
-            </div>
-          </li>
-          <li class="ob-item">
-            <div>
-              <div class="ob-item-title">Budeme průběžně hlídat zásoby a připravovat podklady pro doskladnění.</div>
-              <div class="ob-item-desc">Standardně vycházíme ze stavů zásob a prodejů a klient následně schvaluje naše návrhy.</div>
+              <div class="ob-item-title">Spustí provoz a zaškolí klienta na platformu.</div>
+              <div class="ob-item-desc">Od tohoto okamžiku klient objednává přes platformu a zásoby sleduje sám.</div>
             </div>
           </li>
         </ul>
@@ -699,9 +740,9 @@ body {
 
   <hr class="divider">
 
-  <!-- FAQ -->
+  <!-- CO SE KLIENT PTÁ -->
   <div class="section" id="faq">
-    <div class="section-label">03 — Časté dotazy</div>
+    <div class="section-label">04 — Časté dotazy</div>
     <h2 class="section-title">Co se klient ptá</h2>
     <p class="section-sub">Nejčastější otázky, které přijdou na schůzce nebo e-mailem. Víš, co říct — a co radši neříkat.</p>
 
@@ -819,54 +860,11 @@ body {
 
   <hr class="divider">
 
-  <!-- NA SCHŮZCE -->
-  <div class="section" id="schuze">
-    <div class="section-label">04 — Discovery</div>
-    <h2 class="section-title">Na co se klienta zeptat na schůzce</h2>
-    <p class="section-sub">Než začneš mluvit o nabídce, vytáhni z klienta tohle. Většina otázek ti přímo nahrává odpověď, co bude potřeba ve fázi 1.</p>
-
-    <div class="q-blocks">
-
-      <div class="q-block">
-        <div class="q-block-q">Kolik merche má dneska a kde leží?</div>
-        <div class="q-block-why">Pár krabic v kanceláři? Paleta u dodavatele? Víc palet u kooperace? Řekne ti, jestli ho čeká paletové nebo regálové skladování — a kolik práce dá první převoz.</div>
-      </div>
-
-      <div class="q-block">
-        <div class="q-block-q">Jak často to posílá a komu?</div>
-        <div class="q-block-why">Zaměstnancům na onboarding? Klientům jako dárky? Na eventy? Frekvence a typ příjemce = hodnota toho, co prodáváš. Měsíčně 20 balíků = velká úleva. Jednou za rok 200 = tam je hodnota menší.</div>
-      </div>
-
-      <div class="q-block">
-        <div class="q-block-q">Posílá i ven z Česka?</div>
-        <div class="q-block-why">Pokud ano, kam. Slovensko a EU řešíme individuálně — ověř si to s operations, sám nepočítej.</div>
-      </div>
-
-      <div class="q-block">
-        <div class="q-block-q">Kdo to dnes interně řeší?</div>
-        <div class="q-block-why">Marketing? HR? Asistentka? Tohle je tvoje persona pro pitch — mluv pak na ni.</div>
-      </div>
-
-      <div class="q-block">
-        <div class="q-block-q">Kde to dneska drhne?</div>
-        <div class="q-block-why">Nech klienta popsat sám, co ho na tom štve. Tady se vyloupne hodnota — ne z toho, co my říkáme, ale z toho, co klient cítí.</div>
-      </div>
-
-      <div class="q-block">
-        <div class="q-block-q">Mají dnes nějakou evidenci?</div>
-        <div class="q-block-why">Excel a maily = velký skok kupředu. Vlastní WMS = nepůjde výměna, spíš doplnění.</div>
-      </div>
-
-    </div>
-  </div>
-
-  <hr class="divider">
-
   <!-- CENÍK -->
   <div class="section" id="cenik">
     <div class="section-label">05 — Ceník</div>
     <h2 class="section-title">Co stojí kolik</h2>
-    <p class="section-sub">Ceny jsou na orientaci — používej je v hovoru, ne jako nabídku. Vždycky říkej "od X Kč", nikdy "to vás bude stát X".</p>
+    <p class="section-sub">Ceny jsou orientační — pro první schůzku. Předběžnou kalkulaci připravuje Sales na základě zjistěných info a konzultace s operations.</p>
 
     <div class="price-grid">
       <div class="price-card">
@@ -1027,42 +1025,15 @@ body {
   <div class="section" id="closing">
     <div class="section-label">06 — Closing</div>
     <h2 class="section-title">Když klient řekne „jdeme do toho"</h2>
-    <p class="section-sub">Pravidlo: než klient vychladne, ozvi se mu znova.</p>
 
-    <div class="closing-steps" style="margin-bottom:36px;">
+    <div class="closing-steps">
       <div class="closing-step">
         <div class="closing-step-num">1</div>
-        <div class="closing-step-body"><strong>Pošli mu mail se shrnutím a šablonou zásob</strong></div>
+        <div class="closing-step-body"><strong>Získej potřebné info od klienta</strong> — viz sekce Co potřebujeme od zákazníka výše</div>
       </div>
       <div class="closing-step">
         <div class="closing-step-num">2</div>
-        <div class="closing-step-body"><strong>Hoď info operations</strong> — objem, frekvence, destinace, kontakt</div>
-      </div>
-      <div class="closing-step">
-        <div class="closing-step-num">3</div>
-        <div class="closing-step-body"><strong>Domluv follow-up do týdne</strong> — ne za měsíc, kdy už zapomene</div>
-      </div>
-      <div class="closing-step">
-        <div class="closing-step-num">4</div>
-        <div class="closing-step-body">Operations mezitím <strong>připraví kalkulaci a další kroky</strong></div>
-      </div>
-    </div>
-
-    <div class="section-label" style="margin-bottom:10px;">Tohle radši nikdy neslibuj</div>
-    <p style="font-size:13px;color:var(--gray-600);margin-bottom:16px;line-height:1.6;">Pár věcí, kde se vyplatí říct „to ti ověřím" místo „to vyřešíme".</p>
-
-    <div class="warn-list">
-      <div class="warn-item">
-        <div class="warn-icon">⚠️</div>
-        <div class="warn-body"><strong>Konkrétní cenu setup u většího klienta</strong> — ověř si s operations</div>
-      </div>
-      <div class="warn-item">
-        <div class="warn-icon">⚠️</div>
-        <div class="warn-body"><strong>Posílání do zahraničí</strong> — vždy s operations, neslibuj čísla</div>
-      </div>
-      <div class="warn-item">
-        <div class="warn-icon">⚠️</div>
-        <div class="warn-body"><strong>„Za sklad ručíme my"</strong> — formulace je teď v jednání. Používej raději „zboží je u nás evidované a pojištěné"</div>
+        <div class="closing-step-body"><strong>Vytvoř zakázku v Pipedrive a pošli info na operations</strong> — objem, frekvence, destinace, kontakt</div>
       </div>
     </div>
   </div>
@@ -1071,8 +1042,8 @@ body {
 
 <!-- MOBILE QUICK NAV -->
 <div class="mobile-quicknav">
-  <a href="#jak" class="mqn-btn mqn-primary">Jak to probíhá</a>
-  <a href="#schuze" class="mqn-btn">Na schůzce</a>
+  <a href="#jak" class="mqn-btn mqn-primary">Jak to funguje</a>
+  <a href="#info" class="mqn-btn">Co potřebujeme</a>
 </div>
 
 <script>
