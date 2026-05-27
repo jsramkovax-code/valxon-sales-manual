@@ -116,7 +116,7 @@ body {
   margin-bottom: 6px;
   line-height: 1.2;
 }
-.section-sub { font-size: 13px; color: var(--gray-600); margin-bottom: 20px; line-height: 1.6; max-width: 600px; }
+.section-sub { font-size: 13px; color: var(--gray-600); margin-bottom: 24px; line-height: 1.6; max-width: 600px; }
 .divider { border: none; border-top: 1px solid var(--gray-200); margin: 40px 0; }
 
 /* CALLOUT */
@@ -135,12 +135,32 @@ body {
 .callout-body { font-size: 13px; line-height: 1.55; color: var(--gray-600); }
 .callout-body strong { color: var(--black); font-weight: 500; }
 
+/* PHASE LABEL */
+.phase-label {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin: 24px 0 4px;
+}
+.phase-label:first-child { margin-top: 0; }
+.phase-name {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--black);
+}
+.phase-sub-label {
+  font-size: 11px;
+  color: var(--gray-400);
+}
+
 /* FLOW */
-.flow { display: flex; flex-direction: column; gap: 0; margin-bottom: 32px; }
+.flow { display: flex; flex-direction: column; }
 .flow-step {
   display: flex;
   gap: 20px;
-  padding: 18px 0;
+  padding: 16px 0;
   border-bottom: 1px solid var(--gray-200);
   align-items: flex-start;
 }
@@ -150,7 +170,7 @@ body {
   font-weight: 600;
   letter-spacing: 0.08em;
   color: var(--accent);
-  min-width: 22px;
+  min-width: 26px;
   flex-shrink: 0;
   padding-top: 2px;
 }
@@ -158,12 +178,101 @@ body {
 .flow-title { font-weight: 500; font-size: 15px; margin-bottom: 3px; color: var(--black); }
 .flow-desc { font-size: 13px; color: var(--gray-600); line-height: 1.55; }
 
+/* DISCOVERY Q-BLOCKS */
+.q-blocks { display: flex; flex-direction: column; }
+.q-block {
+  padding: 18px 0;
+  border-bottom: 1px solid var(--gray-200);
+}
+.q-block:last-child { border-bottom: none; }
+.q-block-q {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--black);
+  margin-bottom: 6px;
+  font-style: italic;
+}
+.q-block-why {
+  font-size: 13px;
+  color: var(--gray-400);
+  line-height: 1.55;
+}
+
+/* PITCH BOX */
+.pitch-box {
+  background: var(--black);
+  border-radius: var(--radius);
+  padding: 28px 32px;
+  margin-bottom: 12px;
+}
+.pitch-box-label {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 14px;
+}
+.pitch-text {
+  font-size: 15px;
+  color: var(--white);
+  line-height: 1.85;
+  font-style: italic;
+}
+.pitch-text li {
+  padding: 5px 0;
+  list-style: none;
+  display: flex;
+  gap: 10px;
+}
+.pitch-text li::before {
+  content: attr(data-n) '.';
+  color: rgba(255,255,255,0.3);
+  font-style: normal;
+  flex-shrink: 0;
+}
+
+/* CHECKLIST */
+.checklist { list-style: none; }
+.checklist li {
+  display: flex;
+  gap: 14px;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--gray-200);
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--black);
+  align-items: flex-start;
+}
+.checklist li:last-child { border-bottom: none; }
+.checklist li::before {
+  content: '☐';
+  color: var(--gray-400);
+  font-size: 15px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* ICP */
+.icp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.icp-card { border-radius: var(--radius); padding: 22px; }
+.icp-yes { background: var(--green-light); border: 1px solid rgba(42,107,74,0.2); }
+.icp-no { background: #fef5f5; border: 1px solid rgba(232,66,72,0.2); }
+.icp-label { font-size: 10px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 14px; }
+.icp-yes .icp-label { color: var(--green); }
+.icp-no .icp-label { color: var(--accent); }
+.icp-list { list-style: none; }
+.icp-list li { font-size: 13px; padding: 7px 0; border-bottom: 1px solid rgba(0,0,0,0.06); display: flex; gap: 8px; line-height: 1.5; align-items: flex-start; }
+.icp-list li:last-child { border-bottom: none; }
+.icp-yes .icp-list li::before { content: "✓"; color: var(--green); font-weight: 600; flex-shrink: 0; }
+.icp-no .icp-list li::before { content: "✗"; color: var(--accent); font-weight: 600; flex-shrink: 0; }
+
 /* PRICE GRID */
 .price-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 10px;
-  margin-bottom: 8px;
+  margin-bottom: 16px;
 }
 .price-card {
   background: var(--gray-50);
@@ -181,41 +290,48 @@ body {
 }
 .price-card-value {
   font-family: 'DM Serif Display', serif;
-  font-size: 22px;
+  font-size: 20px;
   letter-spacing: -0.5px;
   color: var(--black);
   line-height: 1.1;
   margin-bottom: 3px;
 }
-.price-card-note { font-size: 11px; color: var(--gray-400); }
+.price-card-note { font-size: 11px; color: var(--gray-400); line-height: 1.4; }
 
-/* TWO-COL */
-.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 8px; }
-.col-block {
-  border: 1px solid var(--gray-200);
-  border-radius: var(--radius);
-  padding: 20px;
-}
-.col-block-label {
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--gray-400);
-  margin-bottom: 14px;
-}
-.col-block ul { list-style: none; }
-.col-block ul li {
-  font-size: 13px;
-  color: var(--black);
-  padding: 7px 0;
-  border-bottom: 1px solid var(--gray-100);
+/* CLOSING STEPS */
+.closing-steps { display: flex; flex-direction: column; }
+.closing-step {
   display: flex;
-  gap: 8px;
-  line-height: 1.5;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--gray-200);
+  align-items: flex-start;
 }
-.col-block ul li:last-child { border-bottom: none; }
-.col-block ul li::before { content: '—'; color: var(--gray-400); flex-shrink: 0; font-size: 12px; margin-top: 1px; }
+.closing-step:last-child { border-bottom: none; }
+.closing-step-num {
+  font-family: 'DM Serif Display', serif;
+  font-size: 22px;
+  color: var(--accent);
+  flex-shrink: 0;
+  width: 24px;
+  line-height: 1.2;
+}
+.closing-step-body { font-size: 14px; line-height: 1.6; color: var(--black); padding-top: 3px; }
+.closing-step-body strong { font-weight: 600; }
+
+/* WARN LIST */
+.warn-list { display: flex; flex-direction: column; }
+.warn-item {
+  display: flex;
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--gray-200);
+  align-items: flex-start;
+}
+.warn-item:last-child { border-bottom: none; }
+.warn-icon { font-size: 14px; flex-shrink: 0; margin-top: 2px; }
+.warn-body { font-size: 14px; line-height: 1.6; color: var(--black); }
+.warn-body strong { font-weight: 600; }
 
 /* EXPANDABLE */
 .expandable {
@@ -297,10 +413,12 @@ body {
   .section { margin-bottom: 36px; }
   .divider { margin: 28px 0; }
   .price-grid { grid-template-columns: repeat(2, 1fr); }
-  .two-col { grid-template-columns: 1fr; }
+  .icp-grid { grid-template-columns: 1fr; }
   .expandable-header { padding: 14px 16px; }
   .expandable-body { padding: 16px; }
   .price-table td, .price-table th { font-size: 12px; }
+  .pitch-box { padding: 20px 18px; }
+  .pitch-text { font-size: 14px; }
 
   .mobile-quicknav {
     display: flex;
@@ -339,69 +457,213 @@ body {
 <nav class="topnav">
   <a class="topnav-back-badge" href="valxon_sales_manual.html">← Sales manuál</a>
   <ul class="topnav-links">
-    <li><a href="#jak" class="active">Jak to funguje</a></li>
-    <li><a href="#onboarding">Onboarding</a></li>
-    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#jak" class="active">Jak to probíhá</a></li>
+    <li><a href="#schuze">Na schůzce</a></li>
+    <li><a href="#pitch">Pitch</a></li>
+    <li><a href="#icp">Komu sklad sedí</a></li>
     <li><a href="#cenik">Ceník</a></li>
+    <li><a href="#closing">Closing</a></li>
   </ul>
 </nav>
 
 <main class="main">
 
-  <!-- JAK TO FUNGUJE -->
+  <!-- JAK TO PROBÍHÁ -->
   <div class="section" id="jak">
-    <h2 class="section-title" style="font-size:32px;margin-bottom:8px;">Sklad &amp; Fulfillment</h2>
-    <p class="section-sub" style="margin-bottom:28px;">Zákazník si v platformě řekne o sklad — ty dostaneš notifikaci a kontaktuješ ho. Níže je vše, co potřebuješ vědět: jak to funguje, co zjistit, co mu říct.</p>
+    <div class="section-label">Sklad &amp; Fulfillment</div>
+    <h2 class="section-title" style="font-size:32px;margin-bottom:8px;">Když si klient řekne o sklad</h2>
+    <p class="section-sub" style="margin-bottom:28px;">Jak to celé funguje a jak to prodat. Použij při první schůzce o skladu nebo po ní.</p>
 
-    <div class="flow">
+    <div class="phase-label">
+      <span class="phase-name">Fáze 1 — Rozjezd</span>
+      <span class="phase-sub-label">cca 1–2 týdny</span>
+    </div>
+    <div class="flow" style="margin-bottom:24px;">
       <div class="flow-step">
-        <div class="flow-num">01</div>
+        <div class="flow-num">K1</div>
         <div class="flow-content">
-          <div class="flow-title">Zákazník v platformě klikne na „Chci řešit sklad"</div>
-          <div class="flow-desc">Dostaneš notifikaci. Zavoláš mu do 1–2 pracovních dní.</div>
+          <div class="flow-title">První schůzka a discovery</div>
+          <div class="flow-desc">Zjistíš základní info od klienta — co má, kde to leží, jak často to posílá, kam. Viz sekce Na schůzce níž.</div>
         </div>
       </div>
       <div class="flow-step">
-        <div class="flow-num">02</div>
+        <div class="flow-num">K2</div>
         <div class="flow-content">
-          <div class="flow-title">Na call zjistíš základní info</div>
-          <div class="flow-desc">Kolik SKU, jaký objem, jestli mají zboží u sebe nebo u dodavatele, jestli chtějí rozesílky i do zahraničí. Viz checklist v sekci Onboarding.</div>
+          <div class="flow-title">Pošleme šablonu zásob</div>
+          <div class="flow-desc">Po schůzce klientovi pošleš šablonovou tabulku zásob. Klient vyplní: název produktu, SKU/kód, počet kusů. Minimálně.</div>
         </div>
       </div>
       <div class="flow-step">
-        <div class="flow-num">03</div>
+        <div class="flow-num">K3</div>
         <div class="flow-content">
-          <div class="flow-title">Pošleš mu šablonovou tabulku zásob</div>
-          <div class="flow-desc">Zákazník vyplní: název produktu, SKU, interní kód, počet kusů. Čím líp to připraví, tím rychleji rozjedeme.</div>
+          <div class="flow-title">Nastavíme sklady a přístupy</div>
+          <div class="flow-desc">Jakmile máme tabulku, lídr nastaví sklady, uživatelské přístupy v platformě a domluví s klientem detaily. Do 48 hodin od vyplněné tabulky vidí klient zásoby v platformě.</div>
         </div>
       </div>
       <div class="flow-step">
-        <div class="flow-num">04</div>
+        <div class="flow-num">K4</div>
         <div class="flow-content">
-          <div class="flow-title">My nastavíme sklady a přístupy v platformě</div>
-          <div class="flow-desc">Do 48 hodin od vyplnění tabulky. Zákazník uvidí zásoby real-time.</div>
+          <div class="flow-title">Převoz zboží</div>
+          <div class="flow-desc">Zařídíme kompletní převoz merche od klienta do našich skladů. U běžné velikosti standardní postup, u větších objemů nebo více lokalit se domluví individuálně.</div>
         </div>
       </div>
       <div class="flow-step">
-        <div class="flow-num">05</div>
+        <div class="flow-num">K5</div>
         <div class="flow-content">
-          <div class="flow-title">Zákazník připraví zboží — my zajistíme převoz</div>
-          <div class="flow-desc">Zboží musí být správně zabaleno a označeno (1 SKU = 1 balení). Odvoz zajistíme my, zákazník jen připraví.</div>
+          <div class="flow-title">Naskladnění a evidence</div>
+          <div class="flow-desc">Zboží projde příjmem, kontrolou a evidencí. Klient v platformě vidí přesný stav skladu — kolik kusů, jakých velikostí.</div>
         </div>
       </div>
       <div class="flow-step">
-        <div class="flow-num">06</div>
+        <div class="flow-num">K6</div>
         <div class="flow-content">
-          <div class="flow-title">Naskladnění a rozjezd</div>
-          <div class="flow-desc">Od teď jede systém. Objednávky z e-shopu nebo platformy se expedují automaticky. My průběžně hlídáme zásoby a navrhujeme doskladnění — zákazník jen schvaluje.</div>
+          <div class="flow-title">Spuštění</div>
+          <div class="flow-desc">Platforma je živá. Lidé, kteří mají objednávat, dostanou přístupy. Od tohoto okamžiku jede běžný provoz.</div>
         </div>
       </div>
     </div>
 
-    <div class="callout callout-info" style="margin-bottom:20px;">
-      <div class="callout-icon">💬</div>
-      <div class="callout-body"><strong>Co říct zákazníkovi jako orientační ceny</strong> — finální nabídka se vždy upřesní podle objemu, typu balení a frekvence pohybu zboží.</div>
+    <div class="phase-label">
+      <span class="phase-name">Fáze 2 — Provoz</span>
+      <span class="phase-sub-label">běží sám</span>
     </div>
+    <div class="flow" style="margin-bottom:20px;">
+      <div class="flow-step">
+        <div class="flow-num">→</div>
+        <div class="flow-content">
+          <div class="flow-title">Objednávka</div>
+          <div class="flow-desc">Klient (nebo jeho tým) objedná přes platformu — komu, kolik, kam. Objednávka se do skladu propíše automaticky. Funguje i objednávání mailem či telefonem — do systému to zadáme my.</div>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">→</div>
+        <div class="flow-content">
+          <div class="flow-title">Vyřízení a doručení</div>
+          <div class="flow-desc">Objednávku vyskladníme, zabalíme a odešleme přímo příjemci — zaměstnanci, na pobočku, klientovi. Příjemce nic nedoplácí. Klient v platformě vidí, že zásilka odešla.</div>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">→</div>
+        <div class="flow-content">
+          <div class="flow-title">Doskladnění</div>
+          <div class="flow-desc">Zásoby hlídáme my. Když klesnou, klient dostane notifikaci v platformě a pár kliky schválí doobjednání. Pokud chce jiný režim, nastavíme individuálně.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout callout-info">
+      <div class="callout-icon">💡</div>
+      <div class="callout-body">Sklad funguje, ať klient merch řeší jakkoli — má vlastní merch store, žádný, nebo si vezme náš. U merch store od nás se objednávka koncového člověka odešle ze skladu automaticky.</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- NA SCHŮZCE -->
+  <div class="section" id="schuze">
+    <div class="section-label">02 — Discovery</div>
+    <h2 class="section-title">Na co se ho zeptat na schůzce</h2>
+    <p class="section-sub">Než začneš mluvit o nabídce, vytáhni z klienta tohle. Většina otázek ti přímo nahrává odpověď, co bude potřeba ve fázi 1.</p>
+
+    <div class="q-blocks">
+
+      <div class="q-block">
+        <div class="q-block-q">Kolik merche má dneska a kde leží?</div>
+        <div class="q-block-why">Pár krabic v kanceláři? Paleta u dodavatele? Víc palet u kooperace? Řekne ti, jestli ho čeká paletové nebo regálové skladování — a kolik práce dá první převoz.</div>
+      </div>
+
+      <div class="q-block">
+        <div class="q-block-q">Jak často to posílá a komu?</div>
+        <div class="q-block-why">Zaměstnancům na onboarding? Klientům jako dárky? Na eventy? Frekvence a typ příjemce = hodnota toho, co prodáváš. Měsíčně 20 balíků = velká úleva. Jednou za rok 200 = tam je hodnota menší.</div>
+      </div>
+
+      <div class="q-block">
+        <div class="q-block-q">Posílá i ven z Česka?</div>
+        <div class="q-block-why">Pokud ano, kam. Slovensko a EU řešíme individuálně — ověř si to s lídrem, sám nepočítej.</div>
+      </div>
+
+      <div class="q-block">
+        <div class="q-block-q">Kdo to dnes interně řeší?</div>
+        <div class="q-block-why">Marketing? HR? Asistentka? Tohle je tvoje persona pro pitch — mluv pak na ni.</div>
+      </div>
+
+      <div class="q-block">
+        <div class="q-block-q">Kde to dneska drhne?</div>
+        <div class="q-block-why">Nech klienta popsat sám, co ho na tom štve. Tady se vyloupne hodnota — ne z toho, co my říkáme, ale z toho, co klient cítí.</div>
+      </div>
+
+      <div class="q-block">
+        <div class="q-block-q">Mají dnes nějakou evidenci?</div>
+        <div class="q-block-why">Excel a maily = velký skok kupředu. Vlastní WMS = nepůjde výměna, spíš doplnění.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- PITCH + ONBOARDING -->
+  <div class="section" id="pitch">
+    <div class="section-label">03 — Pitch</div>
+    <h2 class="section-title">Jak to klientovi vysvětlit</h2>
+    <p class="section-sub">Když klient řekne „tak jak to funguje?", tady jsou tři věty. Nevyprávěj víc, než klient potřebuje — když se zeptá na detail, odpověz. Když ne, nech to plynout.</p>
+
+    <div class="pitch-box" style="margin-bottom:28px;">
+      <div class="pitch-box-label">Tři věty — řekni nahlas</div>
+      <ul class="pitch-text" style="list-style:none;">
+        <li data-n="1">Vyplníš nám tabulku, co máš na skladě, a domluvíme detaily.</li>
+        <li data-n="2">My zařídíme převoz, naskladnění, a od té chvíle merch leží u nás.</li>
+        <li data-n="3">Objednáváš přes platformu — komu, kolik, kam — a my pošleme. Doskladnění hlídáme my, ty jen schvaluješ.</li>
+      </ul>
+    </div>
+
+    <div class="section-label" style="margin-bottom:10px;">Co po klientovi v rozjezdu chceš</div>
+    <p class="section-sub">Projdi s klientem na schůzce nebo pošli navazujícím mailem.</p>
+
+    <ul class="checklist">
+      <li>Přibližný počet SKU a základní přehled sortimentu — pomůže odhadnout rozsah onboardingu</li>
+      <li>Vyplněná šablonová tabulka zásob (název produktu, SKU/kód, počet kusů)</li>
+      <li>Informace, jak je zboží dnes baleno a označeno — ideálně tak, abychom u každého produktu věděli, kolik kusů je v krabici a co v krabici je</li>
+      <li>Připravenost zboží pro převoz a příjem — čím lépe bude ze strany klienta připravené, tím rychleji proběhne naskladnění</li>
+    </ul>
+  </div>
+
+  <hr class="divider">
+
+  <!-- KOMU SKLAD SEDÍ -->
+  <div class="section" id="icp">
+    <div class="section-label">04 — ICP</div>
+    <h2 class="section-title">Komu sklad sedí (a komu ne)</h2>
+    <p class="section-sub">Než klientovi sklad nabídneš, ověř si v hlavě, jestli mu to dává smysl. Ne každý klient na sklad zraje.</p>
+
+    <div class="icp-grid">
+      <div class="icp-card icp-yes">
+        <div class="icp-label">Sklad má smysl — nabídni ho, když</div>
+        <ul class="icp-list">
+          <li>Má dnes někde naskládané krabice merche</li>
+          <li>Pravidelně to posílá lidem — zaměstnancům, klientům, na eventy</li>
+          <li>Někdo to interně řeší ručně a tráví tím čas</li>
+          <li>Má víc poboček nebo posílá i ven z Česka</li>
+        </ul>
+      </div>
+      <div class="icp-card icp-no">
+        <div class="icp-label">Netlač, když klient</div>
+        <ul class="icp-list">
+          <li>Objedná merch jednou za rok a sám si ho rozdá z kanceláře</li>
+          <li>Nemá nic na skladě a neplánuje</li>
+        </ul>
+        <div style="margin-top:14px;font-size:12px;color:var(--gray-400);line-height:1.5;">U těchto klientů stačí samotná platforma — sklad by jim přidělal víc starostí než užitku.</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- CENÍK -->
+  <div class="section" id="cenik">
+    <div class="section-label">05 — Ceník</div>
+    <h2 class="section-title">Co stojí kolik</h2>
+    <p class="section-sub">Ceny jsou na orientaci — používej je v hovoru, ne jako nabídku. Vždycky říkej "od X Kč", nikdy "to vás bude stát X".</p>
 
     <div class="price-grid">
       <div class="price-card">
@@ -424,173 +686,37 @@ body {
         <div class="price-card-value">od 110 Kč</div>
         <div class="price-card-note">za zásilku</div>
       </div>
-    </div>
-  </div>
-
-  <hr class="divider">
-
-  <!-- ONBOARDING -->
-  <div class="section" id="onboarding">
-    <div class="section-label">02 — Onboarding</div>
-    <h2 class="section-title">Co potřebujeme a co zařídíme</h2>
-    <p class="section-sub">Checklist pro první call se zákazníkem — co zjistit a co mu říct, co se stane na naší straně.</p>
-
-    <div class="two-col">
-      <div class="col-block">
-        <div class="col-block-label">Co potřebujeme od zákazníka</div>
-        <ul>
-          <li>Přibližný počet SKU a základní přehled sortimentu</li>
-          <li>Vyplněnou šablonovou tabulku zásob (název produktu, SKU kód, počet kusů)</li>
-          <li>Info, jak je zboží dnes baleno a označeno — ideálně 1 SKU = 1 balení</li>
-          <li>Připravenost zboží k předání — čím lépe označené, tím rychlejší naskladnění</li>
-          <li>Jestli chce standardní doskladnění (my navrhujeme, zákazník schvaluje), nebo jiný režim</li>
-        </ul>
-      </div>
-      <div class="col-block">
-        <div class="col-block-label">Co zařídíme my</div>
-        <ul>
-          <li>Pošleme šablonovou tabulku zásob a zkontrolujeme vstupy</li>
-          <li>Nastavíme sklady a uživatelské přístupy v platformě</li>
-          <li>Zajistíme kompletní převoz zboží na naše sklady</li>
-          <li>Nastavíme proces příjmu, evidence a expedice</li>
-          <li>Průběžně hlídáme zásoby a připravujeme podklady pro doskladnění</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <hr class="divider">
-
-  <!-- FAQ -->
-  <div class="section" id="faq">
-    <div class="section-label">03 — FAQ</div>
-    <h2 class="section-title">Časté otázky</h2>
-    <p class="section-sub">Co se zákazníci nejčastěji ptají a jak to vysvětlit.</p>
-
-    <div class="expandable" id="faq1">
-      <div class="expandable-header" onclick="toggleExp('faq1')">
-        <div class="expandable-title">Jak rychle to rozjedeme?</div>
-        <div class="expandable-icon">+</div>
-      </div>
-      <div class="expandable-body">
-        Záleží hlavně na připravenosti zákazníka. Jakmile vyplní tabulku zásob a zboží je připravené k předání, sklady a přístupy nastavíme do 48 hodin. Celý onboarding od prvního callu do rozjezdu trvá standardně 1–2 týdny.
+      <div class="price-card">
+        <div class="price-card-label">Expedice zahraničí</div>
+        <div class="price-card-value" style="font-size:15px;padding-top:4px;">individuálně</div>
+        <div class="price-card-note">ověř s lídrem</div>
       </div>
     </div>
 
-    <div class="expandable" id="faq2">
-      <div class="expandable-header" onclick="toggleExp('faq2')">
-        <div class="expandable-title">Zákazník má merch u sebe nebo u jiného dodavatele. Jak ho dostaneme k nám?</div>
-        <div class="expandable-icon">+</div>
-      </div>
-      <div class="expandable-body">
-        Převoz zajistíme my. Zákazník jen zboží připraví a správně označí — odvezeme si ho sami. Cena převozu závisí na vzdálenosti a objemu, domlouváme individuálně.
-      </div>
+    <div class="callout callout-info" style="margin-bottom:12px;">
+      <div class="callout-icon">💬</div>
+      <div class="callout-body"><strong>Když chce klient jedno číslo:</strong> řekni mu, že jedna kompletně vyřízená objednávka (vyskladnění + balení + doprava v ČR) se pohybuje kolem <strong>110–150 Kč za zásilku</strong>. Skladné platí měsíčně podle objemu.</div>
     </div>
 
-    <div class="expandable" id="faq3">
-      <div class="expandable-header" onclick="toggleExp('faq3')">
-        <div class="expandable-title">Jsou nějaké minimální objemy nebo počty zásilek?</div>
-        <div class="expandable-icon">+</div>
-      </div>
-      <div class="expandable-body">
-        Žádný pevný limit. Ceny jsou variabilní podle objemu — čím větší provoz, tím lépe vychází cena za zásilku. Pro velmi malé objemy (pár zásilek měsíčně) se domluvíme individuálně.
-      </div>
-    </div>
-
-    <div class="expandable" id="faq4">
-      <div class="expandable-header" onclick="toggleExp('faq4')">
-        <div class="expandable-title">Jak zákazník vidí zásoby a objednávky?</div>
-        <div class="expandable-icon">+</div>
-      </div>
-      <div class="expandable-body">
-        Přímo v platformě Valxon — real-time přehled zásob, stav expedice, historii objednávek. Přístup může mít jen jeden člověk nebo celý tým, záleží na nastavení.
-      </div>
-    </div>
-
-    <div class="expandable" id="faq5">
-      <div class="expandable-header" onclick="toggleExp('faq5')">
-        <div class="expandable-title">Posíláte i do zahraničí?</div>
-        <div class="expandable-icon">+</div>
-      </div>
-      <div class="expandable-body">
-        Ano — standardně Česko a Slovensko, na dotaz i Německo a další země. Viz podrobný ceník pro konkrétní ceny dopravy.
-      </div>
-    </div>
-
-    <div class="expandable" id="faq6">
-      <div class="expandable-header" onclick="toggleExp('faq6')">
-        <div class="expandable-title">Může zákazník přidat do balíčku voucher nebo personalizovanou kartičku?</div>
-        <div class="expandable-icon">+</div>
-      </div>
-      <div class="expandable-body">
-        Ano. Vložení marketingového materiálu (voucher, karta, brandingový materiál) je za 2 Kč/ks. Pokud chce zákazník i potisk (samolepka s tiskem), je to 4 Kč/ks.
-      </div>
-    </div>
-
-    <div class="expandable" id="faq7">
-      <div class="expandable-header" onclick="toggleExp('faq7')">
-        <div class="expandable-title">Jak funguje doskladnění? Musí zákazník sám sledovat zásoby?</div>
-        <div class="expandable-icon">+</div>
-      </div>
-      <div class="expandable-body">
-        Ne — my zásoby sledujeme průběžně a připravujeme návrhy na doskladnění. Zákazník návrhy jen schvaluje. Pokud chce jiný režim (např. automatické doskladnění bez schvalování), nastavíme individuálně.
-      </div>
-    </div>
-
-    <div class="expandable" id="faq8">
-      <div class="expandable-header" onclick="toggleExp('faq8')">
-        <div class="expandable-title">Co když zákazník chce schvalovat každou objednávku před odesláním?</div>
-        <div class="expandable-icon">+</div>
-      </div>
-      <div class="expandable-body">
-        Lze nastavit. Standardní režim je automatická expedice — objednávka přijde a odejde bez zásahu zákazníka. Pokud chce schvalovací krok, nastavíme ho individuálně.
-      </div>
-    </div>
-
-    <div class="expandable" id="faq9">
-      <div class="expandable-header" onclick="toggleExp('faq9')">
-        <div class="expandable-title">Zákazník prodává merch externě — můžeme napojit jeho e-shop?</div>
-        <div class="expandable-icon">+</div>
-      </div>
-      <div class="expandable-body">
-        Ano. Napojíme e-shop přes API nebo systémovou integraci. Jednorázový setup integrace je 2 990 Kč + 35 Kč za každou systémově zpracovanou objednávku.
-      </div>
-    </div>
-
-    <div class="expandable" id="faq10">
-      <div class="expandable-header" onclick="toggleExp('faq10')">
-        <div class="expandable-title">Jak funguje fakturace?</div>
-        <div class="expandable-icon">+</div>
-      </div>
-      <div class="expandable-body">
-        Fakturujeme měsíčně. Zákazník dostane přehled všech pohybů (příjmy, expedice, skladování) a výpočet za dané období.
-      </div>
-    </div>
-
-  </div>
-
-  <hr class="divider">
-
-  <!-- CENÍK -->
-  <div class="section" id="cenik">
-    <div class="section-label">04 — Ceník</div>
-    <h2 class="section-title">Ceník</h2>
-    <p class="section-sub">Orientační ceny pro zákazníka jsou v sekci Jak to funguje. Níže je podrobný interní ceník od našeho logistického partnera Olicon.</p>
-
-    <div class="callout callout-warn" style="margin-bottom:16px;">
+    <div class="callout callout-warn" style="margin-bottom:20px;">
       <div class="callout-icon">⚠️</div>
-      <div class="callout-body"><strong>Interní podklad — nezasílat zákazníkovi.</strong> Zákazníkovi vždy komunikuj orientační ceny „od" z horní sekce. Finální nabídka se upřesňuje individuálně dle objemu.</div>
+      <div class="callout-body"><strong>Setup od 3 000 Kč je odhad pro klienta běžné velikosti.</strong> U většího klienta, více lokalit, nebo více palet se cena řeší individuálně. Vždy si to ověř s lídrem, než klientovi cenu potvrdíš.</div>
     </div>
 
     <div class="expandable" id="exp-cenik">
       <div class="expandable-header" onclick="toggleExp('exp-cenik')">
         <div class="expandable-title">
           Podrobný ceník — Olicon logistics
-          <small>Nabídka ze dne 28. 4. 2026 · všechny ceny bez DPH</small>
+          <small>Interní podklad · všechny ceny bez DPH · nezasílat zákazníkovi</small>
         </div>
         <div class="expandable-icon">+</div>
       </div>
       <div class="expandable-body">
+
+        <div class="callout callout-warn" style="margin-bottom:20px;">
+          <div class="callout-icon">⚠️</div>
+          <div class="callout-body"><strong>Interní podklad — nezasílat zákazníkovi.</strong> Zákazníkovi vždy komunikuj orientační ceny „od" z horní sekce.</div>
+        </div>
 
         <div class="price-section-title">Skladování zboží</div>
         <table class="price-table">
@@ -690,15 +816,60 @@ body {
 
       </div>
     </div>
+  </div>
 
+  <hr class="divider">
+
+  <!-- CLOSING -->
+  <div class="section" id="closing">
+    <div class="section-label">06 — Closing</div>
+    <h2 class="section-title">Když klient řekne „jdeme do toho"</h2>
+    <p class="section-sub">Pravidlo: než klient vychladne, ozvi se mu znova.</p>
+
+    <div class="closing-steps" style="margin-bottom:36px;">
+      <div class="closing-step">
+        <div class="closing-step-num">1</div>
+        <div class="closing-step-body"><strong>Pošli mu mail se shrnutím a šablonou zásob</strong></div>
+      </div>
+      <div class="closing-step">
+        <div class="closing-step-num">2</div>
+        <div class="closing-step-body"><strong>Hoď info lídrovi</strong> — objem, frekvence, destinace, kontakt</div>
+      </div>
+      <div class="closing-step">
+        <div class="closing-step-num">3</div>
+        <div class="closing-step-body"><strong>Domluv follow-up do týdne</strong> — ne za měsíc, kdy už zapomene</div>
+      </div>
+      <div class="closing-step">
+        <div class="closing-step-num">4</div>
+        <div class="closing-step-body">Lídr mezitím <strong>připraví kalkulaci a další kroky</strong></div>
+      </div>
+    </div>
+
+    <div class="section-label" style="margin-bottom:10px;">Tohle radši nikdy neslibuj</div>
+    <p style="font-size:13px;color:var(--gray-600);margin-bottom:16px;line-height:1.6;">Pár věcí, kde se vyplatí říct „to ti ověřím" místo „to vyřešíme".</p>
+
+    <div class="warn-list">
+      <div class="warn-item">
+        <div class="warn-icon">⚠️</div>
+        <div class="warn-body"><strong>Konkrétní cenu setup u většího klienta</strong> — ověř si s lídrem</div>
+      </div>
+      <div class="warn-item">
+        <div class="warn-icon">⚠️</div>
+        <div class="warn-body"><strong>Posílání do zahraničí</strong> — vždy s lídrem, neslibuj čísla</div>
+      </div>
+      <div class="warn-item">
+        <div class="warn-icon">⚠️</div>
+        <div class="warn-body"><strong>„Za sklad ručíme my"</strong> — formulace je teď v jednání. Používej raději „zboží je u nás evidované a pojištěné"</div>
+      </div>
+    </div>
   </div>
 
 </main>
 
 <!-- MOBILE QUICK NAV -->
 <div class="mobile-quicknav">
-  <a href="#jak" class="mqn-btn mqn-primary">Jak to funguje</a>
-  <a href="#faq" class="mqn-btn">FAQ</a>
+  <a href="#jak" class="mqn-btn mqn-primary">Jak to probíhá</a>
+  <a href="#schuze" class="mqn-btn">Na schůzce</a>
 </div>
 
 <script>
