@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Valxon — Discovery questions</title>
+<title>Valxon — Obecné discovery</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -163,7 +163,6 @@ body {
 }
 .version-letter-a { background: var(--black); color: var(--white); }
 .version-letter-b { background: var(--accent); color: #fff; }
-.version-info { }
 .version-title {
   font-family: 'DM Serif Display', serif;
   font-size: 21px;
@@ -228,8 +227,8 @@ body {
   font-style: italic;
 }
 
-/* DISCOVERY QUESTIONS */
-.q-groups { display: flex; flex-direction: column; gap: 0; }
+/* Q-GROUPS */
+.q-groups { display: flex; flex-direction: column; }
 .q-group { border-bottom: 1px solid var(--gray-200); }
 .q-group:last-child { border-bottom: none; }
 .q-group-header {
@@ -296,32 +295,16 @@ body {
   font-style: normal;
   font-size: 13px;
 }
-
-/* RULES LIST */
-.rules-list { display: flex; flex-direction: column; }
-.rule-item {
-  display: flex;
-  gap: 18px;
-  padding: 16px 0;
-  border-bottom: 1px solid var(--gray-200);
-  align-items: flex-start;
+.q-sub-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--gray-600);
+  margin: 10px 0 4px;
+  padding-left: 34px;
 }
-.rule-item:last-child { border-bottom: none; }
-.rule-num {
-  font-family: 'DM Serif Display', serif;
-  font-size: 24px;
-  color: var(--accent);
-  flex-shrink: 0;
-  width: 26px;
-  line-height: 1.2;
-}
-.rule-body {
-  font-size: 14px;
-  line-height: 1.65;
-  color: var(--black);
-  padding-top: 3px;
-}
-.rule-body strong { font-weight: 600; }
+.q-sub-label:first-child { margin-top: 0; }
 
 /* EXPANDABLE */
 .expandable {
@@ -392,7 +375,6 @@ body {
   color: var(--gray-600);
   font-family: 'SF Mono', 'Fira Mono', monospace;
 }
-.note-block strong { color: var(--black); }
 
 /* MOBILE QUICK NAV */
 .mobile-quicknav { display: none; }
@@ -417,6 +399,7 @@ body {
   .q-group-name { font-size: 17px; }
   .q-group-desc { padding-left: 28px; }
   .q-sublist { padding-left: 28px; }
+  .q-sub-label { padding-left: 28px; }
   .q-sub { font-size: 14px; }
   .pitch-box { padding: 18px 16px; }
   .pitch-text { font-size: 14px; }
@@ -465,7 +448,6 @@ body {
   <ul class="topnav-links">
     <li><a href="#obecna">Obecná schůzka</a></li>
     <li><a href="#zakazka">Konkrétní zakázka</a></li>
-    <li><a href="#obchodnici">Pro obchodníky</a></li>
     <li><a href="#nastroje">Pipedrive zápis</a></li>
   </ul>
 </nav>
@@ -473,8 +455,8 @@ body {
 <main class="main">
 
   <div class="page-header">
-    <div class="section-label">Discovery questions</div>
-    <h1>Jak vést sales schůzku</h1>
+    <div class="section-label">Obecné discovery</div>
+    <h1>Obecné discovery</h1>
     <p>Dvě verze podle situace — rozbali tu, která odpovídá tvé schůzce.</p>
   </div>
 
@@ -502,68 +484,92 @@ body {
 
           <div class="q-group">
             <div class="q-group-header" onclick="toggleGroup(this)">
-              <div class="q-group-meta"><span class="q-group-num">01</span><span class="q-group-name">Jak to u vás funguje</span></div>
+              <div class="q-group-meta"><span class="q-group-num">01</span><span class="q-group-name">Use cases: na co u vás merch slouží</span></div>
               <span class="q-group-icon">+</span>
             </div>
             <div class="q-group-body">
-              <div class="q-group-desc">Otevírací otázka — ať mluví vlastními slovy. Zajímá tě to, co není na webu: kdo co reálně řeší, jak to probíhá v praxi.</div>
+              <div class="q-group-desc">Otevírací blok. Dvě roviny: co se kde děje (oddělení × use case) a kdo to drží (rozhodovací struktura). HR, marketing a sales mají často jiné use casy a zákazník sám od sebe všechny nezmíní — proto se ptáme po odděleních konkrétně.</div>
+              <div class="q-sub-label">Co a kde se děje</div>
               <ul class="q-sublist">
-                <li class="q-sub">Jak to u vás aktuálně funguje — kdo to řeší a jak to probíhá v praxi?</li>
-                <li class="q-sub">Máte na to jednoho člověka, nebo to padá na víc lidí napříč firmou?</li>
-                <li class="q-sub">Jak jste velcí — kolik lidí, kolik poboček, kolik entit?</li>
-                <li class="q-sub">Máte to spíš centrálně, nebo si to každá pobočka / tým řeší po svém?</li>
+                <li class="q-sub">Pro co všechno u vás merch dnes používáte?</li>
+                <li class="q-sub">Pojďme to projet po odděleních — co se kolem merche děje v HR? Welcome balíčky, nováčci, výročí, Vánoce?</li>
+                <li class="q-sub">A marketing? Eventy, veletrhy, kampaně, brandové předměty?</li>
+                <li class="q-sub">A sales? Nosí obchodníci něco klientům, posílá se něco prospektům?</li>
+                <li class="q-sub">Dáváte dárky / pozornosti klientům — výročí, Vánoce, partnerské balíčky?</li>
+                <li class="q-sub">Co z toho je objemově největší?</li>
+              </ul>
+              <div class="q-sub-label" style="margin-top:14px;">Kdo to drží</div>
+              <ul class="q-sublist">
+                <li class="q-sub">Kdo má jednotlivé use casy na starosti? Je to v každém oddělení jiný člověk?</li>
+                <li class="q-sub">Kdo to fyzicky objednává a řeší operativu?</li>
+                <li class="q-sub">Kdo to schvaluje — finančně, kreativně?</li>
+                <li class="q-sub">Je tam někdo, kdo má merch zastřešeně napříč firmou — třeba marketing kvůli brandu?</li>
               </ul>
             </div>
           </div>
 
           <div class="q-group">
             <div class="q-group-header" onclick="toggleGroup(this)">
-              <div class="q-group-meta"><span class="q-group-num">02</span><span class="q-group-name">K čemu to u vás slouží</span></div>
+              <div class="q-group-meta"><span class="q-group-num">02</span><span class="q-group-name">Merch kalendář</span></div>
               <span class="q-group-icon">+</span>
             </div>
             <div class="q-group-body">
-              <div class="q-group-desc">Cíl: pochopit, kde všude se merch ve firmě objevuje. Některé use casy zákazník sám nezmíní, dokud se ho nezeptáš. HR má často jiný pohled než marketing nebo sales.</div>
+              <div class="q-group-desc">Cíl: zjistit, jestli je to plánované, nebo ad hoc. Plánovaná firma = předvídatelný objem. Ad hoc firma = pain, na který umíme nabídnout odpověď.</div>
               <ul class="q-sublist">
-                <li class="q-sub">Pro co všechno merch reálně používáte? — onboarding, eventy, dárky klientům, veletrhy, interní akce…</li>
-                <li class="q-sub">Co z toho je nejčastější / objemově největší?</li>
-                <li class="q-sub">Jezdíte na veletrhy nebo konference, kde rozdáváte merch?</li>
-                <li class="q-sub">Dáváte něco klientům — dárky, vánoční pozornosti, partnerské balíčky?</li>
-                <li class="q-sub">Používáte merch v sales procesu — nosí to obchodníci na schůzky, posíláte to prospektům?</li>
-                <li class="q-sub">Jak řešíte onboarding nových lidí — dostávají welcome balíček?</li>
+                <li class="q-sub">Máte to nějak naplánované v roce dopředu, nebo to řešíte, až když přijde požadavek?</li>
+                <li class="q-sub">Co jsou věci, o kterých dopředu víte, že každý rok proběhnou?</li>
+                <li class="q-sub">Jak často přichází ad hoc požadavek typu "do týdne potřebujeme něco na akci"?</li>
+                <li class="q-sub">Odkud takové ad hoc požadavky padají — od vedení, od týmů, od salesu?</li>
               </ul>
             </div>
           </div>
 
           <div class="q-group">
             <div class="q-group-header" onclick="toggleGroup(this)">
-              <div class="q-group-meta"><span class="q-group-num">03</span><span class="q-group-name">Merch kalendář a předvídatelnost</span></div>
+              <div class="q-group-meta"><span class="q-group-num">03</span><span class="q-group-name">Dodavatelé</span></div>
               <span class="q-group-icon">+</span>
             </div>
             <div class="q-group-body">
-              <div class="q-group-desc">Cíl: zjistit, jestli je to plánovaná aktivita nebo hašení požárů. Plánovaná firma = lepší zákazník (předvídatelný objem). Ad hoc firma = velký pain, který umíme adresovat.</div>
+              <div class="q-group-desc">Cíl: zmapovat, s kým dnes pracují a jestli rozlišují dodavatele podle typu produktu. Tady zjistíš, kdo jsou tví reální konkurenti.</div>
               <ul class="q-sublist">
-                <li class="q-sub">Máte merch nějak rozplánovaný v roce dopředu, nebo to řešíte ad hoc, když přijde požadavek?</li>
-                <li class="q-sub">Co jsou pravidelné věci, které víte, že každý rok proběhnou? (onboarding, Vánoce, výroční event…)</li>
-                <li class="q-sub">Co bývá nejvíc stresové — kdy to obvykle hoří?</li>
-                <li class="q-sub">Když přijde požadavek od vedení nebo od týmu, jak rychle to musíte vyřešit?</li>
+                <li class="q-sub">Máte na merch stálé dodavatele, nebo poptáváte případ od případu?</li>
+                <li class="q-sub">Jdete s jedním na všechno, nebo to máte rozdělené — textil jinde, drobnosti jinde, tisk jinde?</li>
+                <li class="q-sub">Koho dnes využíváte a jak dlouho s nimi pracujete?</li>
+                <li class="q-sub">Stalo se vám někdy, že to nedopadlo dobře — co se stalo?</li>
               </ul>
             </div>
           </div>
 
           <div class="q-group">
             <div class="q-group-header" onclick="toggleGroup(this)">
-              <div class="q-group-meta"><span class="q-group-num">04</span><span class="q-group-name">Současný proces</span></div>
+              <div class="q-group-meta"><span class="q-group-num">04</span><span class="q-group-name">Podle čeho vybíráte</span></div>
               <span class="q-group-icon">+</span>
             </div>
             <div class="q-group-body">
-              <div class="q-group-desc">Cíl: detailní pohled na to, jak to dnes probíhá. Tady se schovává největší pain. Ptej se konkrétně a nech je popsat krok po kroku — uvidíš, kde to drhne. Tohle je nejdůležitější blok celé schůzky.</div>
+              <div class="q-group-desc">Cíl: pochopit rozhodovací kritéria. Pozor: "kvalita i cena" je default odpověď. Tlačit dál — kdyby museli volit jedno, co je první.</div>
               <ul class="q-sublist">
-                <li class="q-sub">Provedete mě tím procesem — od momentu, kdy někdo řekne "potřebuju merch", až po to, že to má příjemce v ruce?</li>
-                <li class="q-sub">Jak sbíráte adresy a velikosti? (Excel, formuláře, e-maily?)</li>
-                <li class="q-sub">Jak řešíte distribuci — posíláte si to sami, nebo to rozesílá dodavatel přímo lidem?</li>
-                <li class="q-sub">Máte vlastní sklad, nebo vám to skladuje někdo jiný?</li>
+                <li class="q-sub">Když vybíráte merch, podle čeho se rozhodujete?</li>
+                <li class="q-sub">Hraje větší roli cena, kvalita, kreativa, nebo jak jednoduchý je s tím dodavatelem nákup?</li>
+                <li class="q-sub">Kdyby to byl trade-off, co byste pustili dřív?</li>
+                <li class="q-sub">Máte nějaký interní standard kvality, který musí být splněný?</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="q-group">
+            <div class="q-group-header" onclick="toggleGroup(this)">
+              <div class="q-group-meta"><span class="q-group-num">05</span><span class="q-group-name">Současný proces</span></div>
+              <span class="q-group-icon">+</span>
+            </div>
+            <div class="q-group-body">
+              <div class="q-group-desc">Nejdůležitější blok. Nech zákazníka popsat to krok po kroku — tam se schovává největší pain. Věnuj tomu čas.</div>
+              <ul class="q-sublist">
+                <li class="q-sub">Provedete mě tím procesem — od momentu, kdy někdo řekne "potřebujeme merch", až po to, že to má příjemce v ruce?</li>
+                <li class="q-sub">Jak sbíráte adresy a velikosti — Excel, formuláře, e-maily?</li>
+                <li class="q-sub">Máte vlastní sklad, nebo to skladuje dodavatel?</li>
                 <li class="q-sub">Máte interní e-shop pro zaměstnance, nebo se objednává jinak?</li>
-                <li class="q-sub">Co na tom procesu funguje a co naopak vůbec?</li>
+                <li class="q-sub">Jak řešíte distribuci — posíláte si to sami, nebo to rozesílá dodavatel přímo lidem?</li>
+                <li class="q-sub">Co na tom procesu funguje a co naopak vůbec ne?</li>
                 <li class="q-sub">Kde podle vás ztrácíte nejvíc času?</li>
               </ul>
             </div>
@@ -571,67 +577,48 @@ body {
 
           <div class="q-group">
             <div class="q-group-header" onclick="toggleGroup(this)">
-              <div class="q-group-meta"><span class="q-group-num">05</span><span class="q-group-name">Dodavatelé a jak je vybíráte</span></div>
+              <div class="q-group-meta"><span class="q-group-num">06</span><span class="q-group-name">Motivace kontaktu</span></div>
               <span class="q-group-icon">+</span>
             </div>
             <div class="q-group-body">
-              <div class="q-group-desc">Cíl: zmapovat konkurenční pole a rozhodovací kritéria. Tady zjistíš, jestli máš co nabídnout (cenou, kvalitou, procesem) a kdo jsou tví reální konkurenti.</div>
+              <div class="q-group-desc">Cíl: pochopit, co řeší konkrétně tenhle člověk. Tady najdeš osobní hooks pro follow-up. Ptej se přirozeně, ne jako na pohovoru.</div>
               <ul class="q-sublist">
-                <li class="q-sub">Máte nějakého stálého dodavatele, nebo poptáváte případ od případu?</li>
-                <li class="q-sub">Pracujete s jedním na všechno, nebo to máte rozdělené podle typu produktu — textil vs. drobnosti vs. tisk?</li>
-                <li class="q-sub">Co se vám na nich líbí — co je důvod, že s nimi zůstáváte?</li>
-                <li class="q-sub">Co vám naopak chybí nebo vás štve?</li>
-                <li class="q-sub">Když se rozhodujete o novém merchi, podle čeho vybíráte — cena, kvalita, kreativa, jednoduchost?</li>
-                <li class="q-sub">Stalo se vám někdy, že to s dodavatelem nedopadlo — co se stalo?</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="q-group">
-            <div class="q-group-header" onclick="toggleGroup(this)">
-              <div class="q-group-meta"><span class="q-group-num">06</span><span class="q-group-name">Budget a rozhodování</span></div>
-              <span class="q-group-icon">+</span>
-            </div>
-            <div class="q-group-body">
-              <div class="q-group-desc">Cíl: pochopit ekonomiku a kdo má reálnou pravomoc. Pozor — na peníze se ptej s respektem, ne hned na začátku. Když se zeptáš příliš brzy a tvrdě, zavřou se.</div>
-              <ul class="q-sublist">
-                <li class="q-sub">Máte na merch nějaký fixní roční budget, nebo se to schvaluje případ od případu?</li>
-                <li class="q-sub">Kdo to schvaluje — vy, váš šéf, finance, jednatel?</li>
-                <li class="q-sub">Jak dlouho takové schvalování obvykle trvá?</li>
-                <li class="q-sub">Kolik vám zhruba za rok merchem projde — jen abych pochopil objem, o kterém se bavíme?</li>
-                <li class="q-sub">Máte na letošek ještě nějaké rozjeté projekty nebo už je to vyčerpané?</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="q-group">
-            <div class="q-group-header" onclick="toggleGroup(this)">
-              <div class="q-group-meta"><span class="q-group-num">07</span><span class="q-group-name">Motivace konkrétního kontaktu</span></div>
-              <span class="q-group-icon">+</span>
-            </div>
-            <div class="q-group-body">
-              <div class="q-group-desc">Cíl: pochopit, co řeší konkrétně tenhle člověk, ne firma obecně. Tady najdeš osobní hooks — co ho bolí, co je jeho cíl, podle čeho ho hodnotí. To je tvoje munice pro follow-up. Ptej se přirozeně, ne jako na pohovoru.</div>
-              <ul class="q-sublist">
-                <li class="q-sub">Co konkrétně u vás máte na starosti — kde merch v tom všem stojí?</li>
-                <li class="q-sub">Kdyby vám merch zítra zmizel ze stolu, co byste dělali jiného / lepšího?</li>
-                <li class="q-sub">Co je pro vás osobně to nejotravnější, co kolem toho řešíte?</li>
+                <li class="q-sub">Co u vás máte na starosti — kde merch v tom všem stojí?</li>
+                <li class="q-sub">Co je pro vás na tom nejotravnější, co kolem toho každý den řešíte?</li>
                 <li class="q-sub">Co byste si přál, aby se na tom změnilo?</li>
-                <li class="q-sub">Když na konci roku ukazujete výsledky vedení, jak se merch promítá do toho, co děláte?</li>
-                <li class="q-sub">Je pro vás důležitější ušetřit čas, peníze, nebo abyste z toho měli lepší výstup?</li>
+                <li class="q-sub">Je pro vás důležitější ušetřit čas, peníze, nebo abyste z toho měl lepší výstup?</li>
+                <li class="q-sub">Jak se to, co kolem merche zařídíte, promítá do toho, jak vás hodnotí?</li>
               </ul>
             </div>
           </div>
 
           <div class="q-group">
             <div class="q-group-header" onclick="toggleGroup(this)">
-              <div class="q-group-meta"><span class="q-group-num">08</span><span class="q-group-name">Závěr — co dál</span></div>
+              <div class="q-group-meta"><span class="q-group-num">07</span><span class="q-group-name">Budget</span></div>
               <span class="q-group-icon">+</span>
             </div>
             <div class="q-group-body">
-              <div class="q-group-desc">Cíl: vyjasnit další kroky a získat reálný kontakt. Důležité: nepouštět to "do prázdna" frází "tak já vám pošlu nabídku" — ujistit se, kdo, jak a kdy.</div>
+              <div class="q-group-desc">Cíl: pochopit ekonomiku a kdo schvaluje. Tahle otázka patří až sem — když se zeptáš na peníze hned na začátku, zavřou se.</div>
               <ul class="q-sublist">
-                <li class="q-sub">Když by vás z toho, co jsme si řekli, něco zajímalo blíž — jak preferujete, abych se ozval? E-mail, telefon, WhatsApp?</li>
-                <li class="q-sub">Budete to potřebovat probrat ještě s někým u vás, než to půjde dál? S kým?</li>
+                <li class="q-sub">Máte na merch fixní roční budget, nebo se to schvaluje případ od případu?</li>
+                <li class="q-sub">Kolik vám zhruba za rok merchem projde — ať mám představu o objemu?</li>
+                <li class="q-sub">Kdo budget schvaluje?</li>
+                <li class="q-sub">Kdy se plánuje a schvaluje?</li>
+                <li class="q-sub">Máte na letošek ještě prostor, nebo už je to vyčerpané?</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="q-group">
+            <div class="q-group-header" onclick="toggleGroup(this)">
+              <div class="q-group-meta"><span class="q-group-num">08</span><span class="q-group-name">Komunikace a další kroky</span></div>
+              <span class="q-group-icon">+</span>
+            </div>
+            <div class="q-group-body">
+              <div class="q-group-desc">Cíl: odejít s jasným kontaktem a dohodnutým next stepem. Nepouštět to do prázdna.</div>
+              <ul class="q-sublist">
+                <li class="q-sub">Když by vás z toho něco zajímalo blíž — kdo bude náš kontakt u vás?</li>
+                <li class="q-sub">Jak preferujete, abych se ozval — e-mail, telefon, WhatsApp?</li>
                 <li class="q-sub">Kdy by dávalo smysl se znovu slyšet?</li>
               </ul>
             </div>
@@ -650,7 +637,7 @@ body {
           <div class="version-letter version-letter-b">B</div>
           <div class="version-info">
             <div class="version-title">Konkrétní zakázka</div>
-            <div class="version-subtitle">Mají poptávku, ale potřebujeme i kontext firmy — 9 témat</div>
+            <div class="version-subtitle">Mají poptávku, potřebujeme i kontext — 9 témat</div>
           </div>
         </div>
         <span class="version-chevron">+</span>
@@ -659,12 +646,12 @@ body {
 
         <div class="pitch-box">
           <div class="pitch-box-label">Úvod schůzky — řekni nahlas</div>
-          <div class="pitch-text">"Než se vrhneme na konkrétní zadání, rád bych se nejdřív zorientoval v tom, jak to u vás funguje obecně — abych vám pak mohl navrhnout řešení, které dává smysl ne jen pro tuhle zakázku, ale i dlouhodobě."</div>
+          <div class="pitch-text">"Než se podíváme na konkrétní zadání, rád bych se nejdřív zorientoval v tom, jak to u vás funguje obecně — abychom vám pak nabídli řešení, které dává smysl ne jen pro tuhle zakázku, ale i dlouhodobě."</div>
         </div>
 
         <div class="callout callout-info" style="margin-bottom:20px;">
           <div class="callout-icon">⚖️</div>
-          <div class="callout-body"><strong>Pravidlo 60/40:</strong> 60 % času na firmu a kontext, 40 % na konkrétní zakázku. Pokud zákazník tlačí rovnou na zakázku, věnuj se jí — ale do otázek o firmě se vrať během konverzace přirozeně.</div>
+          <div class="callout-body"><strong>Pravidlo:</strong> i když mají poptávku, projet i obecnou část (use cases, proces, dodavatelé) — klíčové pro retenci. Pokud zákazník tlačí na zakázku, věnuj se nejdřív jí a obecné věci propašuj během konverzace.</div>
         </div>
 
         <div class="q-groups">
@@ -677,41 +664,40 @@ body {
             <div class="q-group-body">
               <div class="q-group-desc">Cíl: pochopit zadání. Nech je popsat to vlastními slovy dřív, než půjdeš do detailů.</div>
               <ul class="q-sublist">
-                <li class="q-sub">Co konkrétně teď řešíte — můžete mi popsat, o co jde?</li>
-                <li class="q-sub">Pro koho to je — interně pro zaměstnance, pro klienty, pro event?</li>
+                <li class="q-sub">Co konkrétně teď řešíte — popište mi, o co jde?</li>
+                <li class="q-sub">Pro koho to je — interně, pro klienty, pro event?</li>
                 <li class="q-sub">Kolik kusů zhruba?</li>
-                <li class="q-sub">Máte už představu, co by to mělo být, nebo to teprve hledáte?</li>
+                <li class="q-sub">Máte už jasnou představu, co by to mělo být, nebo to teprve hledáte?</li>
               </ul>
             </div>
           </div>
 
           <div class="q-group">
             <div class="q-group-header" onclick="toggleGroup(this)">
-              <div class="q-group-meta"><span class="q-group-num">02</span><span class="q-group-name">Kritéria výběru</span></div>
+              <div class="q-group-meta"><span class="q-group-num">02</span><span class="q-group-name">Podle čeho budete vybírat</span></div>
               <span class="q-group-icon">+</span>
             </div>
             <div class="q-group-body">
-              <div class="q-group-desc">Cíl: zjistit, co je pro ně reálně důležité. Pozor — "chceme kvalitu i cenu" je default odpověď. Tlačit dál: kdyby museli volit, co je první.</div>
+              <div class="q-group-desc">Cíl: zjistit kritéria. Tlačit na trade-off — co je první, kdyby museli volit.</div>
               <ul class="q-sublist">
-                <li class="q-sub">Podle čeho budete rozhodovat o tom, co vyberete?</li>
-                <li class="q-sub">Co je pro tuhle zakázku nejdůležitější — aby se to líbilo příjemci, vejít se do ceny, rychlost dodání, kreativa?</li>
-                <li class="q-sub">Kdyby to byl trade-off mezi kvalitou a cenou, kam byste se nejspíš přiklonili?</li>
-                <li class="q-sub">Máte nějakou referenci, podle které jdete — jako "chceme něco podobného jako tohle"?</li>
+                <li class="q-sub">Podle čeho budete rozhodovat, koho vyberete?</li>
+                <li class="q-sub">Co je pro tuhle zakázku nejdůležitější — aby se to líbilo příjemci, vejít se do ceny, rychlost, kreativa?</li>
+                <li class="q-sub">Kdyby šlo o kompromis mezi tím, aby se to líbilo, a tím, aby to vyšlo cenově — kam byste se přiklonil?</li>
               </ul>
             </div>
           </div>
 
           <div class="q-group">
             <div class="q-group-header" onclick="toggleGroup(this)">
-              <div class="q-group-meta"><span class="q-group-num">03</span><span class="q-group-name">Budget</span></div>
+              <div class="q-group-meta"><span class="q-group-num">03</span><span class="q-group-name">Budget na zakázku</span></div>
               <span class="q-group-icon">+</span>
             </div>
             <div class="q-group-body">
-              <div class="q-group-desc">Cíl: dostat reálné číslo nebo aspoň rozsah. Pokud se budget tvrdě tají, ptej se na "rámec" nebo "kolem čeho se to pohybuje".</div>
+              <div class="q-group-desc">Cíl: dostat reálné číslo nebo aspoň rozsah. Pokud budget tají, ptát se na "rámec" nebo "řád".</div>
               <ul class="q-sublist">
                 <li class="q-sub">Máte na tuhle zakázku konkrétní budget?</li>
-                <li class="q-sub">Je to už schválené, nebo se schválení teprve čeká?</li>
-                <li class="q-sub">Pohybujeme se v jakém řádu — desítky, stovky tisíc?</li>
+                <li class="q-sub">Je to už schválené, nebo se to teprve čeká?</li>
+                <li class="q-sub">V jakém řádu se pohybujeme — desítky, stovky tisíc?</li>
                 <li class="q-sub">Je tam ještě prostor, kdyby řešení dávalo smysl, nebo je strop pevný?</li>
               </ul>
             </div>
@@ -723,29 +709,31 @@ body {
               <span class="q-group-icon">+</span>
             </div>
             <div class="q-group-body">
-              <div class="q-group-desc">Cíl: pochopit, kolik máš času a kde je v procesu hard stop. Ptej se i na to, co se stane, když se to nestihne — tam je často reálný pain.</div>
+              <div class="q-group-desc">Cíl: pochopit, kolik máš času a kde je hard stop. Ptej se i na to, co se stane, když se to nestihne — tam je often reálný pain.</div>
               <ul class="q-sublist">
                 <li class="q-sub">Do kdy to potřebujete mít hotové?</li>
-                <li class="q-sub">Je za tím nějaký konkrétní event, datum, fronta?</li>
-                <li class="q-sub">Co se stane, když se to nestihne včas?</li>
-                <li class="q-sub">Kdy ideálně musíte mít rozhodnuto o dodavateli?</li>
+                <li class="q-sub">Je za tím konkrétní datum, event, fronta?</li>
+                <li class="q-sub">Kdy ideálně musíte rozhodnout o dodavateli?</li>
+                <li class="q-sub">Co se stane, když se to nestihne?</li>
               </ul>
             </div>
           </div>
 
           <div class="q-group">
             <div class="q-group-header" onclick="toggleGroup(this)">
-              <div class="q-group-meta"><span class="q-group-num">05</span><span class="q-group-name">Proces rozhodování a stakeholdeři</span></div>
+              <div class="q-group-meta"><span class="q-group-num">05</span><span class="q-group-name">Proces výběru a schvalování</span></div>
               <span class="q-group-icon">+</span>
             </div>
             <div class="q-group-body">
-              <div class="q-group-desc">Cíl: zjistit, s kým reálně mluvíš a kdo má poslední slovo. Krycí otázka: "abych vám připravil podklady, které budou užitečné pro všechny zúčastněné".</div>
+              <div class="q-group-desc">Cíl: zjistit, s kým reálně mluvíš, kdo má poslední slovo, a zmapovat zapojené lidi u téhle konkrétní zakázky. Krycí věta: "abych vám připravil podklady tak, ať jsou užitečné pro všechny, kdo to budou posuzovat".</div>
               <ul class="q-sublist">
-                <li class="q-sub">Kdo všechno bude do výběru zapojený?</li>
-                <li class="q-sub">Kdo dává finální rozhodnutí?</li>
-                <li class="q-sub">Jak u vás obvykle takové rozhodnutí probíhá — kolik kol, kolik schůzek?</li>
+                <li class="q-sub">Kdo všechno u vás bude do téhle zakázky zapojený?</li>
+                <li class="q-sub">Kdo to objednává a řeší operativně?</li>
+                <li class="q-sub">Kdo dává finální rozhodnutí o výběru?</li>
+                <li class="q-sub">Kdo to schvaluje finančně?</li>
+                <li class="q-sub">Je tam někdo z jiného oddělení, kdo do toho mluví? (Marketing kvůli brandu, vedení…)</li>
+                <li class="q-sub">Jak rozhodnutí probíhá — kolik kol, jak dlouho to obvykle trvá?</li>
                 <li class="q-sub">Je tam někdo, kdo to bude muset odsouhlasit, kdo dnes není u stolu?</li>
-                <li class="q-sub">Co budou ti další lidé chtít vidět, aby řekli ano?</li>
               </ul>
             </div>
           </div>
@@ -756,12 +744,12 @@ body {
               <span class="q-group-icon">+</span>
             </div>
             <div class="q-group-body">
-              <div class="q-group-desc">Cíl: zjistit, kdo další je v hře. Lidé to často řeknou, když se zeptáš přirozeně. Pokud máš jejich konkurenční nabídku, můžeš nabídnout lepší podmínky nebo se odlišit jinde.</div>
+              <div class="q-group-desc">Cíl: zjistit, kdo další je v hře. Pokud se podaří dostat konkurenční nabídku, můžeš se přesně zacílit.</div>
               <ul class="q-sublist">
                 <li class="q-sub">Oslovili jste i někoho dalšího, nebo to řešíme jen s námi?</li>
                 <li class="q-sub">S kým ještě se na to díváte?</li>
-                <li class="q-sub">Mají už od nich nějakou nabídku, kterou byste mi mohli ukázat? Pomůže mi to nastavit naši nabídku tak, ať dává smysl porovnat.</li>
-                <li class="q-sub">Co se vám na těch ostatních nabídkách líbí / nelíbí?</li>
+                <li class="q-sub">Mají od nich už nabídku? Když mi ji můžete poslat, pomůže mi to nastavit naši tak, ať dává smysl je porovnat.</li>
+                <li class="q-sub">Co se vám na ostatních nabídkách líbí, co naopak ne?</li>
               </ul>
             </div>
           </div>
@@ -772,12 +760,12 @@ body {
               <span class="q-group-icon">+</span>
             </div>
             <div class="q-group-body">
-              <div class="q-group-desc">Cíl: i když jsi tu kvůli zakázce, vždy si odnes základní obrázek o firmě. Pro retenci a další zakázky. Ptej se přirozeně, jakoby mimochodem.</div>
+              <div class="q-group-desc">Cíl: i u zakázkové schůzky si odnést základní obrázek o firmě. Klíčové pro retenci. Ptát se mimochodem, ne jako další blok otázek.</div>
               <ul class="q-sublist">
-                <li class="q-sub">Jak často u vás takové zakázky vznikají — je to ad hoc, nebo víte, že každý rok je třeba onboarding, Vánoce, eventy?</li>
-                <li class="q-sub">K čemu všemu vlastně merch ve firmě používáte — jen tahle zakázka, nebo víc věcí?</li>
-                <li class="q-sub">Máte nějaký systém, kterým to dnes spravujete, nebo se to řeší pokaždé znovu?</li>
-                <li class="q-sub">Kdyby vás něco mohlo dlouhodobě odlehčit od téhle operativy, mělo by to u vás místo?</li>
+                <li class="q-sub">Jak často u vás takové zakázky vznikají — je tahle výjimečná, nebo se to opakuje?</li>
+                <li class="q-sub">Pro co všechno merch ve firmě používáte — jen tahle zakázka, nebo víc věcí během roku?</li>
+                <li class="q-sub">Máte stálé dodavatele, nebo to pokaždé poptáváte znovu?</li>
+                <li class="q-sub">Jak to máte dnes celé řešené procesně — vlastní sklad, vlastní e-shop, nebo se to řeší pokaždé manuálně?</li>
               </ul>
             </div>
           </div>
@@ -788,7 +776,7 @@ body {
               <span class="q-group-icon">+</span>
             </div>
             <div class="q-group-body">
-              <div class="q-group-desc">Cíl: stejně jako u obecné schůzky — pochopit, co řeší konkrétně tenhle člověk. I u "transakční" zakázky platí, že rozhoduje konkrétní člověk, ne firma.</div>
+              <div class="q-group-desc">Cíl: stejně jako u obecné schůzky — pochopit, co řeší konkrétně tenhle člověk. I u "transakční" zakázky rozhoduje konkrétní člověk, ne firma.</div>
               <ul class="q-sublist">
                 <li class="q-sub">Co je pro vás osobně klíčové, aby tahle zakázka dopadla dobře?</li>
                 <li class="q-sub">Co by se muselo stát, abyste si po dodání řekl "tohle bylo super"?</li>
@@ -799,14 +787,15 @@ body {
 
           <div class="q-group">
             <div class="q-group-header" onclick="toggleGroup(this)">
-              <div class="q-group-meta"><span class="q-group-num">09</span><span class="q-group-name">Závěr — co dál</span></div>
+              <div class="q-group-meta"><span class="q-group-num">09</span><span class="q-group-name">Komunikace a další kroky</span></div>
               <span class="q-group-icon">+</span>
             </div>
             <div class="q-group-body">
-              <div class="q-group-desc">Cíl: odejít s jasným next stepem a dohodnutým formátem nabídky.</div>
+              <div class="q-group-desc">Cíl: odejít s jasným next stepem, dohodnutým formátem nabídky a kontaktem.</div>
               <ul class="q-sublist">
                 <li class="q-sub">Kdy ideálně potřebujete mít naši nabídku?</li>
-                <li class="q-sub">V jaké formě vám to pošlu — PDF, prezentace, Excel s rozpočtem?</li>
+                <li class="q-sub">V jaké formě vám to pošlu — PDF, prezentace, Excel?</li>
+                <li class="q-sub">Kdo bude náš kontakt u vás?</li>
                 <li class="q-sub">Jak preferujete další komunikaci — e-mail, telefon, WhatsApp?</li>
                 <li class="q-sub">Kdy se ozveme znovu?</li>
               </ul>
@@ -815,61 +804,6 @@ body {
 
         </div>
       </div>
-    </div>
-  </div>
-
-  <hr class="divider">
-
-  <!-- PRO OBCHODNÍKY -->
-  <div class="section" id="obchodnici">
-    <div class="section-label">Pravidla</div>
-    <h2 class="section-title">Pro obchodníky</h2>
-    <p class="section-sub">Pár pravidel pro práci s otázkami — před každou schůzkou, ne jen jednou.</p>
-
-    <div class="rules-list">
-
-      <div class="rule-item">
-        <div class="rule-num">1</div>
-        <div class="rule-body">
-          <strong>Neodříkávat jako checklist.</strong> Otázky jsou mapa, ne scénář. Pokud zákazník odpovídá široce, často odpoví na 3 otázky najednou — neptej se znovu na to, co už řekl.
-        </div>
-      </div>
-
-      <div class="rule-item">
-        <div class="rule-num">2</div>
-        <div class="rule-body">
-          <strong>Naslouchat víc, než mluvit.</strong> Cíl je, aby zákazník mluvil aspoň 70 % času.
-        </div>
-      </div>
-
-      <div class="rule-item">
-        <div class="rule-num">3</div>
-        <div class="rule-body">
-          <strong>Follow-up je důležitější než další otázka.</strong> Když řeknou "je to chaos", neptej se další otázku ze seznamu — zeptej se "jak konkrétně se ten chaos projevuje?".
-        </div>
-      </div>
-
-      <div class="rule-item">
-        <div class="rule-num">4</div>
-        <div class="rule-body">
-          <strong>Na peníze přirozeně.</strong> Otázku na budget nedávat jako první. Ideálně až poté, co jsi pochopil jejich proces a use casy.
-        </div>
-      </div>
-
-      <div class="rule-item">
-        <div class="rule-num">5</div>
-        <div class="rule-body">
-          <strong>Zapisovat hned po schůzce.</strong> Nejpozději 30 minut po. Otázky 07 (motivace osoby) a 02 (use casy) jsou nejdůležitější pro follow-up — to bývá to, co se nejrychleji zapomene.
-        </div>
-      </div>
-
-      <div class="rule-item">
-        <div class="rule-num">6</div>
-        <div class="rule-body">
-          <strong>Vždy si odnést tři věci:</strong> kdo rozhoduje, kdy se rozhoduje, podle čeho se rozhoduje.
-        </div>
-      </div>
-
     </div>
   </div>
 
@@ -900,7 +834,7 @@ Tvým úkolem je zpracovat je do dvou částí níže.
 
 Piš stručně a věcně. Nepoužívej celé věty tam, kde stačí pár slov. Pokud zákazník řekl něco konkrétního a zajímavého, zachovej to doslova v uvozovkách. Pokud informace chybí, napiš "nezjištěno". Odpovídej VŽDY v češtině.
 
-DŮLEŽITÉ PRAVIDLO: Nikdy si nic nevymýšlej. Vycházej výhradně z toho, co zaznělo v poznámkách. Přísně rozlišuj mezi tím, co řekl zákazník, a tím, co říkal obchodník — feedback zákazníka jsou pouze jeho vlastní reakce a slova. Pokud zákazník k něčemu nic neřekl, nepiš to.
+DŮLEŽITÉ PRAVIDLO: Nikdy si nic nevymýšlej. Vycházej výhradně z toho, co zaznělo v poznámkách. Přísně rozlišuj mezi tím, co řekl zákazník, a tím, co říkal obchodník. Pokud zákazník k něčemu nic neřekl, nepiš to.
 
 ════════════════════════════════════════
 ČÁST 1 — PROFIL ZÁKAZNÍKA A SCHŮZKY
@@ -912,29 +846,29 @@ Kontakt (jméno, role):
 FIRMA A KONTEXT
 Co dělají, jak jsou velcí (počet zaměstnanců, počet poboček, trhy):
 
-JAK TO U NICH FUNGUJE
-Kdo co řeší, jak probíhá proces v praxi, jestli to řeší jedno oddělení nebo každý sám:
+USE CASES — CO A KDE SE DĚJE
+Přehled per oddělení: co dělá HR, marketing, sales kolem merche. Dárky klientům, partnerské balíčky, eventy. Co je objemově největší:
 
-USE CASE
-K čemu to hlavně používají — HR, akce, Vánoce, onboarding, klienti... Kdo v rámci firmy co řeší:
+KDO TO DRŽÍ — ROZHODOVACÍ STRUKTURA
+Kdo má jednotlivé use casy na starosti. Kdo operativně objednává. Kdo schvaluje finančně a kreativně. Je tam někdo, kdo merch zastřešuje napříč firmou:
 
-CO JE NEBAVÍ A KDE TO BOLÍ
-Konkrétní situace, kde jim něco nevyšlo nebo je to zdržuje. Co by nejradši přestali řešit:
+MERCH KALENDÁŘ
+Plánované vs. ad hoc. Co proběhne každý rok (onboarding, Vánoce, eventy). Jak často padají ad hoc požadavky a odkud:
 
-OSOBNÍ MOTIVACE
-Co chce každý konkrétní člověk osobně — jeho frustrace, ambice, co by mu ulehčilo práci:
+DODAVATELÉ
+S kým dnes pracují, jak dlouho. Jestli jdou s jedním nebo mají rozdělené podle typu produktu. Co se osvědčilo, co ne:
 
-KDO JE KDO A KDO ROZHODUJE
-Mapa stakeholderů: kdo je na schůzce, kdo schvaluje nákup, kdo platí, kdo to může zastavit:
+PODLE ČEHO VYBÍRAJÍ
+Rozhodovací kritéria: cena, kvalita, kreativa, jednoduchost nákupu. Kde je hlavní trade-off. Interní standardy kvality:
+
+SOUČASNÝ PROCES
+Krok po kroku: od požadavku po příjemce. Jak sbírají adresy a velikosti. Vlastní sklad nebo u dodavatele. E-shop nebo ruční objednávání. Kdo a jak distribuuje. Kde se ztrácí nejvíc času:
+
+MOTIVACE KONTAKTU
+Co má konkrétně tento člověk na starosti. Co ho osobně nejvíc štve. Co by si přál změnit. Jestli mu jde víc o čas, peníze nebo lepší výstup. Jak se to promítá do toho, jak ho hodnotí:
 
 BUDGET — KONKRÉTNÍ ČÍSLA
-Roční budget na tuto oblast (orientační částka v Kč), z jakého střediska jde (marketing/HR/vedení), jestli je pevná položka nebo se řeší ad hoc každý rok. Pokud zaznělo číslo, zapiš ho:
-
-TIMING A KONKRÉTNÍ AKCE
-Konkrétní termín nebo akce, na které se to váže (Vánoce, veletrh, konference, event). Jak urgentní to je — hoří to teď nebo explorují:
-
-PROČ PŘIŠLI K NÁM
-Jak se dozvěděli o Valxonu, co od schůzky čekali, co o nás vědí:
+Roční budget na merch (orientační částka v Kč). Z jakého střediska jde. Jestli je pevná položka nebo ad hoc. Kdo schvaluje. Kdy se plánuje. Stav na letošek:
 
 NEXT STEP
 Co jsme domluvili:
@@ -949,10 +883,10 @@ FIT S VALXONEM
 Kde přesně naše řešení odpovídá jejich aktuálním potřebám nebo výzvám? Proč jsme pro ně relevantní?
 
 NEJVĚTŠÍ ARGUMENTY PRO UZAVŘENÍ
-Co z discovery použít v dalším rozhovoru nebo nabídce? Citace zákazníka doslova, konkrétní situace nebo incident, který zazněl, čísla pokud padla (budget, počet kusů, termín).
+Co z discovery použít v dalším rozhovoru nebo nabídce? Citace zákazníka doslova, konkrétní situace nebo incident, čísla pokud padla (budget, počet kusů, termín).
 
 KLÍČOVÝ SPOJENEC A BLOKÁTOR
-Kdo je náš hlavní spojenec a proč? Kdo může být blokátor (board, CFO, IT, nadřízený) a jak s ním pracovat?
+Kdo je náš hlavní spojenec a proč? Kdo může být blokátor (CFO, IT, marketing, nadřízený) a jak s ním pracovat?
 
 RIZIKA A NÁMITKY
 Co může komplikovat rozhodnutí? (stávající dodavatel, schvalovací proces, timing, budget, interní politika...)
@@ -987,92 +921,102 @@ Kontakt: Tomáš Kovář, HR Director + Petra Horáková, CMO
 
 --- FIRMA A KONTEXT ---
 IT firma, 320 zaměstnanců, 4 pobočky (Praha, Brno, Bratislava,
-Varšava). Rychle rostou — loni +80 lidí. Silný employer brand,
-hodně investují do firemní kultury a onboardingu.
+Varšava). Rychle rostou — loni +80 lidí.
 
---- AKTUÁLNÍ PRIORITY A VÝZVY ---
-Skalování onboardingu při rychlém náboru — mají pocit, že
-ztrácejí konzistenci. Employer brand na zahraničních trzích.
-CMO: "Potřebujeme, aby každý nový člověk cítil, že je vítaný
-od první minuty — a teď to nestíháme." Loni nestihli onboarding
-balíčky pro 25 % nováčků z Q4.
+--- USE CASES — CO A KDE SE DĚJE ---
+HR (Tomáš): onboarding balíčky pro nováčky, výroční dárky
+zaměstnancům. Vánoce — každý rok pro celou firmu.
+Marketing (Petra): brandové předměty na konference a eventy.
+Sales: obchodníci nosí branded merch na schůzky s klienty.
+Klienti: vánoční pozornosti pro klíčové partnery.
+Objemově největší: onboarding balíčky (320 nováčků ročně,
+z toho cca 80 Q4) + Vánoce.
 
---- KLÍČOVÉ OSOBY A JEJICH ROLE ---
-Tomáš Kovář (HR Director) — iniciátor, operativně rozhoduje
-o nástrojích pro HR. Petra Horáková (CMO) — drží budget na
-employer brand. CFO (není na schůzce) — schvaluje investice
-nad 500k ročně. IT security — musí projít GDPR check.
+--- KDO TO DRŽÍ ---
+Tomáš řeší HR use casy operativně, Petra má merch pro
+marketing a klienty. Každý si to řeší sám — bez sdílené
+evidence. CFO (není na schůzce) schvaluje investice nad 500k.
+Nikdo nemá merch zastřešeně napříč firmou.
 
---- OSOBNÍ MOTIVACE A ZÁJEM ---
-Tomáš: chce přestat řešit onboarding manuálně, šetřit čas svého
-týmu. "Teď trávím každý pondělí ráno tím, že řídím onboarding
-balíčky — to nemůže pokračovat."
-Petra: záleží jí na vizuální konzistenci merche napříč pobočkami.
-Vadí jí, že Praha vypadá jinak než Brno.
+--- MERCH KALENDÁŘ ---
+Vánoce a onboarding jsou pevné. Zbytek ad hoc — Petra říká
+"přijde požadavek od vedení a musíme to vyřešit do týdne."
+Ad hoc požadavky přicházejí hlavně od vedení a salesu.
 
---- ROZHODOVACÍ PROCES ---
-Tomáš + Petra navrhují, CFO schvaluje nad 500k. GDPR check IT.
-Interně říkají 6–8 týdnů od rozhodnutí k podpisu. Největší
-blokátor: CFO je teď vytížený — Tomáš říká "do září."
+--- DODAVATELÉ ---
+Dva stálí: jeden textil (Praha, cca 3 roky), jeden drobnosti
+a tisk (online, mění se). "S textilním jsme spokojení, ale
+nemají e-shop a vše řešíme mailem." Nedopadlo: loni tisk
+dorazil pozdě na konferenci — museli improvizovat.
 
---- BUDGET A INVESTIČNÍ LOGIKA ---
-Budget na employer brand tools má Petra — orientačně 1–1,5M Kč
-ročně. HR tools rozpočet Tomáš — menší, cca 300–400k. Finální
-investici musí schválit CFO. Rozhodují na základě ROI a referencí.
+--- PODLE ČEHO VYBÍRAJÍ ---
+Petra: vizuální konzistence a kvalita na prvním místě.
+"Nemůžeme si dovolit, aby to vypadalo lacině."
+Tomáš: jednoduchost objednávání — tráví příliš času
+koordinací. Trade-off: raději zaplatí víc za jednoduššší
+proces. Standard: musí projít brand guidelinesem.
 
---- VZTAH S VALXONEM A OČEKÁVÁNÍ ---
-Dozvěděli se přes Startup Grind — viděli nás na panelu.
-Petra říká, že sleduje Valxon na LinkedIn. Přišli zjistit,
-jestli umíme skalovat do zahraničí. Čekali hlavně reference
-a ceník.
+--- SOUČASNÝ PROCES ---
+Požadavek → Tomáš nebo Petra poptá dodavatele mailem →
+dostane nabídku (1–2 týdny) → schválení vedením → objednávka.
+Adresy: sběr přes Excel + e-maily od HR. Velikosti: formulář
+v Google, ručně přepisují. Sklad: merch leží v kanceláři,
+Tomáš ho distribuuje sám. Žádný e-shop.
+"Teď trávím každý pondělí ráno tím, že řídím onboarding
+balíčky — to nemůže pokračovat." Ztráta času: koordinace
+adres + distribuce + komunikace s dodavatelem.
 
---- POTENCIÁL A ČASOVÁNÍ ---
-Téma urgentní — nábor pokračuje, onboarding bolí teď. Ale
-CFO je volný až po létu. Reálné uzavření: Q3/Q4 2025.
-"Kdyby to šlo spustit do září, bylo by to ideální."
+--- MOTIVACE KONTAKTU ---
+Tomáš: přestat řešit operativu manuálně. Hodnotí ho
+rychlostí onboardingu — loni 25 % nováčků bez balíčku v Q4.
+Petra: konzistence brandu napříč pobočkami. Vadí jí, že
+Praha vypadá jinak než Brno. Osobně: chce mít jeden systém,
+ne 4 různé e-maily.
+
+--- BUDGET ---
+Petra: employer brand tools ~1–1,5M Kč/rok. Tomáš: HR tools
+menší, cca 300–400k. Fixní položky v rozpočtu, plánuje se Q4.
+Schvaluje CFO nad 500k. Letošek: prostor ještě je, ale CFO
+vytížený do září.
 
 --- NEXT STEP ---
-Zaslat case study od podobně velké IT firmy. Tomáš pozve CFO
-na druhé demo — termín do konce května.
+Zaslat case study od podobně velké IT firmy. Tomáš domluví
+druhé demo s CFO — termín do konce května.
 
 ════════════════════════════════════════
 ČÁST 2 — CO TO ZNAMENÁ PRO NÁS
 ════════════════════════════════════════
 
 --- FIT S VALXONEM ---
-Silný fit. Onboarding flow řeší jejich největší pain přímo —
-automatické spuštění balíčku bez manuální práce Tomáše.
-Centrální platforma pro 4 pobočky v různých zemích odpovídá
-jejich potřebě konzistence. Skalování = přesně jejich problém.
+Silný fit. Onboarding flow řeší jejich největší pain přímo.
+Centrální platforma pro 4 pobočky = konzistence, kterou
+chce Petra. Automatizace = úleva pro Tomáše.
 
 --- NEJVĚTŠÍ ARGUMENTY PRO UZAVŘENÍ ---
 "Teď trávím každý pondělí ráno tím, že řídím onboarding
 balíčky — to nemůže pokračovat." — použít doslova u CFO demu.
-Loni 25 % nováčků bez balíčku v Q4 — konkrétní číslo, které
-rezonuje s CFO logikou (risk vs. cost).
-Petra chce konzistenci napříč pobočkami — připravit vizuální
-ukázku, jak to vypadá z Varšavy vs. Prahy dnes vs. s námi.
+Loni 25 % nováčků bez balíčku v Q4 — konkrétní číslo pro
+CFO logiku (risk vs. cost).
+Petra: konzistence napříč pobočkami — připravit vizuální
+ukázku Praha vs. Brno dnes vs. s námi.
 
---- KLÍČOVÝ STAKEHOLDER ---
-Tomáš je spojenec — cítí pain každý den, chce změnu.
-CFO je blokátor — nepotkat ho bez konkrétní ROI argumentace.
-Petra může pomoct přes brand angle — zapojit ji do přípravy
-CFO prezentace.
+--- KLÍČOVÝ SPOJENEC A BLOKÁTOR ---
+Tomáš = spojenec, cítí pain každý den.
+CFO = blokátor — nepotkat bez ROI argumentace.
+Petra = pomůže přes brand angle, zapojit ji do CFO přípravy.
 
 --- RIZIKA A NÁMITKY ---
 CFO vytížený do září — timeline se může posunout.
-GDPR/IT check — zahrnout do nabídky security dokumentaci předem.
-Zahraniční pobočky (Bratislava, Varšava) — ověřit, jestli
-umíme dodat tam bez problémů.
+GDPR/IT check — zahrnout security dokumentaci do nabídky.
+Zahraniční pobočky — ověřit doručení do Bratislavy a Varšavy.
 
 --- TIMING ---
-Nespěchat na podpis — CFO není dostupný. Ale udržet tempo:
-case study hned, druhé demo s CFO co nejdříve po létě.
-Optimální okno: září–říjen.
+Nespěchat — CFO není dostupný. Udržet tempo: case study hned,
+demo s CFO co nejdříve po létě. Optimální okno: září–říjen.
 
 --- CELKOVÝ POTENCIÁL ---
-Vysoký — rychle rostoucí firma, jasný pain, silný spojenec
-v Tomášovi, budget existuje, timing Q3/Q4 2025.</div>
+Vysoký — rostoucí firma, jasný pain, spojenec v Tomášovi,
+budget existuje, timing Q3/Q4 2025.</div>
       </div>
     </div>
 
