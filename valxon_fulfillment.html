@@ -490,6 +490,7 @@ body {
   <a class="topnav-back-badge" href="valxon_sales_manual.html">← Sales manuál</a>
   <ul class="topnav-links">
     <li><a href="#jak" class="active">Jak to funguje v krocích</a></li>
+    <li><a href="#faq">Co se klient ptá</a></li>
     <li><a href="#schuze">Otázky na klienta</a></li>
     <li><a href="#pitch">Co po klientovi potřebujeme</a></li>
     <li><a href="#cenik">Kolik ho to stojí</a></li>
@@ -590,9 +591,129 @@ body {
 
   <hr class="divider">
 
+  <!-- FAQ -->
+  <div class="section" id="faq">
+    <div class="section-label">02 — Časté dotazy</div>
+    <h2 class="section-title">Co se klient ptá</h2>
+    <p class="section-sub">Nejčastější otázky, které přijdou na schůzce nebo e-mailem. Víš, co říct — a co radši neříkat.</p>
+
+    <div class="expandable" id="faq-1">
+      <div class="expandable-header" onclick="toggleExp('faq-1')">
+        <div class="expandable-title">Je zboží u vás pojištěné?</div>
+        <div class="expandable-icon">+</div>
+      </div>
+      <div class="expandable-body">
+        <p style="font-size:14px;line-height:1.65;margin-bottom:16px;">Ano, zboží je evidované a pojištěné. Konkrétní limit pojištění ti upřesní operations při podpisu smlouvy.</p>
+        <div class="callout callout-tip">
+          <div class="callout-icon">💡</div>
+          <div class="callout-body"><strong>Pozn. pro tebe:</strong> Neuváděj konkrétní částky pojistného krytí — dokud si je neověříš s operations, nevíš, co platí pro daného klienta.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="expandable" id="faq-2">
+      <div class="expandable-header" onclick="toggleExp('faq-2')">
+        <div class="expandable-title">A když se ve skladu něco zničí nebo ztratí — kdo to platí?</div>
+        <div class="expandable-icon">+</div>
+      </div>
+      <div class="expandable-body">
+        <p style="font-size:14px;line-height:1.65;margin-bottom:16px;">Zboží je evidované a pojištěné. Jak přesně mechanismus funguje, ti upřesní operations — je to součást smluvních podmínek.</p>
+        <div class="callout callout-warn">
+          <div class="callout-icon">⚠️</div>
+          <div class="callout-body"><strong>Pozn. pro tebe:</strong> Nikdy neříkej „za sklad ručíme my" — formulace ručení je v jednání. Drž se: „zboží je evidované a pojištěné".</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="expandable" id="faq-3">
+      <div class="expandable-header" onclick="toggleExp('faq-3')">
+        <div class="expandable-title">Co když se zásilka po cestě ztratí nebo dorazí poškozená?</div>
+        <div class="expandable-icon">+</div>
+      </div>
+      <div class="expandable-body">
+        <p style="font-size:14px;line-height:1.65;">Reklamaci řešíme my — přímo s dopravcem i příjemcem. Klient to nemusí řešit sám.</p>
+      </div>
+    </div>
+
+    <div class="expandable" id="faq-4">
+      <div class="expandable-header" onclick="toggleExp('faq-4')">
+        <div class="expandable-title">Jak rychle to z vašeho skladu odejde?</div>
+        <div class="expandable-icon">+</div>
+      </div>
+      <div class="expandable-body">
+        <p style="font-size:14px;line-height:1.65;margin-bottom:16px;">Standardně tentýž nebo následující pracovní den od objednávky.</p>
+        <div class="callout callout-tip">
+          <div class="callout-icon">💡</div>
+          <div class="callout-body"><strong>Pozn. pro tebe:</strong> Nespecifikuj hodiny („do 14:00", „do 2 hodin") — SLA není potvrzené. Drž se „tentýž nebo následující pracovní den".</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="expandable" id="faq-5">
+      <div class="expandable-header" onclick="toggleExp('faq-5')">
+        <div class="expandable-title">Můžu kdykoli vidět, co máme na skladě?</div>
+        <div class="expandable-icon">+</div>
+      </div>
+      <div class="expandable-body">
+        <p style="font-size:14px;line-height:1.65;">Ano, v platformě v reálném čase — počty kusů i přehled pohybů.</p>
+      </div>
+    </div>
+
+    <div class="expandable" id="faq-6">
+      <div class="expandable-header" onclick="toggleExp('faq-6')">
+        <div class="expandable-title">Co když chce zákazník vrátit zboží?</div>
+        <div class="expandable-icon">+</div>
+      </div>
+      <div class="expandable-body">
+        <p style="font-size:14px;line-height:1.65;margin-bottom:16px;">Vratka putuje zpět k nám. Posoudíme stav a domluvíme se s klientem, jak dál.</p>
+        <div class="callout callout-tip">
+          <div class="callout-icon">💡</div>
+          <div class="callout-body"><strong>Pozn. pro tebe:</strong> Pokud klient tlačí na detaily (kdo platí dopravu zpět, co se děje s poškozeným zbožím), eskaluj na operations — nuance závisí na smlouvě.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="expandable" id="faq-7">
+      <div class="expandable-header" onclick="toggleExp('faq-7')">
+        <div class="expandable-title">Co když nám dojde merch v nejdůležitějším momentě?</div>
+        <div class="expandable-icon">+</div>
+      </div>
+      <div class="expandable-body">
+        <p style="font-size:14px;line-height:1.65;">Zásoby si klient sleduje v platformě — doporučujeme nastavit zásoby s předstihem, zvláště před sezónou nebo větší akcí. Automatické alerty jsou cíl do budoucna; teď je viditelnost na straně klienta v platformě.</p>
+      </div>
+    </div>
+
+    <div class="expandable" id="faq-8">
+      <div class="expandable-header" onclick="toggleExp('faq-8')">
+        <div class="expandable-title">A co když posíláme i do zahraničí?</div>
+        <div class="expandable-icon">+</div>
+      </div>
+      <div class="expandable-body">
+        <p style="font-size:14px;line-height:1.65;">Slovensko a základní destinace v EU zvládáme. Přesné podmínky a ceny ti upřesní operations.</p>
+      </div>
+    </div>
+
+    <div class="expandable" id="faq-9">
+      <div class="expandable-header" onclick="toggleExp('faq-9')">
+        <div class="expandable-title">Můžeme to zkusit a kdykoli skončit? Co se stane s naším merchem?</div>
+        <div class="expandable-icon">+</div>
+      </div>
+      <div class="expandable-body">
+        <p style="font-size:14px;line-height:1.65;margin-bottom:16px;">Merch je pořád váš — kdykoli si ho vyzvedneme nebo vám ho vrátíme.</p>
+        <div class="callout callout-tip">
+          <div class="callout-icon">💡</div>
+          <div class="callout-body"><strong>Pozn. pro tebe:</strong> Tohle říkej proaktivně — nemusíš čekat, až se klient zeptá. Snižuje to vnímaný risk a pomáhá uzavřít deal.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <hr class="divider">
+
   <!-- NA SCHŮZCE -->
   <div class="section" id="schuze">
-    <div class="section-label">02 — Discovery</div>
+    <div class="section-label">03 — Discovery</div>
     <h2 class="section-title">Na co se ho zeptat na schůzce</h2>
     <p class="section-sub">Než začneš mluvit o nabídce, vytáhni z klienta tohle. Většina otázek ti přímo nahrává odpověď, co bude potřeba ve fázi 1.</p>
 
@@ -610,7 +731,7 @@ body {
 
       <div class="q-block">
         <div class="q-block-q">Posílá i ven z Česka?</div>
-        <div class="q-block-why">Pokud ano, kam. Slovensko a EU řešíme individuálně — ověř si to s lídrem, sám nepočítej.</div>
+        <div class="q-block-why">Pokud ano, kam. Slovensko a EU řešíme individuálně — ověř si to s operations, sám nepočítej.</div>
       </div>
 
       <div class="q-block">
@@ -635,7 +756,7 @@ body {
 
   <!-- PITCH + ONBOARDING -->
   <div class="section" id="pitch">
-    <div class="section-label">03 — Pitch</div>
+    <div class="section-label">04 — Pitch</div>
     <h2 class="section-title">Jak to klientovi vysvětlit</h2>
     <p class="section-sub">Když klient řekne „tak jak to funguje?", tady jsou tři věty.</p>
 
@@ -722,7 +843,7 @@ body {
 
   <!-- CENÍK -->
   <div class="section" id="cenik">
-    <div class="section-label">04 — Ceník</div>
+    <div class="section-label">05 — Ceník</div>
     <h2 class="section-title">Co stojí kolik</h2>
     <p class="section-sub">Ceny jsou na orientaci — používej je v hovoru, ne jako nabídku. Vždycky říkej "od X Kč", nikdy "to vás bude stát X".</p>
 
@@ -750,7 +871,7 @@ body {
       <div class="price-card">
         <div class="price-card-label">Expedice zahraničí</div>
         <div class="price-card-value" style="font-size:15px;padding-top:4px;">individuálně</div>
-        <div class="price-card-note">ověř s lídrem</div>
+        <div class="price-card-note">ověř s operations</div>
       </div>
     </div>
 
@@ -761,7 +882,7 @@ body {
 
     <div class="callout callout-warn" style="margin-bottom:20px;">
       <div class="callout-icon">⚠️</div>
-      <div class="callout-body"><strong>Setup od 3 000 Kč je odhad pro klienta běžné velikosti.</strong> U většího klienta, více lokalit, nebo více palet se cena řeší individuálně. Vždy si to ověř s lídrem, než klientovi cenu potvrdíš.</div>
+      <div class="callout-body"><strong>Setup od 3 000 Kč je odhad pro klienta běžné velikosti.</strong> U většího klienta, více lokalit, nebo více palet se cena řeší individuálně. Vždy si to ověř s operations, než klientovi cenu potvrdíš.</div>
     </div>
 
     <div class="expandable" id="exp-cenik">
@@ -883,7 +1004,7 @@ body {
 
   <!-- CLOSING -->
   <div class="section" id="closing">
-    <div class="section-label">05 — Closing</div>
+    <div class="section-label">06 — Closing</div>
     <h2 class="section-title">Když klient řekne „jdeme do toho"</h2>
     <p class="section-sub">Pravidlo: než klient vychladne, ozvi se mu znova.</p>
 
@@ -894,7 +1015,7 @@ body {
       </div>
       <div class="closing-step">
         <div class="closing-step-num">2</div>
-        <div class="closing-step-body"><strong>Hoď info lídrovi</strong> — objem, frekvence, destinace, kontakt</div>
+        <div class="closing-step-body"><strong>Hoď info operations</strong> — objem, frekvence, destinace, kontakt</div>
       </div>
       <div class="closing-step">
         <div class="closing-step-num">3</div>
@@ -902,7 +1023,7 @@ body {
       </div>
       <div class="closing-step">
         <div class="closing-step-num">4</div>
-        <div class="closing-step-body">Lídr mezitím <strong>připraví kalkulaci a další kroky</strong></div>
+        <div class="closing-step-body">Operations mezitím <strong>připraví kalkulaci a další kroky</strong></div>
       </div>
     </div>
 
@@ -912,11 +1033,11 @@ body {
     <div class="warn-list">
       <div class="warn-item">
         <div class="warn-icon">⚠️</div>
-        <div class="warn-body"><strong>Konkrétní cenu setup u většího klienta</strong> — ověř si s lídrem</div>
+        <div class="warn-body"><strong>Konkrétní cenu setup u většího klienta</strong> — ověř si s operations</div>
       </div>
       <div class="warn-item">
         <div class="warn-icon">⚠️</div>
-        <div class="warn-body"><strong>Posílání do zahraničí</strong> — vždy s lídrem, neslibuj čísla</div>
+        <div class="warn-body"><strong>Posílání do zahraničí</strong> — vždy s operations, neslibuj čísla</div>
       </div>
       <div class="warn-item">
         <div class="warn-icon">⚠️</div>
