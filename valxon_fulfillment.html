@@ -333,6 +333,38 @@ body {
 .warn-body { font-size: 14px; line-height: 1.6; color: var(--black); }
 .warn-body strong { font-weight: 600; }
 
+/* ONBOARDING TWO-COL */
+.ob-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.ob-col { border: 1px solid var(--gray-200); border-radius: var(--radius); padding: 22px 24px; }
+.ob-col-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--gray-400);
+  margin-bottom: 18px;
+}
+.ob-items { list-style: none; display: flex; flex-direction: column; }
+.ob-item {
+  display: flex;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--gray-100);
+  align-items: flex-start;
+}
+.ob-item:last-child { border-bottom: none; }
+.ob-item::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+  margin-top: 5px;
+}
+.ob-item-title { font-size: 13px; font-weight: 600; color: var(--black); margin-bottom: 3px; line-height: 1.4; }
+.ob-item-desc { font-size: 12px; color: var(--gray-600); line-height: 1.55; }
+
 /* EXPANDABLE */
 .expandable {
   border: 1px solid var(--gray-200);
@@ -413,7 +445,7 @@ body {
   .section { margin-bottom: 36px; }
   .divider { margin: 28px 0; }
   .price-grid { grid-template-columns: repeat(2, 1fr); }
-  .icp-grid { grid-template-columns: 1fr; }
+  .ob-grid { grid-template-columns: 1fr; }
   .expandable-header { padding: 14px 16px; }
   .expandable-body { padding: 16px; }
   .price-table td, .price-table th { font-size: 12px; }
@@ -615,15 +647,75 @@ body {
       </ul>
     </div>
 
-    <div class="section-label" style="margin-bottom:10px;">Co po klientovi v rozjezdu chceš</div>
-    <p class="section-sub">Projdi s klientem na schůzce nebo pošli navazujícím mailem.</p>
-
-    <ul class="checklist">
-      <li>Přibližný počet SKU a základní přehled sortimentu — pomůže odhadnout rozsah onboardingu</li>
-      <li>Vyplněná šablonová tabulka zásob (název produktu, SKU/kód, počet kusů)</li>
-      <li>Informace, jak je zboží dnes baleno a označeno — ideálně tak, abychom u každého produktu věděli, kolik kusů je v krabici a co v krabici je</li>
-      <li>Připravenost zboží pro převoz a příjem — čím lépe bude ze strany klienta připravené, tím rychleji proběhne naskladnění</li>
-    </ul>
+    <div class="ob-grid">
+      <div class="ob-col">
+        <div class="ob-col-label">Co potřebujeme od klienta</div>
+        <ul class="ob-items">
+          <li class="ob-item">
+            <div>
+              <div class="ob-item-title">Přibližný počet SKU a základní přehled sortimentu.</div>
+              <div class="ob-item-desc">Pomůže nám to odhadnout rozsah onboardingu i skladového nastavení.</div>
+            </div>
+          </li>
+          <li class="ob-item">
+            <div>
+              <div class="ob-item-title">Vyplněnou šablonovou tabulku zásob.</div>
+              <div class="ob-item-desc">Minimálně název produktu, název SKU, interní kód SKU a počet kusů.</div>
+            </div>
+          </li>
+          <li class="ob-item">
+            <div>
+              <div class="ob-item-title">Informaci, jak je zboží dnes baleno a označeno.</div>
+              <div class="ob-item-desc">Ideálně platí 1 SKU = 1 balení / 1 jasně označený skladový celek.</div>
+            </div>
+          </li>
+          <li class="ob-item">
+            <div>
+              <div class="ob-item-title">Co nejlepší připravenost zboží pro převoz a příjem.</div>
+              <div class="ob-item-desc">Čím lépe bude zboží ze strany klienta připravené a označené, tím rychleji proběhne naskladnění.</div>
+            </div>
+          </li>
+          <li class="ob-item">
+            <div>
+              <div class="ob-item-title">Potvrzení, zda klientovi vyhovuje standardní režim doskladnění.</div>
+              <div class="ob-item-desc">Pokud chce schvalování nebo práci se zásobami řešit jinak, nastavíme postup individuálně.</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="ob-col">
+        <div class="ob-col-label">Co zařídíme my</div>
+        <ul class="ob-items">
+          <li class="ob-item">
+            <div>
+              <div class="ob-item-title">Pošleme klientovi šablonovou tabulku zásob a zkontrolujeme vstupy.</div>
+            </div>
+          </li>
+          <li class="ob-item">
+            <div>
+              <div class="ob-item-title">Nastavíme sklady a uživatelské přístupy v platformě.</div>
+            </div>
+          </li>
+          <li class="ob-item">
+            <div>
+              <div class="ob-item-title">Zajistíme kompletní převoz zboží na naše sklady.</div>
+              <div class="ob-item-desc">Podle připravenosti ze strany klienta pak navážeme rychlým příjmem do skladu.</div>
+            </div>
+          </li>
+          <li class="ob-item">
+            <div>
+              <div class="ob-item-title">Nastavíme proces příjmu, evidence a expedice.</div>
+            </div>
+          </li>
+          <li class="ob-item">
+            <div>
+              <div class="ob-item-title">Budeme průběžně hlídat zásoby a připravovat podklady pro doskladnění.</div>
+              <div class="ob-item-desc">Standardně vycházíme ze stavů zásob a prodejů a klient následně schvaluje naše návrhy.</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
 
   <hr class="divider">
