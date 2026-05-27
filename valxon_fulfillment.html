@@ -508,8 +508,8 @@ body {
     <li><a href="#jak" class="active">Jak to funguje</a></li>
     <li><a href="#info">Co potřebujeme</a></li>
     <li><a href="#co-my">Co uděláme my</a></li>
-    <li><a href="#cenik">Kolik ho to stojí</a></li>
-    <li><a href="#faq">Co se klient ptá</a></li>
+    <li><a href="#cenik">Orientační ceny</a></li>
+    <li><a href="#faq">FAQs</a></li>
     <li><a href="#closing">Closing</a></li>
   </ul>
 </nav>
@@ -674,6 +674,12 @@ body {
           <div class="ob-item-desc">Standardní průběh nebo individuální nastavení — operations to nastaví podle toho.</div>
         </div>
       </li>
+      <li class="ob-item">
+        <div>
+          <div class="ob-item-title">Safety stock a MOQ pro doobjednání ke každému SKU.</div>
+          <div class="ob-item-desc">Při naskladnění je potřeba sjednat s klientem minimální skladovou zásobu (safety stock) a ke každému produktu doplnit KAMa a MOQ pro doobjednání.</div>
+        </div>
+      </li>
     </ul>
   </div>
 
@@ -696,8 +702,8 @@ body {
           </li>
           <li class="ob-item">
             <div>
-              <div class="ob-item-title">Připraví předběžnou kalkulaci.</div>
-              <div class="ob-item-desc">Na základě orientačního ceníku níže a konzultace s operations. Kalkulaci posílá Sales, ne operations.</div>
+              <div class="ob-item-title">Vyžádá si kalkulaci od operations a pošle ji zákazníkovi.</div>
+              <div class="ob-item-desc">Kalkulaci vytváří operations. Sales ji přeposílá zákazníkovi.</div>
             </div>
           </li>
           <li class="ob-item">
@@ -714,23 +720,29 @@ body {
           <li class="ob-item">
             <div>
               <div class="ob-item-title">Nastaví sklady, produkty a uživatelské přístupy v platformě.</div>
-              <div class="ob-item-desc">Do 48 hodin od vyplněné tabulky vidí klient zásoby v platformě.</div>
+              <div class="ob-item-desc">Cíl je, aby klient viděl zásoby v platformě co nejdříve po vyplnění tabulky — konkrétní termín závisí na připravenosti ze strany klienta.</div>
             </div>
           </li>
           <li class="ob-item">
             <div>
-              <div class="ob-item-title">Zajistí kompletní převoz zboží na naše sklady.</div>
+              <div class="ob-item-title">Zajistí kompletní převoz zboží na sklad (fulfilment partner).</div>
             </div>
           </li>
           <li class="ob-item">
             <div>
-              <div class="ob-item-title">Provede příjem zboží, kontrolu a evidenci.</div>
+              <div class="ob-item-title">Provede příjem zboží, kontrolu a evidenci (fulfilment partner).</div>
             </div>
           </li>
           <li class="ob-item">
             <div>
-              <div class="ob-item-title">Spustí provoz a zaškolí klienta na platformu.</div>
-              <div class="ob-item-desc">Od tohoto okamžiku klient objednává přes platformu a zásoby sleduje sám.</div>
+              <div class="ob-item-title">Nastaví proces příjmu, evidence a expedice.</div>
+              <div class="ob-item-desc">Podle připravenosti ze strany klienta pak navážeme rychlým příjmem do skladu. Od tohoto okamžiku klient objednává přes platformu a zásoby sleduje sám.</div>
+            </div>
+          </li>
+          <li class="ob-item">
+            <div>
+              <div class="ob-item-title">Průběžně hlídá zásoby a připravuje podklady pro doskladnění.</div>
+              <div class="ob-item-desc">Vycházíme ze stavů zásob a prodejů — klient následně schvaluje naše návrhy.</div>
             </div>
           </li>
         </ul>
@@ -738,12 +750,60 @@ body {
     </div>
   </div>
 
+
+  <hr class="divider">
+
+  <!-- CENÍK -->
+  <div class="section" id="cenik">
+    <div class="section-label">04 — Ceník</div>
+    <h2 class="section-title">Orientační ceny</h2>
+    <p class="section-sub">Ceny jsou orientační — pro první schůzku. Předběžnou kalkulaci vytváří operations; Sales ji vyžádá a pošle zákazníkovi.</p>
+
+    <div class="callout callout-info" style="margin-bottom:20px;">
+      <div class="callout-icon">💡</div>
+      <div class="callout-body"><strong>Jak zákazníka chargovat se řeší case by case.</strong> Model zpoplatnění se může lišit — v některých případech, kde to dává smysl, nebudeme přeúčtovávat vůbec. Přístup ke každému zákazníkovi řešíme společně v procesu.</div>
+    </div>
+
+    <div class="price-grid">
+      <div class="price-card">
+        <div class="price-card-label">Rozjezd</div>
+        <div class="price-card-value">od 3 000 Kč</div>
+        <div class="price-card-note">úvodní převoz + naskladnění</div>
+      </div>
+      <div class="price-card">
+        <div class="price-card-label">Naskladnění</div>
+        <div class="price-card-value">od 60 Kč</div>
+        <div class="price-card-note">za paletu</div>
+      </div>
+      <div class="price-card">
+        <div class="price-card-label">Skladování</div>
+        <div class="price-card-value">od 300 Kč</div>
+        <div class="price-card-note">za paletu / měsíc</div>
+      </div>
+      <div class="price-card">
+        <div class="price-card-label">Expedice CZ</div>
+        <div class="price-card-value">od 110 Kč</div>
+        <div class="price-card-note">za zásilku</div>
+      </div>
+      <div class="price-card">
+        <div class="price-card-label">Expedice zahraničí</div>
+        <div class="price-card-value" style="font-size:15px;padding-top:4px;">individuálně</div>
+        <div class="price-card-note">ověř s operations</div>
+      </div>
+    </div>
+
+    <div class="callout callout-warn" style="margin-bottom:20px;">
+      <div class="callout-icon">⚠️</div>
+      <div class="callout-body"><strong>Rozjezd od 3 000 Kč je orientační odhad.</strong> Cena závisí na množství zboží a počtu palet — zahrnuje úvodní převoz a naskladnění do skladu. Ověř s operations, než klientovi cenu potvrdíš.</div>
+    </div>
+
+  </div>
   <hr class="divider">
 
   <!-- CO SE KLIENT PTÁ -->
   <div class="section" id="faq">
-    <div class="section-label">04 — Časté dotazy</div>
-    <h2 class="section-title">Co se klient ptá</h2>
+    <div class="section-label">05 — Časté dotazy</div>
+    <h2 class="section-title">FAQs</h2>
     <p class="section-sub">Nejčastější otázky, které přijdou na schůzce nebo e-mailem. Víš, co říct — a co radši neříkat.</p>
 
     <div class="expandable" id="faq-1">
@@ -856,167 +916,6 @@ body {
       </div>
     </div>
 
-  </div>
-
-  <hr class="divider">
-
-  <!-- CENÍK -->
-  <div class="section" id="cenik">
-    <div class="section-label">05 — Ceník</div>
-    <h2 class="section-title">Co stojí kolik</h2>
-    <p class="section-sub">Ceny jsou orientační — pro první schůzku. Předběžnou kalkulaci připravuje Sales na základě zjistěných info a konzultace s operations.</p>
-
-    <div class="price-grid">
-      <div class="price-card">
-        <div class="price-card-label">Setup</div>
-        <div class="price-card-value">od 3 000 Kč</div>
-        <div class="price-card-note">jednorázově</div>
-      </div>
-      <div class="price-card">
-        <div class="price-card-label">Naskladnění</div>
-        <div class="price-card-value">od 60 Kč</div>
-        <div class="price-card-note">za paletu</div>
-      </div>
-      <div class="price-card">
-        <div class="price-card-label">Skladování</div>
-        <div class="price-card-value">od 300 Kč</div>
-        <div class="price-card-note">za paletu / měsíc</div>
-      </div>
-      <div class="price-card">
-        <div class="price-card-label">Expedice CZ</div>
-        <div class="price-card-value">od 110 Kč</div>
-        <div class="price-card-note">za zásilku</div>
-      </div>
-      <div class="price-card">
-        <div class="price-card-label">Expedice zahraničí</div>
-        <div class="price-card-value" style="font-size:15px;padding-top:4px;">individuálně</div>
-        <div class="price-card-note">ověř s operations</div>
-      </div>
-    </div>
-
-    <div class="callout callout-info" style="margin-bottom:12px;">
-      <div class="callout-icon">💬</div>
-      <div class="callout-body"><strong>Když chce klient jedno číslo:</strong> řekni mu, že jedna kompletně vyřízená objednávka (vyskladnění + balení + doprava v ČR) se pohybuje kolem <strong>110–150 Kč za zásilku</strong>. Skladné platí měsíčně podle objemu.</div>
-    </div>
-
-    <div class="callout callout-warn" style="margin-bottom:20px;">
-      <div class="callout-icon">⚠️</div>
-      <div class="callout-body"><strong>Setup od 3 000 Kč je odhad pro klienta běžné velikosti.</strong> U většího klienta, více lokalit, nebo více palet se cena řeší individuálně. Vždy si to ověř s operations, než klientovi cenu potvrdíš.</div>
-    </div>
-
-    <div class="expandable" id="exp-cenik">
-      <div class="expandable-header" onclick="toggleExp('exp-cenik')">
-        <div class="expandable-title">
-          Podrobný ceník — Olicon logistics
-          <small>Interní podklad · všechny ceny bez DPH · nezasílat zákazníkovi</small>
-        </div>
-        <div class="expandable-icon">+</div>
-      </div>
-      <div class="expandable-body">
-
-        <div class="callout callout-warn" style="margin-bottom:20px;">
-          <div class="callout-icon">⚠️</div>
-          <div class="callout-body"><strong>Interní podklad — nezasílat zákazníkovi.</strong> Zákazníkovi vždy komunikuj orientační ceny „od" z horní sekce.</div>
-        </div>
-
-        <div class="price-section-title">Skladování zboží</div>
-        <table class="price-table">
-          <thead><tr><th>Služba</th><th>Popis</th><th>Cena</th></tr></thead>
-          <tbody>
-            <tr><td>Paleta – pick (zemní pozice)</td><td>1 paleta = 1 pozice (zem)</td><td>12 Kč / paleta / den</td></tr>
-            <tr><td>Paleta – doplňovací (pal. regál)</td><td>1 paleta = 1 pozice (regál)</td><td>6,5 Kč / paleta / den</td></tr>
-            <tr><td>Regál – drobné položky</td><td>výška do 0,45 m</td><td>8,5 Kč / m² / den</td></tr>
-          </tbody>
-        </table>
-
-        <div class="price-section-title">Manipulace</div>
-        <table class="price-table">
-          <thead><tr><th>Služba</th><th>Popis</th><th>Cena</th></tr></thead>
-          <tbody>
-            <tr><td>Příjem palety (IN)</td><td>Naskladnění, kontrola, evidence</td><td>59 Kč / paleta</td></tr>
-            <tr><td>Výdej palety (OUT)</td><td>Expedice, manipulace</td><td>59 Kč / paleta</td></tr>
-          </tbody>
-        </table>
-
-        <div class="price-section-title">Fulfillment</div>
-        <table class="price-table">
-          <thead><tr><th>Služba</th><th>Popis</th><th>Cena</th></tr></thead>
-          <tbody>
-            <tr><td>Systémové zpracování objednávky</td><td>Napojení e-shopu, IT procesy, administrativa</td><td>35 Kč / objednávka</td></tr>
-            <tr><td>Pick – položka</td><td>Každá položka v objednávce</td><td>6 Kč / položka</td></tr>
-            <tr><td>Pick – kus</td><td>Každý kus v objednávce</td><td>0,5 Kč / ks</td></tr>
-          </tbody>
-        </table>
-
-        <div class="price-section-title">Balení a handling</div>
-        <table class="price-table">
-          <thead><tr><th>Zásilka</th><th>Popis</th><th>Cena</th></tr></thead>
-          <tbody>
-            <tr><td>do 5 kg</td><td>Bublinkové obálky / balík — obal + manipulace</td><td>8 Kč</td></tr>
-            <tr><td>do 10 kg</td><td>Obal + manipulace</td><td>12 Kč</td></tr>
-            <tr><td>do 20 kg</td><td>Obal + manipulace</td><td>20 Kč</td></tr>
-            <tr><td>do 30 kg</td><td>Obal + manipulace</td><td>30 Kč</td></tr>
-          </tbody>
-        </table>
-
-        <div class="price-section-title">Další služby</div>
-        <table class="price-table">
-          <thead><tr><th>Služba</th><th>Popis</th><th>Cena</th></tr></thead>
-          <tbody>
-            <tr><td>Vložení marketingového materiálu</td><td>Voucher, karta, brandingový materiál</td><td>2 Kč / ks</td></tr>
-            <tr><td>Polep (při dodané samolepce)</td><td>Aplikace samolepky</td><td>2 Kč / ks</td></tr>
-            <tr><td>Polep s tiskem</td><td>Tisk a aplikace samolepky</td><td>4 Kč / ks</td></tr>
-            <tr><td>Zpracování vratky</td><td>Zpracování + kontrola + evidence</td><td>29 Kč / ks</td></tr>
-            <tr><td>Prvotní jednorázové nastavení</td><td>Setup integrace e-shopu</td><td>2 990 Kč</td></tr>
-            <tr><td>Stretch fólie</td><td>Fixace palety</td><td>85 Kč</td></tr>
-            <tr><td>EUR paleta</td><td>Použití palety dle potřeby</td><td>450 Kč</td></tr>
-            <tr><td>Extra skladové práce</td><td>Nestandardní operace</td><td>425 Kč / hod</td></tr>
-          </tbody>
-        </table>
-
-        <div class="price-section-title">Přeprava — Česko</div>
-        <table class="price-table">
-          <thead><tr><th>Dopravce</th><th>Hmotnost</th><th>Cena</th></tr></thead>
-          <tbody>
-            <tr><td>Zásilkovna Z-Point</td><td>do 5 kg</td><td>44 Kč</td></tr>
-            <tr><td>Česká pošta — Balíkovna</td><td>do 5 kg</td><td>42 Kč</td></tr>
-            <tr><td>Česká pošta — Balíkovna Plus</td><td>do 5 kg (na adresu)</td><td>62 Kč</td></tr>
-            <tr><td>GLS BusinessParcel</td><td>do 5 kg</td><td>64 Kč</td></tr>
-            <tr><td>GLS BusinessParcel</td><td>do 10 kg</td><td>76 Kč</td></tr>
-            <tr><td>GLS BusinessParcel</td><td>do 20 kg</td><td>85 Kč</td></tr>
-            <tr><td>GLS BusinessParcel</td><td>do 30 kg</td><td>120 Kč</td></tr>
-          </tbody>
-        </table>
-
-        <div class="price-section-title">Přeprava — Slovensko</div>
-        <table class="price-table">
-          <thead><tr><th>Dopravce</th><th>Hmotnost</th><th>Cena</th></tr></thead>
-          <tbody>
-            <tr><td>Zásilkovna Z-Point SK</td><td>do 5 kg</td><td>61 Kč</td></tr>
-            <tr><td>GLS EuroBusinessParcel</td><td>do 5 kg</td><td>83 Kč</td></tr>
-            <tr><td>GLS EuroBusinessParcel</td><td>do 10 kg</td><td>126 Kč</td></tr>
-            <tr><td>GLS EuroBusinessParcel</td><td>do 20 kg</td><td>173 Kč</td></tr>
-            <tr><td>GLS EuroBusinessParcel</td><td>do 30 kg</td><td>233 Kč</td></tr>
-          </tbody>
-        </table>
-
-        <div class="price-section-title">Přeprava — Německo</div>
-        <table class="price-table">
-          <thead><tr><th>Dopravce</th><th>Hmotnost</th><th>Cena</th></tr></thead>
-          <tbody>
-            <tr><td>DPD Line-Haul Spring</td><td>do 1 kg</td><td>4,61 EUR</td></tr>
-            <tr><td>DPD Line-Haul Spring</td><td>do 2 kg</td><td>5,72 EUR</td></tr>
-            <tr><td>DPD Line-Haul Spring</td><td>do 5 kg</td><td>6,11 EUR</td></tr>
-            <tr><td>DPD Line-Haul Spring</td><td>do 10 kg</td><td>6,33 EUR</td></tr>
-            <tr><td>GLS EuroBusinessParcel</td><td>do 5 kg</td><td>98 Kč</td></tr>
-            <tr><td>GLS EuroBusinessParcel</td><td>do 10 kg</td><td>157 Kč</td></tr>
-            <tr><td>GLS EuroBusinessParcel</td><td>do 20 kg</td><td>216 Kč</td></tr>
-            <tr><td>GLS EuroBusinessParcel</td><td>do 30 kg</td><td>290 Kč</td></tr>
-          </tbody>
-        </table>
-
-      </div>
-    </div>
   </div>
 
   <hr class="divider">
