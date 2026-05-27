@@ -267,6 +267,22 @@ body {
 .icp-yes .icp-list li::before { content: "✓"; color: var(--green); font-weight: 600; flex-shrink: 0; }
 .icp-no .icp-list li::before { content: "✗"; color: var(--accent); font-weight: 600; flex-shrink: 0; }
 
+/* ROLE BADGES */
+.role-badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 100px;
+  vertical-align: middle;
+  margin-left: 10px;
+  line-height: 1.8;
+}
+.role-sales { background: var(--black); color: var(--white); }
+.role-ops { background: var(--accent-light); color: var(--accent); border: 1px solid rgba(232,66,72,0.25); }
+
 /* PRICE GRID */
 .price-grid {
   display: grid;
@@ -506,6 +522,11 @@ body {
     <h2 class="section-title" style="font-size:32px;margin-bottom:8px;">Když si klient řekne o sklad</h2>
     <p class="section-sub" style="margin-bottom:28px;">Jak to celé funguje a jak to prodat. Použij při první schůzce o skladu nebo po ní.</p>
 
+    <div class="callout callout-info" style="margin-bottom:24px;">
+      <div class="callout-icon">👥</div>
+      <div class="callout-body"><span class="role-badge role-sales" style="margin-left:0;margin-right:6px;">Sales</span> = ty sbíráš info a posíláš šablonu. <span class="role-badge role-ops" style="margin-left:0;margin-right:6px;">Operations</span> = náš interní tým, který zákazníka přímé nevidí — nastavuje sklady, přístupy a řídí logistiku.</div>
+    </div>
+
     <div class="phase-label">
       <span class="phase-name">Fáze 1 — Rozjezd</span>
       <span class="phase-sub-label">cca 1–2 týdny</span>
@@ -514,42 +535,42 @@ body {
       <div class="flow-step">
         <div class="flow-num">K1</div>
         <div class="flow-content">
-          <div class="flow-title">První schůzka a discovery</div>
+          <div class="flow-title">První schůzka a discovery <span class="role-badge role-sales">Sales</span></div>
           <div class="flow-desc">Zjistíš základní info od klienta — co má, kde to leží, jak často to posílá, kam. Viz sekce Na schůzce níž.</div>
         </div>
       </div>
       <div class="flow-step">
         <div class="flow-num">K2</div>
         <div class="flow-content">
-          <div class="flow-title">Pošleme šablonu zásob</div>
+          <div class="flow-title">Pošleme šablonu zásob <span class="role-badge role-sales">Sales</span></div>
           <div class="flow-desc">Po schůzce klientovi pošleš šablonovou tabulku zásob. Klient vyplní: název produktu, SKU/kód, počet kusů. Minimálně.</div>
         </div>
       </div>
       <div class="flow-step">
         <div class="flow-num">K3</div>
         <div class="flow-content">
-          <div class="flow-title">Nastavíme sklady a přístupy</div>
+          <div class="flow-title">Nastavíme sklady a přístupy <span class="role-badge role-ops">Operations</span></div>
           <div class="flow-desc">Jakmile máme tabulku, operations nastaví sklady, uživatelské přístupy v platformě a domluví s klientem detaily. Do 48 hodin od vyplněné tabulky vidí klient zásoby v platformě.</div>
         </div>
       </div>
       <div class="flow-step">
         <div class="flow-num">K4</div>
         <div class="flow-content">
-          <div class="flow-title">Převoz zboží</div>
+          <div class="flow-title">Převoz zboží <span class="role-badge role-ops">Operations</span></div>
           <div class="flow-desc">Zařídíme kompletní převoz merche od klienta do našich skladů. U běžné velikosti standardní postup, u větších objemů nebo více lokalit se domluví individuálně.</div>
         </div>
       </div>
       <div class="flow-step">
         <div class="flow-num">K5</div>
         <div class="flow-content">
-          <div class="flow-title">Naskladnění a evidence</div>
+          <div class="flow-title">Naskladnění a evidence <span class="role-badge role-ops">Operations</span></div>
           <div class="flow-desc">Zboží projde příjmem, kontrolou a evidencí. Klient v platformě vidí přesný stav skladu — kolik kusů, jakých velikostí.</div>
         </div>
       </div>
       <div class="flow-step">
         <div class="flow-num">K6</div>
         <div class="flow-content">
-          <div class="flow-title">Spuštění</div>
+          <div class="flow-title">Spuštění <span class="role-badge role-ops">Operations</span></div>
           <div class="flow-desc">Platforma je živá. Lidé, kteří mají objednávat, dostanou přístupy. Od tohoto okamžiku jede běžný provoz.</div>
         </div>
       </div>
@@ -570,7 +591,7 @@ body {
       <div class="flow-step">
         <div class="flow-num">→</div>
         <div class="flow-content">
-          <div class="flow-title">Vyřízení a doručení</div>
+          <div class="flow-title">Vyřízení a doručení <span class="role-badge role-ops">Operations</span></div>
           <div class="flow-desc">Objednávku vyskladníme, zabalíme a odešleme přímo příjemci — zaměstnanci, na pobočku, klientovi. Příjemce standardně nic nedoplácí. Klient v platformě vidí, že zásilka odešla.</div>
         </div>
       </div>
