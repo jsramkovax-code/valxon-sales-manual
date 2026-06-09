@@ -840,7 +840,7 @@ body {
     <div class="expandable" id="exp-prompt">
       <div class="expandable-header" onclick="toggleExp('exp-prompt')">
         <div class="expandable-title">
-          Prompt pro AI — strukturovaný zápis do Pipedrive
+          Prompt pro AI k obecné discovery schůzce
           <small>Otevři ChatGPT nebo Claude, vlož prompt a na konec přidej svoje poznámky ze schůzky</small>
         </div>
         <div class="expandable-icon">+</div>
@@ -922,6 +922,88 @@ Vysoký / Střední / Nízký — a proč jednou větou. Pokud zaznělo číslo 
 Tady jsou moje poznámky ze schůzky:
 [SEM VLOŽ SVOJE POZNÁMKY]</div>
         <button class="copy-btn" onclick="copyPrompt()">Zkopírovat prompt</button>
+      </div>
+    </div>
+
+    <div class="expandable" id="exp-prompt-b">
+      <div class="expandable-header" onclick="toggleExp('exp-prompt-b')">
+        <div class="expandable-title">
+          Prompt pro AI k zakázkové schůzce
+          <small>Otevři ChatGPT nebo Claude, vlož prompt a na konec přidej svoje poznámky ze schůzky</small>
+        </div>
+        <div class="expandable-icon">+</div>
+      </div>
+      <div class="expandable-body">
+        <div class="callout callout-tip" style="margin-bottom:16px;">
+          <div class="callout-icon">💡</div>
+          <div class="callout-body">Vlož celý prompt níže do AI a na konec přidej svoje poznámky — klidně jako chaos, zkratky nebo odrážky. Výstup zkopíruj do Pipedrive jako pinnovanou note.</div>
+        </div>
+        <div class="code-block" id="ai-prompt-b">Jsi asistent obchodního zástupce firmy Valxon, která prodává platformu pro řízení firemního merche (Merch-as-a-Service).
+Dostaneš surové poznámky ze zakázkové sales schůzky se zákazníkem — zákazník má konkrétní poptávku na merch.
+Tvým úkolem je zpracovat je do dvou částí níže.
+
+Piš stručně a věcně. Nepoužívej celé věty tam, kde stačí pár slov. Pokud zákazník řekl něco konkrétního a zajímavého, zachovej to doslova v uvozovkách. Pokud informace chybí, napiš "nezjištěno". Odpovídej VŽDY v češtině.
+
+DŮLEŽITÉ PRAVIDLO: Nikdy si nic nevymýšlej. Vycházej výhradně z toho, co zaznělo v poznámkách. Přísně rozlišuj mezi tím, co řekl zákazník, a tím, co říkal obchodník. Pokud zákazník k něčemu nic neřekl, nepiš to.
+
+════════════════════════════════════════
+ČÁST 1 — PROFIL ZÁKAZNÍKA A ZAKÁZKY
+════════════════════════════════════════
+
+Datum schůzky:
+Kontakt (jméno, role):
+
+FIRMA A KONTEXT
+Co dělají, jak jsou velcí. Jak opakované jsou u nich zakázky tohoto typu:
+
+ZAKÁZKA — CO KONKRÉTNĚ
+Co řeší, pro koho, kolik kusů, jak konkrétní je zadání:
+
+PODLE ČEHO VYBÍRAJÍ
+Hlavní kritéria (cena, kvalita, timing, kreativa). Trade-off — co je první, kdyby museli volit:
+
+BUDGET
+Konkrétní částka nebo rozsah v Kč. Jestli je schválený. Jestli je strop pevný:
+
+TIMING A DEADLINE
+Do kdy potřebují mít hotovo. Hard stop a co za ním stojí. Kdy musí rozhodnout o dodavateli:
+
+PROCES VÝBĚRU A SCHVALOVÁNÍ
+Kdo je zapojený, kdo má poslední slovo, kdo schvaluje finančně. Kolik kol rozhodování:
+
+KONKURENCE
+Kdo další je v hře. Jestli mají nabídky. Co se jim na ostatních líbí / nelíbí:
+
+MOTIVACE KONTAKTU
+Co je pro tuhle osobu klíčové. Co by muselo nastat, aby si řekla "tohle bylo super":
+
+NEXT STEP
+Co jsme domluvili. Kdy a v jaké formě pošleme nabídku:
+
+════════════════════════════════════════
+ČÁST 2 — CO TO ZNAMENÁ PRO NÁS
+════════════════════════════════════════
+
+Na základě poznámek odpověz na tyto otázky. Buď konkrétní — odkazuj na to, co zákazník řekl, ne na obecné fráze.
+
+FIT S VALXONEM
+Kde přesně naše řešení odpovídá jejich zadání nebo potřebám? Proč jsme relevantní i za rámec téhle zakázky?
+
+NEJVĚTŠÍ ARGUMENTY PRO UZAVŘENÍ
+Co z discovery použít v nabídce nebo dalším rozhovoru? Citace zákazníka doslova, konkrétní situace, čísla pokud padla.
+
+KLÍČOVÝ SPOJENEC A BLOKÁTOR
+Kdo je náš hlavní spojenec a proč? Kdo může být blokátor a jak s ním pracovat?
+
+RIZIKA A NÁMITKY
+Co může komplikovat rozhodnutí? (konkurence, timing, schvalovací proces, budget, interní politika...)
+
+POTENCIÁL ZA RÁMEC ZAKÁZKY
+Je tenhle zákazník kandidát na opakované zakázky nebo platformu? Proč? Na co se zaměřit při followupu.
+
+Tady jsou moje poznámky ze schůzky:
+[SEM VLOŽ SVOJE POZNÁMKY]</div>
+        <button class="copy-btn" onclick="copyPromptB()">Zkopírovat prompt</button>
       </div>
     </div>
 
@@ -1068,7 +1150,16 @@ function toggleExp(id) {
 function copyPrompt() {
   const text = document.getElementById('ai-prompt').innerText;
   navigator.clipboard.writeText(text).then(function() {
-    const btn = document.querySelector('.copy-btn');
+    const btn = document.querySelector('#exp-prompt .copy-btn');
+    btn.textContent = 'Zkopírováno ✓';
+    setTimeout(function() { btn.textContent = 'Zkopírovat prompt'; }, 2000);
+  });
+}
+
+function copyPromptB() {
+  const text = document.getElementById('ai-prompt-b').innerText;
+  navigator.clipboard.writeText(text).then(function() {
+    const btn = document.querySelector('#exp-prompt-b .copy-btn');
     btn.textContent = 'Zkopírováno ✓';
     setTimeout(function() { btn.textContent = 'Zkopírovat prompt'; }, 2000);
   });
