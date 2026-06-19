@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valxon — Poznámky ze schůzek v Pipedrive</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+:root {
+  --black: #0f0f0f;
+  --white: #fafaf8;
+  --gray-50: #f8f7f4;
+  --gray-100: #f0ede6;
+  --gray-200: #e0ddd4;
+  --gray-400: #9e9b92;
+  --gray-600: #5c5a54;
+  --accent: #e84248;
+  --accent-light: #fdecea;
+  --green: #2a6b4a;
+  --green-light: #e8f2ec;
+  --radius: 10px;
+  --radius-sm: 6px;
+  --topnav-h: 56px;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--white);
+  color: var(--black);
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* TOP NAV */
+.topnav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--topnav-h);
+  background: rgba(250,250,248,0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--gray-200);
+  display: flex;
+  align-items: center;
+  padding: 0 40px;
+  gap: 32px;
+  z-index: 100;
+}
+.topnav-back-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: var(--accent-light);
+  padding: 5px 12px;
+  border-radius: 100px;
+  text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: opacity 0.12s;
+}
+.topnav-back-badge:hover { opacity: 0.75; }
+.topnav-links {
+  display: flex;
+  gap: 2px;
+  list-style: none;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.topnav-links::-webkit-scrollbar { display: none; }
+.topnav-links li a {
+  display: block;
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--gray-600);
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+  transition: background 0.1s, color 0.1s;
+}
+.topnav-links li a:hover { background: var(--gray-100); color: var(--black); }
+.topnav-links li a.active { background: var(--gray-100); color: var(--black); font-weight: 500; }
+
+/* LAYOUT */
+.page {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: calc(var(--topnav-h) + 48px) 32px 80px;
+}
+
+/* PAGE HEADER */
+.page-label {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+.page-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 1.15;
+  margin-bottom: 12px;
+  color: var(--black);
+}
+.page-sub {
+  font-size: 15px;
+  color: var(--gray-600);
+  line-height: 1.65;
+  max-width: 580px;
+  margin-bottom: 40px;
+}
+
+/* SECTION */
+.section {
+  margin-bottom: 48px;
+}
+.section-label {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gray-400);
+  margin-bottom: 8px;
+}
+.section-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--black);
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+.section-sub {
+  font-size: 14px;
+  color: var(--gray-600);
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+hr.divider {
+  border: none;
+  border-top: 1px solid var(--gray-200);
+  margin: 40px 0;
+}
+
+/* NOTE CARDS (2-col grid) */
+.note-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+.note-card {
+  background: var(--gray-50);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius);
+  padding: 20px 22px;
+}
+.note-card-icon { font-size: 22px; margin-bottom: 10px; }
+.note-card-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+.note-card-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--black);
+  margin-bottom: 8px;
+  line-height: 1.35;
+}
+.note-card-body {
+  font-size: 13px;
+  color: var(--gray-600);
+  line-height: 1.6;
+}
+.note-card-body ul {
+  list-style: none;
+  margin-top: 8px;
+}
+.note-card-body li {
+  padding: 4px 0;
+  padding-left: 14px;
+  position: relative;
+}
+.note-card-body li::before {
+  content: '·';
+  position: absolute;
+  left: 0;
+  color: var(--gray-400);
+}
+
+/* CHECKLIST */
+.checklist {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.checklist-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: var(--gray-50);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+}
+.checklist-icon {
+  font-size: 16px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.checklist-body { font-size: 14px; color: var(--black); line-height: 1.5; }
+.checklist-body strong { font-weight: 600; }
+.checklist-body span { color: var(--gray-600); }
+
+/* FLOW */
+.flow {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+.flow-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--gray-200);
+}
+.flow-step:last-child { border-bottom: none; }
+.flow-num {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--black);
+  color: var(--white);
+  font-size: 11px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.flow-content { flex: 1; }
+.flow-title { font-size: 14px; font-weight: 600; color: var(--black); margin-bottom: 2px; line-height: 1.4; }
+.flow-desc { font-size: 13px; color: var(--gray-600); line-height: 1.55; }
+
+/* CALLOUTS */
+.callout {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  margin-bottom: 16px;
+  border: 1px solid transparent;
+}
+.callout-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+.callout-body { font-size: 13px; line-height: 1.6; }
+.callout-body strong { font-weight: 600; }
+.callout-info { background: #eef3fb; border-color: #c5d7f5; }
+.callout-tip { background: var(--green-light); border-color: #b3d4c2; }
+.callout-warn { background: #fffbe6; border-color: #f0d000; }
+
+/* TIPS LIST */
+.tips-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.tips-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--black);
+  line-height: 1.55;
+}
+.tips-item::before {
+  content: '→';
+  color: var(--gray-400);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.tips-item span { color: var(--gray-600); }
+
+/* MOBILE NAV */
+.mqn {
+  display: none;
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  background: rgba(250,250,248,0.95);
+  backdrop-filter: blur(12px);
+  border-top: 1px solid var(--gray-200);
+  padding: 10px 16px;
+  z-index: 99;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+@media (max-width: 640px) {
+  .topnav-links { display: none; }
+  .mqn { display: flex; }
+  .note-cards { grid-template-columns: 1fr; }
+  .page { padding: calc(var(--topnav-h) + 32px) 20px 100px; }
+  .page-title { font-size: 28px; }
+}
+.mqn-btn {
+  display: inline-block;
+  white-space: nowrap;
+  padding: 8px 14px;
+  background: var(--gray-100);
+  color: var(--black);
+  font-size: 12px;
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: 100px;
+}
+.mqn-btn.mqn-primary { background: var(--black); color: var(--white); }
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <a href="valxon_sales_manual.html" class="topnav-back-badge">← Sales manuál</a>
+  <ul class="topnav-links">
+    <li><a href="#jak" class="active">Jak to funguje</a></li>
+    <li><a href="#vyhodnocuje">Co systém zjistí sám</a></li>
+    <li><a href="#online">Online schůzka</a></li>
+    <li><a href="#prezencni">Bez Fathomu</a></li>
+    <li><a href="#hlidat">Co hlídat ty</a></li>
+    <li><a href="#vedět">Dobré vědět</a></li>
+  </ul>
+</nav>
+
+<div class="page">
+
+  <div class="page-label">Pipedrive — Automatické zápisy</div>
+  <h1 class="page-title">Poznámky ze schůzek v Pipedrive</h1>
+  <p class="page-sub">Po každé schůzce ti systém připraví zápis sám — ušetří ti psaní a nic ti neuteče. Aby to fungovalo, je potřeba dodržet pár věcí. Tady je vše, co potřebuješ vědět.</p>
+
+  <hr class="divider" style="margin-top:0;">
+
+  <!-- JAK TO FUNGUJE -->
+  <div class="section" id="jak">
+    <div class="section-label">01 — Výstup</div>
+    <h2 class="section-title">Po každé schůzce vzniknou dvě poznámky</h2>
+    <p class="section-sub">Obě se vytvoří automaticky — nepotřebuješ nic klikat ani kopírovat.</p>
+
+    <div class="note-cards">
+      <div class="note-card">
+        <div class="note-card-icon">📋</div>
+        <div class="note-card-label">Ke schůzce</div>
+        <div class="note-card-title">Poznámka u schůzky</div>
+        <div class="note-card-body">
+          Shrnutí jednání — zakládá se přímo k té schůzce (aktivitě).
+          <ul>
+            <li>Klíčový insight, výsledek, další krok</li>
+            <li>Co se řešilo a konkrétní poptávka</li>
+            <li>Budget a čísla, rozhodovatel</li>
+            <li>Zpětná vazba pro tebe (co se povedlo / co zlepšit)</li>
+            <li>Hotový draft follow-up emailu zákazníkovi</li>
+          </ul>
+        </div>
+      </div>
+      <div class="note-card">
+        <div class="note-card-icon">📌</div>
+        <div class="note-card-label">K firmě nebo dealu</div>
+        <div class="note-card-title">Připnutá poznámka „Souhrn o zákazníkovi"</div>
+        <div class="note-card-body">
+          Drží se nahoře (štítek 📌) a <strong>doplňuje se s každou další schůzkou</strong>. Slouží jako tvoje příprava na příští jednání — otevřeš ji a máš pohromadě vše, co kdy zaznělo.
+          <ul>
+            <li>Schůzka je na dealu → souhrn jde k dealu</li>
+            <li>Schůzka není na dealu → souhrn jde k firmě</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout callout-tip">
+      <div class="callout-icon">💬</div>
+      <div class="callout-body">Navíc se po každém online callu pošle <strong>shrnutí do Slacku</strong>, aby tým viděl, co je nového.</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- CO SYSTÉM VYHODNOCUJE -->
+  <div class="section" id="vyhodnocuje">
+    <div class="section-label">02 — Automatika</div>
+    <h2 class="section-title">Co systém zjistí sám</h2>
+    <p class="section-sub">Systém sám pozná, jakého typu schůzka byla, a podle toho přizpůsobí obsah souhrnu. Ty nic neklikáš.</p>
+
+    <div class="flow">
+      <div class="flow-step">
+        <div class="flow-num">?</div>
+        <div class="flow-content">
+          <div class="flow-title">Ukazoval jsi platformu?</div>
+          <div class="flow-desc">Pokud na schůzce zaznělo demo, e-shop nebo merch store → souhrn se zaměří na reakce na demo a fit platformy.</div>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">?</div>
+        <div class="flow-content">
+          <div class="flow-title">Řešili jste jen merch?</div>
+          <div class="flow-desc">Obecná schůzka, zakázka, poptávka, nabídka nebo seznámení → souhrn se zaměří na profil firmy a jejich nákupní proces. Poptávku, počty a budget zachytí systém automaticky v zápisu u schůzky.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout callout-info">
+      <div class="callout-icon">ℹ️</div>
+      <div class="callout-body"><strong>Obecná schůzka i schůzka nad konkrétní zakázkou jsou jeden typ.</strong> Systém pozná z hovoru, o co šlo — poptávku, počty a budget zachytí automaticky.</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ONLINE SCHŮZKA -->
+  <div class="section" id="online">
+    <div class="section-label">03 — Fathom</div>
+    <h2 class="section-title">Online schůzka — co potřebuješ mít</h2>
+    <p class="section-sub">Když jsou splněné tři podmínky, obě poznámky vzniknou samy. Tvoje vlastní poznámky to nepřepíše — svůj zápis přidá pod ně.</p>
+
+    <div class="flow">
+      <div class="flow-step">
+        <div class="flow-num">1</div>
+        <div class="flow-content">
+          <div class="flow-title">Nahraj call ve Fathomu</div>
+          <div class="flow-desc">Bez nahrávky nemá systém z čeho čerpat.</div>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">2</div>
+        <div class="flow-content">
+          <div class="flow-title">Měj schůzku v Pipedrive jako aktivitu se správným datem</div>
+          <div class="flow-desc">Typ Schůzka nebo Akviziční schůzka. Bez aktivity nemá zápis kam jít.</div>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">3</div>
+        <div class="flow-content">
+          <div class="flow-title">Měj kontakt napojený na firmu</div>
+          <div class="flow-desc">Zápis se páruje přes email účastníka. Kontakt bez firmy = poznámka skončí jen u kontaktu, ne u firmy nebo dealu.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- BEZ FATHOMU -->
+  <div class="section" id="prezencni">
+    <div class="section-label">04 — Prezenční schůzky</div>
+    <h2 class="section-title">Schůzka bez Fathomu</h2>
+    <p class="section-sub">Fathom prezenční schůzku nezachytí — je to na tobě. Máš dvě možnosti.</p>
+
+    <div class="flow" style="margin-bottom:16px;">
+      <div class="flow-step">
+        <div class="flow-num">A</div>
+        <div class="flow-content">
+          <div class="flow-title">Nahraj ji jiným způsobem</div>
+          <div class="flow-desc">Pokud to jde, nech zpracovat jako online call — systém udělá zbytek sám.</div>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">B</div>
+        <div class="flow-content">
+          <div class="flow-title">Sepiš si vlastní poznámky a prožeň je promptem</div>
+          <div class="flow-desc">V Sales coachi máš připravené prompty podle typu schůzky (platforma / obecná merch / zakázková). Vezmeš svoje poznámky → vložíš do správného promptu → výsledný strukturovaný souhrn vložíš jako připnutou poznámku k zákazníkovi v Pipedrive.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout callout-tip">
+      <div class="callout-icon">✅</div>
+      <div class="callout-body">Každá schůzka tak má svůj souhrn — ať ji Fathom zachytil, nebo ne.</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- CO HLÍDAT TY -->
+  <div class="section" id="hlidat">
+    <div class="section-label">05 — Tvoje zodpovědnost</div>
+    <h2 class="section-title">Co potřebuješ hlídat ty</h2>
+
+    <ul class="checklist">
+      <li class="checklist-item">
+        <span class="checklist-icon">🎙️</span>
+        <div class="checklist-body"><strong>Nahrávej online cally ve Fathomu</strong> <span>— bez nahrávky nemá systém z čeho čerpat.</span></div>
+      </li>
+      <li class="checklist-item">
+        <span class="checklist-icon">📅</span>
+        <div class="checklist-body"><strong>Měj schůzku v Pipedrive jako aktivitu se správným datem</strong> <span>— jinak nemá zápis kam jít.</span></div>
+      </li>
+      <li class="checklist-item">
+        <span class="checklist-icon">🔗</span>
+        <div class="checklist-body"><strong>Měj kontakt napojený na firmu</strong> <span>— zápis se páruje přes email účastníka. Kontakt bez firmy = poznámka skončí jen u kontaktu.</span></div>
+      </li>
+      <li class="checklist-item">
+        <span class="checklist-icon">⚠️</span>
+        <div class="checklist-body"><strong>Hlídej duplicitní kontakty</strong> <span>— jeden člověk = jeden záznam. Duplikáty slučuj.</span></div>
+      </li>
+      <li class="checklist-item">
+        <span class="checklist-icon">✏️</span>
+        <div class="checklist-body"><strong>U prezenčních schůzek sepiš poznámky a použij prompt</strong> <span>— najdeš ho v Sales coachi podle typu schůzky.</span></div>
+      </li>
+    </ul>
+  </div>
+
+  <hr class="divider">
+
+  <!-- DOBRÉ VĚDĚT -->
+  <div class="section" id="vedět">
+    <div class="section-label">06 — Info</div>
+    <h2 class="section-title">Dobré vědět</h2>
+
+    <ul class="tips-list">
+      <li class="tips-item"><div><strong>Tvoje vlastní poznámky se nepřepisují.</strong> <span>Klidně si k schůzce piš postřehy — systém svůj zápis přidá pod ně.</span></div></li>
+      <li class="tips-item"><div><strong>Draft emailu je jen draft.</strong> <span>Projdi, uprav podle sebe, pošli — ne automaticky.</span></div></li>
+      <li class="tips-item"><div><strong>Souhrn o zákazníkovi je živý.</strong> <span>Před každou schůzkou se do něj mrkni — je to tvoje příprava.</span></div></li>
+      <li class="tips-item"><div><strong>Staré souhrny zůstávají.</strong> <span>Vždy vznikne nový, historie se nemaže.</span></div></li>
+    </ul>
+  </div>
+
+</div>
+
+<div class="mqn">
+  <a href="#jak" class="mqn-btn mqn-primary">Jak to funguje</a>
+  <a href="#vyhodnocuje" class="mqn-btn">Co systém zjistí</a>
+  <a href="#online" class="mqn-btn">Online schůzka</a>
+  <a href="#prezencni" class="mqn-btn">Bez Fathomu</a>
+  <a href="#hlidat" class="mqn-btn">Co hlídat</a>
+  <a href="#vedět" class="mqn-btn">Dobré vědět</a>
+</div>
+
+<script>
+const sections = document.querySelectorAll('.section');
+const navLinks = document.querySelectorAll('.topnav-links a');
+window.addEventListener('scroll', function() {
+  let current = '';
+  sections.forEach(function(s) {
+    if (window.scrollY >= s.offsetTop - 80) current = s.id;
+  });
+  navLinks.forEach(function(a) {
+    a.classList.remove('active');
+    if (a.getAttribute('href') === '#' + current) a.classList.add('active');
+  });
+}, { passive: true });
+</script>
+</body>
+</html>
